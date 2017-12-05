@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02-事件对象的使用以及成员使用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            margin: 100px auto;
+            background-color: #ee0099;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+    <script>
+        // 在事件被触发时会产生一个事件对象  在事件处理函数中使用一个形参进行接收 就是可以进行使用啦
+        var tese = document.getElementsByTagName("div")[0];
+        tese.onclick =function(evt){
+            // 将事件进行打印 事件发生的信息都可以在这个对象中进行获取到  在IE 和 标准的浏览器获取是含有兼容性的问题的
+            // 标签直接是形参的名称  但是ie8及其以下 是 window.event 进行获取
+            console.log(evt);
+            // 前者标准  后者是这个ie的  注意兼容性的问题  如果直接使用evt  那么在IE8 会显示undefined的情况
+            var event = evt || window.event;
+            console.log(event);
+
+            // 事件对象包含了一下触发事件时 鼠标的坐标等等  触发元素  每个事件的事件对象也是不相同的  例如键盘事件  事件对象中 保存触发事件的按下键
+        }
+    </script>
+</body>
+</html>

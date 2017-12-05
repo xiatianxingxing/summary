@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 1200px;
+        }
+        div {
+            width: 100%;
+            height: 200px;
+            background-color: #ff8800;
+            transition: background-color 2s;
+        }
+    </style>
+</head>
+<body>
+    <!-- 在移动端含有特殊的手指事件  在下面进行复习手指事件的特性  和执行的时机  -->
+    <div>
+        
+    </div>
+
+    <script>
+        var div = document.querySelector("div");
+        // 手指触摸屏幕事件 touchstart
+        // 在手指触摸到屏幕是进行触发  
+        // 在事件对象中含有 当前触摸点对象  targetTouches  这个是一个伪数组  因为我们在手机上会放置2个手指  这个targetTouches会保持屏幕上所以的手指对象
+        // 在触摸点对象中 保存着 触摸点在  页面  屏幕  可视区域 中的位置  pageX/Y screenX/Y client/Y 
+        div.addEventListener("touchstart",function(e){
+            console.log(e.targetTouches[0]);
+            console.log(e.targetTouches[0].clientX); // 获取触摸点在页面中位置
+            this.style.backgroundColor = "#ee00ff";
+        });
+
+        // 进行测试 clientX/Y screenX/Y pageX/Y
+        document.body.addEventListener("touchstart",function(e){
+            console.log(e.targetTouches[0].clientX); // 在可视区域中的位置
+            console.log(e.targetTouches[0].pageX); // 在显示区域中的位置
+            console.log(e.targetTouches[0].screenY); // 在可以屏幕中的位置
+        })
+
+        // 手指滑动事件  在手指在屏幕中进行 滑动 触发 touchmove 事件
+        // 只要手指在滑动 那么事件就会一直触发
+        // 在事件对象中 也是含有 手动对象的在 在手指对象中可以获取到 指定对象的位置的
+        div.addEventListener("touchmove",function(e){
+            console.log("手指正在移动中");
+            console.log( "手指的位置值" + e.targetTouches[0].clientX);
+        })
+
+        // 手指离开屏幕是 触发事件 touchend  
+        // 需要注意的是 获取手指的对象不再是targetTouches啦  而是 changedTouches啦  
+        // 在手指离开之后就没有target啦  自然无法获取到targetTouches啦  这个需要注意啦
+        div.addEventListener("touchend",function(e) {
+            console.log(e.changedTouches[0].clientX);
+        })
+    </script>
+
+
+</body>
+</html>

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+            width: 100px;
+            height: 100px;
+            background-color: #ff0f1d;
+        }
+    </style>
+</head>
+<body ng-app="app" ng-controller="appController">
+<h2>{{name}}</h2>
+<a href="#/one">第1个页面</a>
+<a href="#/two">第2个页面</a>
+<a href="#/three">第3个页面</a>
+<div class="box" ng-click="bian()"></div>
+<div ng-view=""></div>
+</body>
+<script src="angular.js"></script>
+<script src="angular-route.js"></script>
+<script src="service.js"></script>
+<script>
+    var box = document.querySelector(".box")
+    var app = angular.module("app",["service","ngRoute"])
+    app.controller("appController", ["$scope","woCao" ,function ($scope,wocao) {
+        //注册值
+        $scope.name = "小明";
+
+        //注册方法
+        $scope.bian = function () {
+            console.log(132);
+            box.style.background = "blue";
+            this.name = wocao.myname
+        }
+    }]);
+    //路由
+    app.config(["$routeProvider",function ($routeProvider) {
+                       //定义模板路径
+        $routeProvider.when("/one",{
+            //也可以模板id
+            template:"<h2>我是第一个页面{{name}}</h2>"
+        })
+                .when("/two",{
+                    template:"<h2>我是第二个页面</h2>",
+                    controller:"appController"
+
+                }).when("/three",{
+                    template:"<h2>我是第san个页面</h2>",
+                    controller:"appController"
+                })
+    }])
+</script>
+</html>

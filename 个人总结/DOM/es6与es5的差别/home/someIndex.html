@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ES6-some数组方法的测试</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        var arrdata = [ 11,22];
+        function fn(array) {
+            return array > 30;
+        }
+        // 将调用的 arrdata 数组 传入到 some 函数中 在函数中 进行比较 如果 函数 返回的值为 false 那么表达式的值 就是 false 啦 反之就是是 true啦
+        console.log(arrdata.some(fn));
+
+        // 调用 some 函数是一个 数组 的情况
+        // some 方法的 参数是 一个 函数  那么调用的数组 是 函数的实参  我们在函数 中 进行数组 中的成员 进行测试操作
+
+    </script>
+</body>
+</html>

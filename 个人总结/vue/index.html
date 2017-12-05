@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app">
+        {{text}}
+        <dv></dv>
+        <my-component></my-component>
+        <ne></ne>
+    </div>
+
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <script>
+
+        Vue.component('my-component', {
+            // 选项
+            template:'<span>9999</span>'
+        })
+
+        // 全局组件的创建
+        Vue.component( 'dv',{
+            // 我们可以在 template 使用 `` 这个符合 比较好用的
+            template:`
+                <ul>
+                    <li v-for=' k in arrdata' :key='k.id'>{{k}}</li>
+                </ul>
+            `,
+            data:function() {
+                return {
+                    arrdata: [ 1,2,3,4,5,6 ]
+                }
+            }
+        } );
+
+        var vm = new Vue({
+            el:'#app',
+            data:{
+                text:'haha'
+            },
+            components:{
+                ne:{
+                    template:'<span>kkkk</span>',
+                    data:function() {
+                        return {
+                            da:[1,2,3,4,5,7]
+                        }
+                    }
+                }
+            }
+        })
+        console.log( vm );
+        console.log( Vue );
+    </script>
+</body>
+</html>

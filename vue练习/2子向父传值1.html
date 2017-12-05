@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<script src="../vue1026.js"></script>-->
+    <script src="../vue221.js"></script>
+</head>
+<body>
+
+<template id="son">
+    <!-- 1111      先出发事件，执行方法    -->
+    <button @click = "data">下一句</button>
+</template>
+
+
+<div id="app">
+    <h2>{{temp}}</h2>
+        <!-- 4444   通过send来触发chenga事件-->
+    <son v-on:send="chenga"></son>
+</div>
+</body>
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            temp:"他说风雨中这点痛算什么"
+        },
+        methods:{
+            // 5555    这里的input就是子向父传来的数据
+            chenga: function (input) {
+                this.temp = input;
+            }
+        },
+        components:{
+           //怎了的 “son” 对应DOM中的标签
+            "son":{//2222222  根据模板创建子组件
+                template:"#son", //对应模板id
+                methods:{
+                    data: function () {
+                        //3333333  核心 通过this.$enit("send","要传的数据")
+                        this.$emit("send","为了你而祈祷，而祝福，而感动")
+                    }
+                }
+            }
+
+        }
+    })
+</script>
+</html>

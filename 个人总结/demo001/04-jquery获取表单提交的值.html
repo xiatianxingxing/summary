@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <form onsubmit=" function fn(){return false}">
+        用户名：<input type="text" name="user" placeholder="请输入用户名" > <br>
+        密码：<input type="password" name="pw" placeholder="请输入密码" > <br>
+        手机号：<input type="tel" name="tpohon" placeholder="请输入手机号" > <br>
+        <input type="submit" value="提交">
+    </form>
+    <script>
+        var form =document.querySelector( "form" );
+        console.dir( form );
+        // 当我点击 提交按钮的情况下 获取 到表单中填写的数据
+
+        // 当我们在 输入框 按钮下 回车表单不会进行提交的
+        var submit =document.querySelector( "input[type=submit]" );
+        console.log( submit );
+        form.addEventListener( 'submit' , function(e){
+            // 函数返回的是一个  json格式的字符串
+            var str = formval( this );
+            console.log( str );
+            // 加置了 JSON.parse 表单会进行 提交 。。。。
+            // console.log( JSON.parse( str ) );
+            formajax( 'http://hu.com/AJAX/03-php.php' , str );
+            // 完成表单的获取 那么 进行提交到 api 接口中
+            e.preventDefault();
+        } );
+        // 表单函数
+        function formval( form ) {
+            var arr = [];
+            for( var i =0 ;i<form.length ; i++ ) {
+                if( form[i].type != 'submit' ) {
+                    arr.push( '"' + form[i].name + '"' + ':' + '"' + form[i].value  + '"' ) ;
+                }
+            }
+            var str = "'" + arr.join( "," ) + "'";
+            return str;
+        }
+
+        // 提交 ajax 的函数 提价地址是 假的
+        function formajax( url , argu ){
+            var xhr = new XMLHttpRequest( );
+            xhr.open( "post" , url , true );
+            xhr.send( argu );
+            xhr.onreadystatechange = function( ){
+                if( xhr.statusText == 4 ) {
+                    if( xhr.status == 200 ) {
+                        console.log( xhr.response );
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+</html>

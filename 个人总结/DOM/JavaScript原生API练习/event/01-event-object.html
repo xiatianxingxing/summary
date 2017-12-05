@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        span {
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: #ff8800;
+        }
+    </style>
+</head>
+
+<body>
+    <span id="demo"></span>
+    
+    <script>
+        var span = document.querySelector('#demo');
+        span.addEventListener('click', function () {
+            console.log(arguments[0]);
+        });
+        // IE 中的DOM2 注册 事件 绑定事件
+        // span.attachEvent( 'click' ,function() {
+
+        // } )
+        // addEventListener attachEvent
+    </script>
+
+</body>
+
+</html>

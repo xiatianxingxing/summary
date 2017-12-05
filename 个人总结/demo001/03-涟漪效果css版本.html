@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        button {
+            border: none;
+            outline: none;
+            display: block;
+            padding: 10px;
+            margin: 50px auto;
+            position: relative;
+            z-index: 999;
+        }
+        button::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            transform: translate( -50% , -50% );
+            transition: width 2s , height 2s;
+            border-radius: 50%;
+            background-color: rgba( 255,136,0,0.8 ) ;
+            z-index: -10;
+        }
+        button:hover::before {
+            animation: anim 2s 2;
+        } 
+        @keyframes anim {
+            0% {
+                width: 0;
+                height: 0;
+            }
+            50% {
+                width: 50px;
+                height: 50px;
+            }
+            100% {
+                width: 0;
+                height: 0;
+            }
+        }
+        button::after {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            transform: translate( -50% , -50% );
+            transition: width 2s , height 2s;
+            border-radius: 50%;
+            background-color: rgba( 255,136,0,0.3 ) ;
+            z-index: -100;
+        }
+        button:hover::after {
+            animation: anim2 2s 2;
+        } 
+        @keyframes anim2 {
+            0% {
+                width: 0;
+                height: 0;
+            }
+            50% {
+                width: 80px;
+                height: 80px;
+            }
+            100% {
+                width: 0;
+                height: 0;
+            }
+        }
+    </style>
+
+</head>
+<body>
+    <button>点击</button>
+    <script>
+        var btn =document.querySelector( "input" );
+        console.log( btn );
+    </script>
+</body>
+</html>

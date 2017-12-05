@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: #ff8800;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        span {
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: #00eeff;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <span></span>
+    </div>
+    <strong></strong>
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        // 换一个入口方式  熟悉jQuery的几种入口函数方式
+        $(document).ready(function(){
+            // 什么是断链呢  就是说你调用完一个方法之后无法在继续的调用其他的方法啦 产生处理
+            // 什么时候会产生断链呢  在调用方法完成后  返回值不是当前的调用对象  那么就是产生断链啦 例如获取样式  那么方法返回值就一个是获取到的样式啦 那么就无法进行继续的链式编程啦
+            // 使用end进行处理断链的情况  end的方法会当前的对象上一次的对象中  以此类推 断链几次就书写几次end
+
+            // 像一下的情况  就需要在wnext后加上end啦  因为next是获取当前元素的下一个兄弟元素 返回的是下一个兄弟元素  返回值就不是this啦 就无法再继续链式编程啦
+            $("div").next().end().click(function(){
+                console.log(1);
+            });//产生错误
+            // $("div").find("span").end().click(function(){
+            //     console.log(2);
+            // })
+            // 需要注意点：断链的返回值必须是一个元素  才可以进行调用end方法 进行接链  不然会进行报错误的
+        })
+    </script>
+
+</body>
+</html>

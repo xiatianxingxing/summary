@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" id="btn" value="请求">
+
+
+
+    <script>
+        var btn = document.getElementById("btn");
+        btn.onclick = function() {
+            // 首先是 浏览器提供的 请求对象 XMLHttpRequest 对象 含有兼容性的问题
+            var xhr = creaxhr();
+            console.log(xhr);
+            // 设置请求的参数  准备发起请求 这回 我们发起 post请求
+            // xhr.open("get","./01-PHP基本语法.php",true);
+            xhr.open("post","./01-PHP基本语法.php",true);
+            // 需要注意的是 传递参数 的方式不同  post请求参数需要加载 send方法中 以对象的方式
+            // 并且要设置请求头 告诉后端解析的格式
+            // 设置请求头的  因为是 post的情况
+            xhr.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+            xhr.send(null);
+            xhr.onreadystatechange = function() {
+                if(xhr.readyState === 4) {
+                    if(xhr.status === 200) {
+                        console.log(xhr.responseText);
+                    }
+                }
+            }
+        }
+        // post请求 不能再 跨域的情况下 进行使用的  所以说 是无法 进行的
+        // 封装一个 兼容的 创建 请求的对象的方式
+        function creaxhr () {
+            var xhr = null;
+            if(window.XMLHttpRequest) {
+                xhr = new XMLHttpRequest();
+            }else {
+                // 这个是IE 支持的 创建请求对象的方式
+                xhr = new ActiveXObject("Microsoft.XMLHTTP");
+            }
+            return xhr;
+        }
+    </script>
+</body>
+</html>

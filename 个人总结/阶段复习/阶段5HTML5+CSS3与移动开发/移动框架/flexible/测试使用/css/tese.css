@@ -1,0 +1,7 @@
+body {
+  width: 100%;
+}
+body img {
+  display: block;
+  width: 10rem;
+}

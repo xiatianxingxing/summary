@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="进入全屏" id="btn1">
+    <input type="button" value="退出全屏" id="btn2">
+    <script>
+        var btn =document.getElementById("btn1");
+        var body = document.body;
+        console.log(body);
+        // requestFullscreen 该方法含有兼容性的问题  需要追加浏览器厂商前缀 
+        // Chrome---webkit fixfor---moz IE---ms opear---o
+        btn.onclick =function(){
+            // 含有兼容性的问题 需要进行功能检测 看当前使用的浏览器是否支持
+            // 在谷歌 screen的首字母不需要进行大写  这个是不符合驼峰命名法的规则的
+            // 在火狐 Screen的首字母需要进行大写  只有火狐是标准的驼峰命名法
+            if(body.webkitRequestFullscreen){
+                console.log("谷歌");
+                body.webkitRequestFullscreen();
+            }else if (body.mozRequestFullScreen) {
+                console.log("火狐");
+                body.mozRequestFullScreen();
+            }else if (body.oRequestFullscreen) {
+                console.log("Opera");
+                body.oRequestFullscreen();
+            }else if(body.msRequestFullscreen) {
+                // IE10之下无法进行触发
+                console.log(44);
+                body.msRequestFullscreen();
+            }
+        }
+        
+
+        // 退出全屏的方法 cancelFullScreen  与进入全屏相同
+        // 需要注意的点是 使用退出的方法的元素 必须是 document 元素
+        var btn2 =document.getElementById("btn2");
+        // requestFullscreen 该方法含有兼容性的问题  需要追加浏览器厂商前缀 
+        // Chrome---webkit fixfor---moz IE---ms opear---o
+        btn2.onclick =function(){
+            if(document.webkitCancelFullScreen){
+                console.log("谷歌");
+                document.webkitCancelFullScreen();
+            }else if (document.mozCancelFullScreen) {
+                console.log("火狐");
+                document.mozCancelFullScreen();
+            }else if (document.oCancelFullScreen) {
+                console.log("Opera");
+                document.oCancelFullScreen();
+            }else if(document.msCancelFullScreen) {
+                // IE10之下无法进行触发
+                console.log(44);
+                document.msCancelFullScreen();
+            }
+        }
+    </script>
+</body>
+</html>

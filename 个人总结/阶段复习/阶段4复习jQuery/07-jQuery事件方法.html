@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #demo,
+        #on {
+            width: 300px;
+            height: 300px;
+            background-color: #ff8800;
+            transition: background-color 2s;
+            margin: 10px;
+        }
+        #fa {
+            width: 300px;
+            height: 300px;
+            background-color: #ee00ff;
+            margin: 10px;
+            transition: background-color 2s;
+            box-sizing: border-box;
+            padding: 50px;
+        }
+        #son {
+            width: 200px;
+            height: 200px;
+            background-color: #00eeff;
+            transition: background-color 2s;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo"></div>
+    <div id="fa">
+        <div id="son"></div>
+    </div>
+    <div id="on">
+        <span>span元素</span>
+        <a href="javascript:void(0);">点击</a>
+    </div>
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        // 在jQuery中把原生中的事件封装成了 这个事件方法  例如 onclick -- click()  这个太多太杂  记住只要把事件前面的on 去掉就是jQuery中的事件方法啦(大部分如此)
+        // 注意复习  bind()  on()  delegate()  这些的绑定事件方法
+        // 解绑方法  unbind  off()  undelegate()
+        // 通过绑定方法注册的事件  事件处理程序不会进行覆盖的
+        // 需要解绑  如果事件处理函数是匿名函数 那么无法进行解绑啦
+
+        // bind 绑定事件方法
+        // 参数1为--要注册的事件类型
+        // 参数2为--事件处理函数
+        $("#demo").bind("click",function(){
+            $(this).css("backgroundColor","#ee00ff");
+        });
+
+        // delagate 绑定事件方法
+        // 可以让当前元素的指定后代元素进行触发  委托指定后代触发指向事件
+        // 参数1---选择器字符  选择指定的后代元素  可以是标签名 等等
+        // 参数2---事件类型
+        // 参数3---事件处理函数
+        // 注意点：事件处理函数中的this 不是指向调用方法  而是被委托元素  这个点需要注意啦
+        $("#fa").delegate("div","click",function(){
+            $("#fa").css("backgroundColor","#ff8800");
+        })
+
+        // on 绑定事件方法
+        // 不但可给当前元素注册事件  还可以让当前元素的指定后代元素进行触发 前面的2个方法都是在on的基础上进行实现的
+        // 推荐使用on  绑定事件方法
+        // 参数可以有2个  也可以是3个  2个---给当前元素注册指定的事件  3个----委托事件
+        // 2个参数的情况哦
+        $("#on").on("click",function(e){
+            console.log("2个参数的情况")
+            console.log(e.target);
+            console.log("on元素的点击事件被进行触发啦")
+        });
+        // 三个参数的情况
+        // 注意点---委托元素选择字符 放置在第2个参数的位置上
+        $("#on").on("click","a",function(e){
+            console.log("3个参数的情况");
+            console.log(e.target);
+            // 如果让被委托的元素 不进行冒泡 那么事件委托是无法进行完成的
+            e.stopPropagation();
+        });
+        // 3个参数的情况--顺序是先执行3个参数的事件处理函数  如果执行的是2个参数事件处理函数
+
+
+        // 解绑方法
+        // unbind --- unbind("要解绑的事件",函数名称)
+        // off 与 undelegate 与上面的相同
+        // 注意点  解绑事件无将事件的匿名处理函数进行单独的进行解绑  移除
+
+
+        // jQuery中的事件对象 是arguments  需要在事件处理函数中才能进行使用  外部无法进行操作的
+    </script>
+</body>
+</html>

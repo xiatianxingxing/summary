@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script>
+
+
+        // 正则表达式 注意用于判断字符使用  限制输入啊  将某些文字进行屏蔽或者转换  
+        // 都是使用正则表达式进行判断的
+
+
+        // 创建正则表达式的2种方式
+        // 通过构造函数  Regexp  括号中可以填入表达式
+        var reg = new RegExp();
+        console.log(Object.prototype.toString(reg));//[object object]
+        // 通过字面量的方式进行创建  推荐
+        var reg2 =  /\d/g;
+        var str = 123456;
+        // 使用test 方法 进行判断 字符 或者数字  返回Boolean 值 查找到 匹配项 则返回 true  反之 false
+        console.log(reg2.test(str));
+        // 预定义类介绍
+        // \d  判断所以的数字  0-9  g---表示全局匹配  整个字符串 或者数字
+        var reg3 = /\d/g;
+        // 匹配非数字项
+        var reg4 = /\D/g;
+        console.log(reg4.test("123"));//true
+
+        // 匹配单词字符  [a-z]  包含数字 下划线
+        var reg5 = /\w/g;
+        // 匹配非单词字符
+        var reg6 = /\W/g;
+
+        // 匹配空白字符  就是空格
+        var reg7 = /\s/g;
+        // 匹配非空白字符
+        var reg8 = /\S/g;
+
+        // 查找换行符
+        var reg9 = /\n/g
+    </script>
+</body>
+</html>

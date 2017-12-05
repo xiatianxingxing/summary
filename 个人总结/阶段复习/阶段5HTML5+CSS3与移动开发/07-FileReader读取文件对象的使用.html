@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div#demo {
+            width: 200px;
+            line-height: 30px;
+            font-size: 18px;
+            color: #fff;
+            text-align: center;
+            background-color: #ff8800;
+            border-radius: 10px;
+            margin: 10px auto;
+        }
+        input {
+            display: block;
+            margin: 10px auto;
+        }
+        #fa{
+            width: 300px;
+            height: 300px;
+            border: 1px solid #000;
+            border-radius: 3px;
+            margin: 10px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="fa">
+        <img src="" alt="" id="txt">
+    </div>
+    <!-- <div id="demo">
+        上传头像
+    </div> -->
+    <input type="file" value="上传头像" id="file">
+    <script src="./jquery-1.12.2.js"></script>
+    <script>
+        var file = document.getElementById("file");
+        console.dir(file);
+        // 使用filereader 进行上传图片预览的功能
+        // 在onchange 事件触发进行获取到  不要在点击的时候进行获取  不然无法获取到图片
+        file.onchange = function(){
+            // 创建文件读取对象
+            var ready = new FileReader();
+            // 好奇可以查看 ready 的原型链式 有什么
+            // ready.addEventListener("click",function(){
+            //     console.log("111");
+            // })
+
+            console.dir(this);
+            // flies 是一个伪数组  需要指定下标
+            var fli = this.files[0];
+            console.log(fli);
+            // 获取到 base64 编码 的img  readAsDateURL 没有返回值
+            var base = ready.readAsDataURL(fli);
+            console.log(base);
+            // 编码保存在 result  但是读取img 需要时间  不能直接获取 需要在读取完成后 进行获取
+            ready.onload = function(){
+                // 将base64 格式的编码 赋值该img 完成图片预览的功能
+                document.getElementById("txt").src = ready.result;
+            }
+        }
+    </script>
+    
+</body>
+</html>

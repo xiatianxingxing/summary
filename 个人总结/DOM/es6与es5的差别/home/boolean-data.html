@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        // 进行 短路操作
+        // 如果左边的 中 为false 那么取右边的值
+        var str = "";
+        // 假如 我们获取到的服务器的值 得到为空 那么 进行 JSON.parse 进行转换为 对象那么会报错 那么为了防止保存 我们 进行一个 逻辑或的操作
+        console.log( str || "短路操作" );
+
+        var header = document.createElement("h1");
+        header.innerText = "逻辑或的规则是---当前 ||符号 左边的值为true那么取左边的值不会进行判断右边的值啦 但是如果是false那么就去右边的值";
+        document.body.appendChild(header);
+
+        // 逻辑 与 的规则
+        // 那么就是 在 左边 和 右边 的值都是为 true 那么才会 继续取值 而且取得 永远是右边的值
+        // 当前 左边的 值为false 就 不会判断 右边的值啦 直接进行去左边的值
+        var argu = "";
+        console.log( argu && "123" );// 将 空的字符串 需要进行注意的是  在进行 表达式进行比较是 会转换为 boolean 但是不会改变数据原来的值的 
+        // 当前 左边的值为 false 直接 取 左边的值
+        // 当前 都为 true的情况下 才会 去 右边的值的
+        console.log( '123' && '去右边的值' );
+
+        var header2 = document.createElement("h1");
+        header2.innerText = "逻辑 与 的规则 \n 就是在左边的false 那么直接取左边的值 在左边为true的情况下才会去 右边的值 ";
+        document.body.appendChild(header2);
+    </script>
+</body>
+</html>

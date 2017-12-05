@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./移动框架/swiper/Swiper-3.3.1/dist/css/swiper.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .swiper-zoom-container {
+            width: 100%;
+            overflow: hidden;
+        }
+        .swiper-zoom-container > img {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <!-- 进行双向的绑定  -->
+    <div id="swiper-container3">
+        <div class="swiper-container" id="swiper-container1">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                        <img src="./移动框架/swiper/img/1.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                        <img src="./移动框架/swiper/img/2.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                        <img src="./移动框架/swiper/img/3.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                        <img src="./移动框架/swiper/img/4.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 分页元素  -->
+            <div class="swiper-pagination"></div>
+        </div>
+        <div class="swiper-container" id="swiper-container2">
+            <div class="swiper-wrapper">
+                <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                        <img src="./移动框架/swiper/img/5.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                        <img src="./移动框架/swiper/img/6.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                        <img src="./移动框架/swiper/img/7.jpg" alt="">
+                    </div>
+                </div>
+                <div class="swiper-slide">
+                    <div class="swiper-zoom-container">
+                        <img src="./移动框架/swiper/img/8.jpg" alt="">
+                    </div>
+                </div>
+            </div>
+            <!-- 分页元素  -->
+            <div class="swiper-pagination"></div>
+        </div>
+    </div>
+    <script src="./移动框架/swiper/Swiper-3.3.1/dist/js/swiper.js"></script>
+    <script>
+        var Swiper1 = new Swiper('#swiper-container1',{
+        })
+        var Swiper2 = new Swiper('#swiper-container2',{
+        })
+        Swiper1.params.control = Swiper2;//需要在Swiper2初始化后，Swiper1控制Swiper2
+        Swiper2.params.control = Swiper1;//需要在Swiper1初始化后，Swiper2控制Swiper1
+        var Swiper3 = new Swiper('#swiper-container3',{
+            control: [Swiper1, Swiper2],//控制前面两个Swiper
+            loop:true,
+            pagination:".swiper-pagination"
+        })
+    </script>
+</body>
+</html>

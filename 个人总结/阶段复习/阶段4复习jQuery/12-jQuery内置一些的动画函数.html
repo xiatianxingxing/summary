@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            padding: 10px;
+            overflow: hidden;
+        }
+        .demo {
+            width: 300px;
+            height: 300px;
+            /*border: 1px solid #000;*/
+        }
+        span {
+            display: block;
+            width: 100%;
+            background-color: #ff8800;
+            height: 30px;
+            text-align: center;
+            font-size: 20px;
+            box-shadow: 0px 0px 8px #3300ee;
+            cursor: pointer;
+        }
+        .son {
+            height: 270px;
+            background-color: #00eeff;
+            box-shadow: 0px 0px 8px #ee00ff;
+        }
+        body > div {
+            float: left;
+            margin-right: 50px;
+        }
+
+    </style>
+</head>
+<body>
+
+
+    <div>
+        <h2>淡入淡出的效果</h2>
+        <div id="demo" class="demo">
+            <span>点击查看效果</span>
+            <div class="son"></div>
+        </div>
+    </div>
+
+    <div>
+        <h2>滑入滑出的效果</h2>
+        <div id="slide" class="demo">
+            <span>点击查看效果</span>
+            <div class="son"></div>
+        </div>
+    </div>
+
+    <div>
+        <h2>显示/隐藏的效果</h2>
+        <div id="showHide" class="demo">
+            <span>点击查看效果</span>
+            <div class="son"></div>
+        </div>
+    </div>
+
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+    $(function(){
+        $("#demo > span").click(function(){
+            // fadeToggle  淡入淡出的效果切换 
+            // fadeTo---淡入
+            // fadeOut---淡出
+            // fadein---淡入/不改变高/宽度的
+            // 可以传入一个回调函数
+            $("#demo > .son").fadeToggle(1000);
+        });
+
+        $("#slide > span").click(function(){
+            // slideToggle  淡入淡出的效果切换 
+            // slidedDown---隐藏
+            // slideUp---显示
+            // 第1个参数 可以是 数字的毫秒数  也可以是3种表示速度的字符串
+            // 通过改变高度  和 none 达到效果
+            // 可以传入一个回调函数
+            $("#slide > .son").slideToggle(1000);
+        });
+
+        $("#showHide > span").click(function(){
+            // 参数值  1---完成效果的事件  2---回调函数(可选)
+            // 这里判断一下元素的display属性 根据结果来执行不同的分支
+            if($("#showHide > .son").css("display") === "none"){
+                $("#showHide > .son").show(1000);
+            }else {
+                $("#showHide > .son").hide(1000);
+            }
+        });
+    });
+
+    </script>
+</body>
+</html>

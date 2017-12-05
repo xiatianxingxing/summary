@@ -1,0 +1,7 @@
+-> history 是 获取用户的 浏览历史记录的
+    - 可以设置 页面 返回到 上一次 浏览的网页中
+    - 但是 经过测试 不过好像是无效的  但是也没有进行报错的
+    - window.history
+        - window.history.back() --- 上一次 url
+        - window.history.forward() --- 下一次 url
+        - window.history.go() --- 回退到指定的url 参数为数字  负数就是上  正数就是下

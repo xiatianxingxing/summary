@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        function per() {
+            var arr = [];
+            for( var k = 0 ; k < 3 ; k++ ) {
+                arr.push( function () {
+                    console.log( k );
+                    return k + k;
+                } );
+            };
+            return arr;
+        }
+        var fn = per();
+        console.log( per() );
+        console.log( fn[0]() );
+        console.log( fn[1]() );
+        console.log( fn[2]() );
+    </script>
+</body>
+</html>

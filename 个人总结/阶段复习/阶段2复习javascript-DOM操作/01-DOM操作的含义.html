@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>DOM对象的操作复习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo"></div>
+    <div id="fa"></div>
+    <div name="son"></div>
+    <span>这个是一个span标签</span>
+    <div id="tese2">
+        <span>biaoq</span>
+        <a href="javascript:;" class="clName">link</a>
+    </div>
+    <script>
+        //要进行DOM操作那么必须要获取相应的元素  以下复习获取元素的几种方式
+        //概念  一个元素通过DOM进行获取到 那么它就是一个DOM对象啦  就可以调用DOM对象原型的一些方法啦
+
+        // 通过 class 类名进行获取到  该方式获取到的是一个伪数组的形式  需要通过指定下标 或者循环  得到相应的元素  并且这个方法具有兼容性的问题  iE8及其以下是不识别的  需要注意啦
+        var demo = document.getElementsByClassName("demo");//伪数组
+
+        // 2通过 元素的  id属性值进行获取到相应的元素  由于id属性值是唯一的 一个页面不可以出现相同的id值  
+        // 注意点 通过id 获取元素的方法  只能有document 对象进行调用的  其他的元素无法进行调用的
+        var fa = document.getElementById("fa");//指定元素
+
+
+        // 3通过name属性进行获取到指定的元素 该标签也是含有兼容性的问题的  并且获取的也是是伪数组的形式
+        var son = document.getElementsByName("son");//伪数组
+
+        // 4通过标签进行获取到相应的元素  该获取方式没有任何的兼容性的问题  获取到的也是伪数组
+        var span = document.getElementsByTagName("span");//伪数组
+
+
+
+        // 总结：getElemnets  一般后面加了s的 获取到的都是一个伪数组
+        // id---通过id我们可以精确的获取到指定的元素  就是每个标签都书写id名 那么太麻烦啦  并且取名也是一个麻烦的事情  id一般应该在包含去多标签的容器上
+
+        // class---通过class 我们可以查找到拥有相同类的元素 可以大规模的获取到具有相同特征的元素啦  并且我们可以通过 增删 类名的方式 控制元素的样式  如果页面需要在 IE8 以下显示 需要注意兼容性的问题啦
+
+        // name---通过name 这个方式的话  第一含有兼容性的问题  标签能控制的也不多  只能获取元素使用  而且获取的还是伪数组  所以建议不进行使用  知道能通过该方式获取元素即可啦
+
+        // 标签名---通过标签名  该方式没有兼容性的问题  IE6都是支持的  应用的还是非常广泛的  并且可以结合不同的DOM对象进行使用  获取的也是一个伪数组的形式
+
+
+        // 结合使用
+        // 给获取元素限制一个范围 在范围中查找到指定的元素
+        // var tese = document.getElementById("test");  test使用js中预留关键词 无法使用不能是进行报错的
+        var teseEle = document.getElementById("tese2");
+        // 利用test进行限制查找的范围  不会获取 test 外部的 span标签啦
+        var text2 = teseEle.getElementsByTagName("span");
+        // 结合id  限制class的查找范围啦
+        var ca = teseEle.getElementsByClassName("clName");
+
+        // 复习输入元素的方式  只是输出在控制台哦
+        // console.log();  以值的形式输出出现  函数未执行 那么会将函数体进行输出
+        console.log(teseEle);
+
+        // console.dir()  以对象的形式进行输出出现  如果向着一些变量 函数的属性 方法可以这样 做  
+        console.dir(ca);
+    </script>
+</body>
+</html>

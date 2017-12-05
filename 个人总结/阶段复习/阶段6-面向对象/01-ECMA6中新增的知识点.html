@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <!-- 可以到 http://caniuse.com 进行查询ECMA 的浏览器的支持情况 -->
+    <script>
+        // 箭头函数 可以直接使用 => 进行创建一个函数  兼容性不是很好  Chrome 58 支持
+        dn => console.log(11);
+        
+
+        // 声明常量 的方式  let 关键词  
+        // 与 var 不同的是 let 不仅可以被 Function限制  而且可以被 {} 块作用域进行限制
+        // 
+
+
+        // 创建构造函数 的 不同方式 使用 Class 关键词 其实 在
+        // Java C++ C Python 中 创建构造器 的方式 都是使用 Class
+        // 像这样 元素 中 还有 块级作用域的  在JavaScript 中 只有 函数作用域 与 全局 作用域
+        class Fun {
+            // 需要注意的是 constructor 这个是 关键字 不能 进行更改的
+            constructor (name,age) {
+                this.name = name;
+                this.age = age;
+            }
+        }
+        // 进行实例化
+        var obj = new Fun("小雨",22);
+        console.log(obj);
+    </script>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /*No.2*/
+        /*开始写代码，请实现详细的动画效果，请兼容Firefox、Safari、Chrome、Opera浏览器*/
+
+        #fa {
+            width: 200px;
+            height: 200px;
+            background-color: #ee00ff;
+            margin: 100px auto;
+            position: relative;
+            box-sizing: border-box;
+        }
+
+        #demo {
+            background-color: red;
+            position: absolute;
+            left: -30px;
+            top: -30px;
+            transition: background-color 1.25s, left 1.25s, top 1.25s;
+            border: 15px solid;
+            border-right-color: #fff;
+            border-left-color: transparent;
+            border-top-color: #fff;
+            border-bottom-color: transparent;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="fa">
+        <div id="demo"></div>
+    <div>
+    <script>
+        window.onload = function () {
+            var index = 0;
+            function anim() {
+                var demo = document.getElementById("demo");
+
+                var arr = ["left", "top", "left", "top"];
+                var leng = [200, 200, -30, -30];
+                var colors = ["red", "yellow", "#00eeff", "#ff00ff"];
+
+                var time = setTimeout(function () {
+                    index++;
+                    demo.style[arr[index - 1]] = leng[index - 1] + "px" ;
+                    demo.style.backgroundColor = colors[index - 1];
+                    if(index == 4) {
+                        index = 0;
+                    }
+                }, 0);
+            }
+            setInterval(function () {
+                anim(  );
+            },1250);
+        }
+    </script>
+
+</html>
+</body>

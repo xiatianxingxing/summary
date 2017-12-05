@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <form>
+        text:<input type="text" id="text">
+        tel:<input type="tel" id="tel" pattern="^1\d{10}$">
+        <input type="submit" value="kias">
+    </form>
+    <script>
+        var text =document.getElementById("text");
+        var tel =document.getElementById("tel");
+        // oninput 输入框中输入内容就是触发该事件
+        text.oninput =function(){
+            console.log("oninput");
+        };
+        // oninvalid; 当验证不通过时 会进行触发
+        tel.oninvalid =function(){
+            // setCustomValidity 设置验证不通过的提示文字
+            this.setCustomValidity("请输入合法的11位手机号");
+        }
+
+        // 需要使用到setCustomValidity  使用到  记得用个印象
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+-> 同源策略 我们都是知道的 就是浏览器的安全机制
+    - 指的是 不同的页面 只能读取 属于 同一个协议 域名 端口 下的 cookie localStorage indexDB
+        1) 这个就是我们了解的 同源策略 但是还有什么不同吗
+            - 现在cookie 的读取 注意是 为了 防止 用户访问 网站A 的 同时 访问 网站B  那么网站B 可能读取到 网站A 设置的cookie
+            - 获取到用户的一些信息 这样是 非常 危险的
+            - cookie 还有一个 限制 
+                - 假如 我们 cf.qq.com下存储用户登录的 cookie 
+                - 我们在 打开 lol.qq.com 但是在 lol.qq.com 访问不到 cf.qq.com存储的cookie
+                - 所以我们需要 将 cookie存储地方 改为 qq.com 顶级域名
+                - cf.qq.com 和 lol.qq.com 都是qq.com的子域名
+                - 那么顶级域名下的 子域名都是 可以访问到 cookie的 当然考虑到cookie的存储大小 问题 这个存储存在限制的
+-> WebSocket是一种通信协议，使用ws://（非加密）和wss://（加密）作为协议前缀。该协议不实行同源政策，只要服务器支持，就可以通过它进行跨源通信
+    - 下面是 发送请求是 请求体
+        GET /chat HTTP/1.1
+        Host: server.example.com
+        Upgrade: websocket
+        Connection: Upgrade
+        Sec-WebSocket-Key: x3JJHMbDL1EzLkh9GBhXDw==
+        Sec-WebSocket-Protocol: chat, superchat
+        Sec-WebSocket-Version: 13
+        Origin: http://example.com
+    - Origin是 请求的 服务器 
+    - 是否返回数据 那么由 服务器进行决定 如果服务器返回 数据 以下是代码 作为回应
+        HTTP/1.1 101 Switching Protocols
+        Upgrade: websocket
+        Connection: Upgrade
+        Sec-WebSocket-Accept: HSmrc0sMlYUkAGmm5OPpG2HaGWk=
+        Sec-WebSocket-Protocol: chat
+->
+    -
+        1)
+            -
+->
+    -
+        1)
+            -
+->
+    -
+        1)
+            -

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+
+
+
+    <script>
+        var obj = {
+            name:'haha',
+            age:22,
+            text:'内容-中文',
+            fn:function() {
+                console.log(this.text);
+            }
+        };
+        for(var k in obj) {
+            console.log(obj[k]);
+        }
+        // 函数表达式 是 没有prototype 属性的 注意  那么是 构造函数实例的对象 才 拥有 prototype 属性的
+        console.log(obj.prototype);
+        // 但是 浏览器 提供的 __proto__ 属性 还是 拥有的
+        console.log(obj.__proto__);
+        // 我们 进行 遍历 他的 ___proto__ 属性指向的对象 看 是否能够将 不可枚举属性 进行遍历到
+        for(var h in obj.__proto__) {
+            // 检测 是否可以遍历到 不可枚举的属性  像 controller 属性 执行的构造函数
+            console.log(obj.__proto__[h]); // 你会什么的发现一句都没有输出 不是代码出问题啦 是都不能 进行遍历到的情况
+        }
+        // 我们 使用 一个 方法 判断 该对象 上的 成员 是否 是 该对象的成员 不是 继承得到的
+        // 使用 hasOwnperty 属性进行判断
+        function Person(name,age,text) {
+            this.name = name;
+            this.age = age;
+            this.text = text;
+        }
+        Person.prototype.say = function() {
+            console.log("对象的方法成员--注意啦");
+        }
+        // 我们开始进行判断啦 hsaOwnperty 在方法内 传入 字符串 使用 对象 进行调用的
+        var obj2 = new Person("小明",22,"这个一段内容-嗯呢")
+        // console.log( obj2.hasOwnProperty );
+        console.log(obj2.hasOwnProperty('say')) // 我们测试到 为 false 那么 在原型上的成员  是当前对象 进行继承过来的 不是自己的成员
+        // 我们 进行检测 text 是不是 为 true
+        console.log(obj2);
+        console.log( obj2.hasOwnProperty(  'text' ) ); // true 测试的时候注意 浏览器的 缓存机制 有可能 保存之间的数据
+    </script>
+</body>
+</html>

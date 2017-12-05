@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: #00eeff;
+        }
+    </style>
+</head>
+<body>
+    <!-- 我们进行测试移动端的点击事件  我们该元素注册 touchstart touchmove touchend click 事件 看谁先执行  -->
+    <div>
+        
+    </div>
+    <script>
+        var dv = document.querySelector("div");
+        // 在移动开发时  尽量使用addEventListener方法进行绑定事件  不会含有兼容性的问题
+        // click 是最后一个执行的  click有一些延迟的时间 时间不一定
+        // 这个是在移动端判断是否是双击  所以会有一个判断的时间  如果超过这个时间就是 单击的情况
+        dv.addEventListener("touchstart",function(){
+            var date = new Date();
+            console.log("touchstart");
+            console.log(date.getMilliseconds());
+        })
+        dv.addEventListener("click",function(){
+            var date = new Date();
+            console.log("click");
+            console.log(date.getMilliseconds());
+        })
+        dv.addEventListener("touchmove",function(){
+            var date = new Date();
+            console.log("touchmove");
+            console.log(date.getMilliseconds());
+        })
+        dv.addEventListener("touchend",function(){
+            var date = new Date();
+            console.log("touchend");
+            console.log(date.getMilliseconds());
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- 引入图片懒加载的js文件  -->
+     <script type="text/javascript" src="./Swiper-3.3.1/dist/js/swiper.js"></script> 
+    <!-- 引入需要的css文件  -->
+    <link rel="stylesheet" href="./Swiper-3.3.1/dist/css/swiper.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /* 加载图标进行设置  */
+        .swiper-lazy-preloader:after {
+            display: block;
+            content: "";
+            width: 100%;
+            height: 100%;
+            background-image: url("./img/jiaz.png");
+            background-position: 50% center;
+            -webkit-background-size: 100%;
+            background-size: 100%;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img data-src="./img/timg.jpg" class="swiper-lazy">
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="./img/timg.jpg" class="swiper-lazy">
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="./img/timg.jpg" class="swiper-lazy">
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="./img/timg.jpg" class="swiper-lazy">
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="./img/timg.jpg" class="swiper-lazy">
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+            <div class="swiper-slide">
+                <img data-src="./img/timg.jpg" class="swiper-lazy">
+                <div class="swiper-lazy-preloader"></div>
+            </div>
+        </div>
+    </div>
+    <script>
+        var mySwiper = new Swiper('.swiper-container', {
+            lazyLoading: true,
+        })
+        // 进行设置 加载图标居中
+        window.onload = function(){
+            var swiper_wrapper = document.querySelector(".swiper-wrapper");
+            var wrapps = swiper_wrapper.querySelectorAll(".swiper-slide");
+
+            var wrapOffsetHeight = wrapps[0].offsetHeight;
+
+            console.log(wrapOffsetHeight);
+            console.log(swiper_wrapper);
+            console.log(wrapps);
+            console.log(mySwiper);
+            [].slice.call(wrapps).forEach(function(v,i) {
+                v.style.height = wrapOffsetHeight + "px";
+            })
+        }
+    </script>
+</body>
+
+</html>

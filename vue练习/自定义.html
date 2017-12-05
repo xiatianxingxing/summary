@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .hezi{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button @click="colorBtn">button</button>
+    <div v-box="color" class="hezi">
+        sdfrtygusd
+    </div>
+    <h2>{{color}}</h2>
+</div>
+
+</body>
+<script src="vue1026.js"></script>
+
+<script>
+    Vue.directive("box", function () {
+
+        this.el.style.background = this.vm[this.expression]
+    })
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            color:"red",
+        },
+        methods:{
+            colorBtn: function () {
+                this.color = 'blue';
+
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        var one = 'string';
+        console.log( this );
+        // 需要在 node 进行使用 该api 是查看 页面 占用的 内存 进程
+        // 会返回一个对象
+        /*
+            {
+                rss: 4935680,
+                heapTotal: 1826816,
+                heapUsed: 650472,
+                external: 49879
+            }
+            我们主要 管理 headUsage 个参数
+        
+        */
+        // var obj = process.memoryUsage();
+    </script>
+</body>
+</html>

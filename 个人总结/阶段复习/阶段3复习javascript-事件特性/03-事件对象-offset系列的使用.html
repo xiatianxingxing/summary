@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #fa {
+            width: 320px;
+            height: 320px;
+            background-color: #ff8800;
+            margin: 100px auto;
+            padding: 50px;
+            box-sizing: border-box;
+            position: relative;
+        }
+        #son {
+            width: 200px;
+            height: 200px;
+            background-color: #ee0099;
+            padding: 10px;
+            border: 1px solid #000;
+        }
+    </style>
+</head>
+<body>
+    <div id="fa">
+        <div id="son"></div>
+    </div>
+    <script>
+        var fa =document.getElementById("fa");
+        var son = document.getElementById("son");
+        fa.onclick =function(e){
+            var evt = e || window.event;
+            // console.log(evt);
+            // 从打印的事件对象  查到到offsetX-offsetY  这个是鼠标点击(事件)的 坐标值 是相当要元素的 当前点击的元素
+            console.log(evt.offsetX);
+            console.log(evt.offsetY);
+        }
+        son.onclick =function(e){
+            var evt = e || window.event;
+            console.log(evt);
+            // 从打印的事件对象  查到到offsetX-offsetY  这个是鼠标点击(事件)de 坐标值 是相当点击的元素 
+            console.log(evt.offsetX);
+            console.log(evt.offsetY);
+            // 阻止事件的冒泡  后面会进行复习的
+            evt.stopPropagation();
+        }
+
+        // 以上是事件对象中的offset系列  那么下面复习 不是事件对象的offset系列
+
+        // DOM对象自身的offset系列  
+
+        // offsetHeight  获取元素的高度  那么这个方式获取的并不是style属性的 而是元素最终的大小
+        console.log(fa.offsetHeight);
+
+        // 进行验证  现在son的padding是10  那么son的元素的宽度是 220  并不是元素的width的数值
+        console.log(son.offsetWidth);//220  计算方式是 padding + width + border
+
+        // 下面复习  offsetParent 
+        // 这个的含义是 找到 距离元素最近 具有定位的 祖先元素  如果没有的话  会一直找到body  为值得
+        console.log(son.offsetParent);//fa
+
+        // offsetLeft  --  offsetTop
+        // 获取当前元素的 border(左上)  到 offsetParent的 border(左上) 的距离
+        // 50 如果当前元素含有定位  offsetParent是无法进使用的
+        console.log(son.offsetLeft);
+        console.log(son.offsetTop);
+
+
+        //  总结  offset系列  可以获取元素最终大小  计算方式是 width/height + padding + border  得到的计算就是offset获取到的
+
+        // offsetParent 的这个概念还是需要加深
+        // offset 系列的特点  获取到的是数值  可以直接参与运算  获取到的是元素的真实大小
+
+
+    </script>
+</body>
+</html>

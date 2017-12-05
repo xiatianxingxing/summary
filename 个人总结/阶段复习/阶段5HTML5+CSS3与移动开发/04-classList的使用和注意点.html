@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>classList的使用和注意点</title>
+</head>
+<body>
+    <span class="demo fa span demo2"></span>
+    <script>
+        
+        var span =document.getElementsByTagName("span")[0];
+        console.log(span.className);
+
+
+        // classList 是一个类名列表  保存着元素的所以类名 是一个对象 
+        // console.log(span.classList);
+
+
+        // 向元素 类名列表进行添加类型 add()
+        console.log(span.classList.add("demo3"));//没有返回值 undefined
+        console.log(span.classList);
+
+        // 向元素 删除指定的类名 remove
+        console.log(span.classList.remove("demo"));
+        console.log(span.classList);
+
+        // 获取指定下标的类名  item() 传入指定的索引值
+        console.log(span.classList.item(0));
+    </script>
+
+
+
+</body>
+</html>

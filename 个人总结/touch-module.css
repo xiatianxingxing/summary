@@ -1,0 +1,28 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  overflow: hidden;
+}
+body > #demo {
+  width: 100%;
+  overflow: hidden;
+}
+body > #demo > ul#tap {
+  overflow: hidden;
+}
+body > #demo > ul#tap > li {
+  float: left;
+  overflow: hidden;
+}
+body > #demo > ul#tap > li > a {
+  display: block;
+  text-decoration: none;
+  -webkit-tap-highlight-color: transparent;
+}
+body > #demo > ul#tap > li > a > img {
+  display: block;
+  width: 100%;
+}

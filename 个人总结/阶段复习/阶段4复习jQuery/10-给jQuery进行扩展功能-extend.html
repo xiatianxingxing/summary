@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }    
+
+    </style>
+</head>
+<body>
+    
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        $(function(){
+            // 给jQuery添加一些功能
+            // 使用extend方法进行添加
+            var obj = {
+                say:function(){
+                    console.log("扩展方法");
+                }
+            }
+            $.fn.extend(obj)
+            // 由于不是挂载在 $ 身上的 无直接通过它进行调用  需要通过 $.fn 进行调用
+            console.log($.fn.say());
+
+            // 注意就可以直接通过这个进行调用啦
+            $.extend(obj);
+            $.say();
+
+            // 注意点  传入到extend方法内的必须是一个对象 才可以的  在jQuery内部 他会进行  for in 循环的
+        })
+    
+    </script>
+
+</body>
+</html>

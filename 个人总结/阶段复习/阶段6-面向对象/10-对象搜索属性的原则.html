@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        span {
+            display: block;
+            font-size: 26px;
+            line-height: 40px;
+            padding-left: 20px;
+            box-sizing: border-box;
+            color: #ff8800;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo"></div>
+
+
+
+
+    <script>
+        function Crea(name,age) {
+            this.name = name;
+            this.age = age;
+            this.hello = function() {
+                console.log(this.name);
+            }
+        }
+        Crea.prototype.html = function (str) {
+            var span = document.createElement("span");
+            span.innerHTML = str;
+            document.querySelector("#demo").appendChild(span);
+        }
+        Crea.prototype.text = function() {
+            console.log("看什么看。。。。。")
+            return "看什么看。。。。。";
+        }
+        var o = new Crea("小米",3);
+        console.log(o);
+        // 对象的搜索属性原则
+        // 先在当前对象上进行查找 
+        console.log(o.name);
+        // 如果在当前对象 无法查找 那么会向上 查对象的原型是否函数指定的属性(成员)
+        o.html("进行调用一个当前对象没有的成员-检测对象的属性搜索原则");
+
+        // 如果当前对象的原型对象上还是没有要调用的成员 那么会一直进行查找 查找当前对象的原型对象的原型对象
+        // 一直找到 Object 构造函数的 prototype 属性  如果它 没有 就会进行报错啦 XXX is not defid
+        // 我们进行调用 toString 方法  原型上也是没有 那么说明属性搜索原则 以一直的向上进行查找的  直到到不到的情况
+        console.log(o.toString());
+    </script>
+</body>
+</html>

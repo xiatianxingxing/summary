@@ -1,0 +1,104 @@
+{
+  "_args": [
+    [
+      "flexible",
+      "C:\\Users\\Administrator\\Desktop\\npm"
+    ]
+  ],
+  "_from": "flexible@*",
+  "_id": "flexible@0.1.20",
+  "_inCache": true,
+  "_installable": true,
+  "_location": "/flexible",
+  "_npmUser": {
+    "email": "olekardt@gmail.com",
+    "name": "eckardt"
+  },
+  "_npmVersion": "1.3.5",
+  "_phantomChildren": {},
+  "_requested": {
+    "name": "flexible",
+    "raw": "flexible",
+    "rawSpec": "",
+    "scope": null,
+    "spec": "*",
+    "type": "range"
+  },
+  "_requiredBy": [
+    "/"
+  ],
+  "_resolved": "https://registry.npmjs.org/flexible/-/flexible-0.1.20.tgz",
+  "_shasum": "436bea2944ceedb684dd74463954ab48657756d1",
+  "_shrinkwrap": null,
+  "_spec": "flexible",
+  "_where": "C:\\Users\\Administrator\\Desktop\\npm",
+  "author": {
+    "email": "eckardt.olson@gmail.com",
+    "name": "Eckardt Olson"
+  },
+  "bin": {
+    "flexible": "bin/flexible.bin.js"
+  },
+  "bugs": {
+    "url": "https://github.com/eckardto/flexible/issues"
+  },
+  "dependencies": {
+    "async": "*",
+    "htmlparser": "*",
+    "iconv-lite": "*",
+    "optimist": "*",
+    "path-to-regexp": "*",
+    "pg": "*",
+    "request": "*",
+    "traverse": "*"
+  },
+  "description": "Easily build flexible, scalable, and distributed, web crawlers.",
+  "devDependencies": {},
+  "directories": {},
+  "dist": {
+    "shasum": "436bea2944ceedb684dd74463954ab48657756d1",
+    "tarball": "https://registry.npmjs.org/flexible/-/flexible-0.1.20.tgz"
+  },
+  "homepage": "https://github.com/eckardto/flexible",
+  "keywords": [
+    "crawler",
+    "database",
+    "distributed",
+    "document",
+    "dom",
+    "evented",
+    "eventemitter",
+    "flexible",
+    "html",
+    "middleware",
+    "node",
+    "node.js",
+    "nodejs",
+    "paser",
+    "postgres",
+    "postgresql",
+    "querystring",
+    "queue",
+    "router",
+    "scalable",
+    "spider",
+    "sql",
+    "web"
+  ],
+  "main": "./index.js",
+  "maintainers": [
+    {
+      "name": "eckardt",
+      "email": "olekardt@gmail.com"
+    }
+  ],
+  "name": "flexible",
+  "optionalDependencies": {},
+  "readme": "### This project will soon be superseded by [node-web-crawler](https://github.com/eckardto/node-web-crawler).\r\n\r\nFlexible Web Crawler\r\n====================\r\n\r\nEasily build flexible, scalable, and distributed, web crawlers for [node](http://nodejs.org).\r\n\r\n## Simple Example\r\n\r\n```javascript\r\nvar flexible = require('flexible');\r\n\r\n// Initiate a crawler. Chainable.\r\nvar crawler = flexible('http://www.example.com/')\r\n    .use(flexible.pgQueue('postgres://postgres:1234@localhost:5432/'))\r\n\r\n    .route('*/search?q=', function (req, res, body, doc, next) {\r\n        console.log('Search results handled for query:', req.params.q);\r\n    })\r\n    .route('*/users/:name', function (req, res, body, doc, next) {\r\n        crawler.navigate('http://www.example.com/search?q=' + req.params.name);\r\n    })\r\n    .route('*', function (req, res, body, doc, next) {\r\n        console.log('Every other document is handled by this route.');\r\n    })\r\n\r\n    .on('complete', function () {\r\n        console.log('All of the queued locations have been crawled.');\r\n    })\r\n    \r\n    .on('error', function (error) {\r\n        console.error('Error:', error.message);\r\n    });\r\n```\r\n\r\n## Features\r\n* Asynchronous friendly, and evented, API for easily building flexible, scalable, and distributed web crawlers.\r\n* An array based queue for small crawls, and a PostgreSQL based queue for massive, and efficient, crawls.\r\n* Uses a fast, lightweight, and forgivable, HTML parser to ensure proper document compatibility for crawling.\r\n* Component system; use different queues, a router (wildcards, placeholders, etc), and other components.\r\n\r\n## Installation\r\n\r\n```\r\nnpm install flexible\r\n```\r\n\r\nOr from source:\r\n\r\n```\r\ngit clone git://github.com/eckardto/flexible.git \r\ncd flexible\r\nnpm link\r\n```\r\n\r\n## Complex Example / Demo\r\n\r\n```\r\nflexible \r\n\r\nCrawl the web using Flexible for node.\r\nUsage: node [...]/flexible.bin.js\r\n\r\nOptions:\r\n  --url, --uri                  URL of web page to begin crawling on.                        [string]  [required]\r\n  --domains, -d                 List of domains to allow crawling of.                        [string]\r\n  --interval, -i                Request interval of each crawler.                          \r\n  --encoding, -e                Encoding of response body for decoding.                      [string]\r\n  --max-concurrency, -m         Maximum concurrency of each crawler.                       \r\n  --max-crawl-queue-length, -M  Maximum length of the crawl queue.                         \r\n  --user-agent, -A              User-agent to identify each crawler as.                      [string]\r\n  --timeout, -t                 Maximum seconds a request can take.                        \r\n  --follow-redirect             Follow HTTP redirection responses.                           [boolean]\r\n  --max-redirects               Maximum amount of redirects.                               \r\n  --proxy, -p                   An HTTP proxy to use for requests.                           [string]\r\n  --controls, -c                Enable pause (ctrl-p), resume (ctrl-r), and abort (ctrl-a).  [boolean]  [default: true]\r\n  --pg-uri, --pg-url            PostgreSQL URI to connect to for queue.                      [string]\r\n  --pg-get-interval             PostgreSQL queue get request interval.                     \r\n  --pg-max-get-attempts         PostgresSQL queue max get attempts.\r\n```\r\n\r\n## API\r\n\r\n#### flexible([options])\r\nReturns a configured, navigated and or with crawling started, crawler instance.\r\n\r\n#### new flexible.Crawler([options])\r\nReturns a new Crawler object.\r\n\r\n#### Crawler#use([component], [callback])\r\nConfigure the crawler to use a component.\r\n\r\n#### Crawler#navigate(url, [callback])\r\nProcess a location, and have the crawler navigate (queue) to it.\r\n\r\n#### Crawler#crawl([callback])\r\nHave the crawler crawl (recursive).\r\n\r\n#### Crawler#pause()\r\nHave the crawler pause crawling.\r\n\r\n#### Crawler#resume()\r\nHave the crawler resume crawling.\r\n\r\n#### Crawler#abort()\r\nHave the crawler abort crawling.\r\n\r\n### Events\r\n\r\n* `navigated` (url)\r\nEmitted when a location has been successfully navigated (queued) to.\r\n* `document` (doc)\r\nEmitted when a document is finished being processed by the crawler.\r\n* `paused`\r\nEmitted when the crawler has paused crawling.\r\n* `resumed`\r\nEmitted when the crawler has resumed crawling.\r\n* `complete`\r\nEmitted when all navigated (queued) to locations have been crawled.\r\n\r\n## License\r\nThis program is free software: you can redistribute it and/or modify\r\nit under the terms of the GNU General Public License as published by\r\nthe Free Software Foundation, either version 3 of the License, or\r\n(at your option) any later version.\r\n\r\nThis program is distributed in the hope that it will be useful,\r\nbut WITHOUT ANY WARRANTY; without even the implied warranty of\r\nMERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the\r\nGNU General Public License for more details.\r\n\r\nYou should have received a copy of the GNU General Public License\r\nalong with this program.  If not, see <http://www.gnu.org/licenses/>.\r\n",
+  "readmeFilename": "README.md",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/eckardto/flexible.git"
+  },
+  "version": "0.1.20"
+}

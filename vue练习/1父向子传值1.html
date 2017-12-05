@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<script src="../vue1026.js"></script>-->
+    <script src="../vue221.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- 111   v-bind绑定值 -->
+    <son :temp="temp"></son>
+</div>
+
+
+<template id="son">
+   <h2>{{temp}}</h2>
+</template>
+</body>
+<script>
+
+    var vm = new Vue({
+        el:"#app",
+        data:{// 父的值
+            temp:"别看我只是一只羊"
+        },
+        methods:{
+
+        },
+        components:{
+            //对应DOM中的son标签
+            "son":{
+                //2222   对应模板
+                template:'#son',
+                //3333  核心  通过props:["对应值"] 获取DOM中父传过来的值 对应:temp
+                props:["temp"]
+            }
+        }
+    })
+
+</script>
+</html>

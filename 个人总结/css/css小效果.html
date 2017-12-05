@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        a {
+            display: inline-block;
+            text-decoration: none;
+            text-align: center;
+        }
+        .underline {
+            display: inline-block;
+            width: 0;
+            height: 2px;
+            transition: width 1s;
+            background-color: #000;
+        }
+        a:hover > .underline {
+            width: 90%;
+        }
+    </style>
+</head>
+<body>
+    <h1>
+        <a href="javascript:void(0)">
+            haha
+            <span class="underline"></span>
+        </a>
+    </h1>
+
+    <script>
+        var underline = document.querySelector( '.underline' );
+        underline.addEventListener( 'mouseover' ,function () {
+            
+        } ,true );
+    </script>
+</body>
+</html>

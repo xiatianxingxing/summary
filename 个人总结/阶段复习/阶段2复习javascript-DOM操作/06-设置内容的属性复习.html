@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>06-设置内容的属性复习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            text-align: center;
+        }
+        span,strong,em {
+            display: block;
+            text-align: center;
+            line-height: 45px;
+        }
+    </style>
+</head>
+<body>
+    <h1>这个在DOM中非常常见  应该非常熟练的掌握</h1>
+    <div id="fa">
+        <div id="demo">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+    <div id="ele">
+        <strong>strong</strong>
+        <em></em>
+    </div>
+    <script>
+        // 设置span的内容
+        // 首先将第一个span元素获取到
+        var demo =document.getElementById("demo");
+        // 获取到demo中所以的子元素节点  在通过下标获取到指定的元素
+        var spanOne = demo.children[0];
+        var spanTwo = demo.children[1];
+        var spanFir = demo.children[2];
+
+
+
+
+        // 1.使用innerHTM-属性 进行设置
+        spanOne.innerHTML = "innerHTML设置的内容";
+        
+        // 2.使用innerText-属性 设置元素的内容  该属性具有兼容性的问题  chrome浏览器支持 Firefox不支持 现在统一啦  
+        spanTwo.innerText = "innerText设置的内容";
+
+        // 3.使用textContent-属性 进行设置内容 具有兼容性的问题 IE8及其以下不支持
+        spanFir.textContent = "textContent进行设置的";
+
+        // 说明 在之前较早的版本是 火狐是不支持innerText的  Chrome也不支持textContent的  好在现在统一啦
+
+        // innerHTML 与 innerText的不同之处
+        // innerHTML 该属性  如果你设置的内容符合标签语法的字符串  那么innerHTML会将它渲染为标签的
+        // innerText 该属性 与innerHTML不同的是 如果设置的内容符合标签语法规则的字符  innerText也不会将它渲染为标签的
+        var ele = document.getElementById("ele");
+        var str = ele.firstElementChild;
+        var em = ele.lastElementChild;
+        str.innerHTML = "<a href='javascript:void(0);'>innerHTML渲染的</a>";
+        em.innerText = "<a href='javascript:void(0);'>innerText设置的</a>";
+        // 以上的两个对比例子可以看到 innerHTML 与 innerText 的区别啦
+    </script>
+</body>
+</html>

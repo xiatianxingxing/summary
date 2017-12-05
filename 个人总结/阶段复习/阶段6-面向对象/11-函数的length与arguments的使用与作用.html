@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        // 一个函数 都 用可能有参数  将函数当前对象进行使用 那么默认拥有2个成员
+        // length --- 函数在定义是 设置的形参个数
+        // arguments --- 该成员 是一个对象 存储着 函数调用时传入的所以参数  
+        // arguments需要注意的几点  只能在函数中进行使用 无法在函数的外部进行使用的  并且是一个伪数组 可以进行遍历的
+        function fn(ele,obj) {
+            console.log(arguments);//调用时 参数集合对象
+            console.log(this);
+        }
+        // 用于获取函数 需要传入几个参数
+        console.log(fn.length);
+
+        fn("one");
+
+
+    </script>
+</body>
+</html>

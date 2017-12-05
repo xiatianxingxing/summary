@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- css文件的引入  -->
+    <link rel="stylesheet" href="./移动框架/swiper/Swiper-3.3.1/dist/css/swiper.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 进行代码的初始化  -->
+    <!-- swiper-slide 是每个轮播的向项 可以进行手指移动的  在其中就有进行插入其他的元素  -->
+
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <img src="./移动框架/swiper/img/timg.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="./移动框架/swiper/img/timg.jpg" alt="">
+            </div>
+            <div class="swiper-slide">
+                <img src="./移动框架/swiper/img/timg.jpg" alt="">
+            </div>
+        </div>
+        <!-- 分页元素  -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- 进行引入文件 - swiper  -->
+    <!-- 框架掌握的东西 轮播图 全屏插件  -->
+    <script src="./移动框架/swiper/Swiper-3.3.1/dist/js/swiper.js"></script>
+    <script>
+        // 完成一个手指移动的轮播图
+        // 含有分页的效果  
+        // 进行js的初始化
+        // 这个swiper 必须的会使用的 
+        // 参数的设置可以上官网进行查询  向循环轮播  速度  动画的效果
+        // 框架没有兼容性的问题
+        var mySwiper = new Swiper('.swiper-container',{
+            // 自动的轮播  设置时间
+            autoplay: 5000,
+            // 设置分页 显示的元素  传入的是一个元素的 id 或者 Class 
+            pagination : '.swiper-pagination',
+
+            // loop 进行循环  可以从第1张回到最后一张
+            loop:true
+
+        })
+    </script>
+</body>
+</html>

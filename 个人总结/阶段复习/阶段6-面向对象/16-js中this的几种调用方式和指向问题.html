@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        function fn() {
+            console.log(this);
+        }
+        // 全局调用模式 那么this指向的window  
+        fn();
+        function CreaFn(name,age,aihao) {
+            this.name = name;
+            this.age = age;
+            this.aihao = aihao;
+            this.say = function() {
+                console.log(this);
+            }
+        }
+        // 构造函数 调用模式
+        // 那么new 会让函数中的this 指向 new出来的实例对象
+        var obje = new CreaFn("小于",15,"游泳");
+
+
+        // 方法引用调用  指向引用调用的对象
+        obje.say();
+
+
+        // 上下文调用  就是根据环境的变化 this页面不同
+        // 判断 方法所属的对象  那么this就执行它啦
+
+        // 需要注意的是 call、apply、bind 可以改变this的指向 这个情况列外
+    </script>
+</body>
+</html>

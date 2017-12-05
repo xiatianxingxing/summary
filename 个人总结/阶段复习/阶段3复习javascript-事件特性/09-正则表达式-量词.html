@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    
+
+
+    <script>
+        // 量词产生的作用  用于限制 指定的字符 出现的次数
+        // *  表示某个字符 可以 出现 0次或者多次
+        // +  表示某个字符 可以 出现 1次或者多次
+        // ?  表示某个字符 可以 出现 0次或者1次
+        // {} 自定义出现次数
+        console.log(/[a-z]*/.test(""));//true
+
+        console.log(/[A-Z]+/.test(""));//false
+        console.log(/[A-Z]+/.test("H"));//true
+
+        console.log(/[a-z]?/.test(""));//true
+        // {1,3}  表示可以 1=3次  最低 1 次  最大3次  {2} 只能出现2次  不多不少  {1,}最低出现1次  到多次
+        console.log(/^[a-z]{1,3}/.test("aaa"));//true
+        console.log(/^[a-z]{2}$/.test("aaa"));//false
+
+        // 总结  | 符号的优先级最低  可以使用()  可以使用 () 进行提升
+    </script>
+</body>
+</html>

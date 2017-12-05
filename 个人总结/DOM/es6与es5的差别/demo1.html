@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        var str = 'haha';
+        // 箭头函数 是 es6 中函数拥有的  
+        var fn = (argu) => {console.log(argu)};
+        fn(str);
+        // 相当于 es5 中
+        var fn2 = function (argu) {
+            console.log(argu);
+        }
+        fn2(str);
+
+
+        // 下面 检测 es6 的箭头函数 挂载 在对象 上进行使用的 看执行的this 是否含有 变化
+        var obj = {
+            fn:function() {
+                console.log(this);
+            },
+            fn2: () => {console.log(this)},
+        }
+        // es 6 的箭头函数的形式 
+        console.log('es6----的函数');
+        // 我们通过打印 看到 箭头函数中的 this指向的是 window 
+        obj.fn2();
+
+        console.log('es5--------es5的函数的方式 看函数中的this 指向的是哪个');
+        obj.fn();
+
+        //fn3();//答案是 不能的
+
+        // 我们 进行 检测 在箭头函数 之前 进行调用 是否能够进行调用呢
+        var fn3 = () => {console.log(this)};
+        // 起始我们 从方式看到 应该是不能的  因为是 函数表达式的方式 在此之前进行调用 那么应该会报错的
+
+        pers();// 在函数之前 进行调用的 调用成功
+        // 但是 es5 中的声明是 函数是 可以进行提前进行调用的
+        function pers() {
+            console.log("es5的声明式函数-可以在函数之前 进行调用的");
+        }
+
+        // 总结 ： 我们看到  箭头函数与es5的函数在 对象 引用的时候进行调用 函数中的this指向的是不同的
+        // 最大的特征是在 书写的区别
+        // 以及 箭头函数是 函数表达式 不能再 箭头函数之前 进行调用的 这个需要进行注意的
+    </script>
+</body>
+</html>

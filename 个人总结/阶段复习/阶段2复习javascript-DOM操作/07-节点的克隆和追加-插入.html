@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>07-节点的克隆和追加-插入</title>
+    <style>
+        * {
+            margin: 0px;
+            padding: 0px;
+        }
+        span {
+            display: block;
+            width: 100px;
+            height: 100px;
+            text-align: center;
+            background-color: #00eeff;
+            margin-bottom: 10px;
+            line-height: 100px;  
+        }
+        div {
+
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <span><a href="javascript:void(0);">l1</a></span>
+        <span><a href="javascript:void(0);">l2</a></span>
+        <span><a href="javascript:void(0);">l3</a></span>
+        <span><a href="javascript:void(0);">l4</a></span>
+        <span><a href="javascript:void(0);">l5</a></span>
+    </div>
+    <script>
+        // 对一些节点的操作  例如 克隆 追加 插入到某个节点 后 或者 前   移除节点 替换节点
+        var demo = document.getElementById("demo");
+        var span = demo.firstElementChild;
+        // console.log(span);
+        // cloneNode(Boolean)-克隆节点  克隆span元素  克隆还分深度克隆 和 浅度克隆  默认是浅度的  需要在方法中传入一个参数 true标签深度 false表示浅
+        console.log(span.cloneNode());//浅度克隆
+        console.log(span.cloneNode(true));//深度克隆
+        // 从输出的信息可以看到  深度克隆 是将该元素的内容也进行克隆啦  浅度克隆只是将标签
+
+        // appendChild(节点)-方法 追加节点  那么我们复制了节点需要追加到页面中了
+        // 追加 顾名思义就是在最后面进行添加啦  追加咯
+        // 参数讲解
+        // 调用该方法的元素 一个是要追加到的目标元素
+        // 参数值  需要追加到目标元素的节点
+        // 需要注意点 如果是你将页面中的节点追加另外一个目标元素中 那么是直接将该 节点剪切去 不是将节点进行复制一份在追加到目标去元素中去  这个需要注意啦
+        var clo = span.cloneNode(true);
+        clo.innerHTML = "克隆节点";
+        demo.appendChild(clo);
+
+
+        // 插入节点 意思就是将某个节点放置到某个具体的位置啦
+        // insertBefore(插入节点,参照节点)-方法
+        // 参数介绍
+        // 调用方 为目标元素
+        // 参数1 要插入的节点
+        // 参数2 参照节点
+        demo.insertBefore(clo,span.nextElementSibling);
+
+
+
+        // 替换节点  将指定的节点 替换为一个不同的
+        // replaceChild(插入节点,参照节点)-方法
+        // 参数介绍
+        // 参数1 插入节点
+        // 参数2 参照节点
+        var crea = document.createElement("span");
+        console.log(crea);
+        crea.innerHTML = "hehe";
+        demo.replaceChild(crea,demo.lastElementChild);
+
+
+        // 移除节点 将节点移除啦
+        // removeChild(节点)-方法
+        demo.removeChild(demo.firstElementChild);
+    </script>
+</body>
+</html>

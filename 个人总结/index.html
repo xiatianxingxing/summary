@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+                /*
+            转换 货币格式的 封装方法
+        */
+        function money( argus ){
+            if( typeof argus === 'number' ){
+                // 我们 拿获取到 一个数 将其转换为 千分为位的格式
+                console.log( argus );
+                var str = (argus+'').slice( 2 );
+                var length = Math.floor( str.length / 3 );
+                var arr = str.split( '' );
+                var st = '';
+                var index = 3;
+                console.log( length );
+                for( var i = 1 ; i <= length ; i++ ) {
+                    index = index * i;
+                    if( length - i < 1 ){
+                        st += ',' + arr[ index-3 ] + arr[ index-2 ] + arr[ index-1 ] ;
+                        console.log( st );
+                    }else {
+                        st = arr[index-3] + ( arr[index-2] && '' );
+                    }
+                }
+                
+                return (argus+'').slice(0,2) + st;
+            }else {
+
+            }
+        }
+
+        console.log( money( 1234512345 ) );
+    </script>
+</body>
+</html>

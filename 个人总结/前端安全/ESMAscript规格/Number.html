@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        Number.prototype.addnum = function( number ) {
+            return this+number;
+        }
+        // 当 基本类型的数据 进行调用方法的时候 会进行 包装对象 将基本 包装为对象的实例对象
+        // number - Number string - String
+        // 就 可以调用原型上的方法啦
+        console.log( 10["addnum"](8) );
+    </script>
+</body>
+</html>

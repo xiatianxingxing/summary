@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        // 函数搜索变量 原则
+        function tese() {
+            var str = "string";
+            function anot() {
+                // 在这里要输出 str 这个变量  那么函数就会在当前的作用域中 进行查找该变量
+                // 如果当前域中 含有变量 就使用它  如果没有 那么函数会向上找 如果还没有回找到全局 如果没有 那么就报错啦
+                console.log(str);
+            }
+        }
+
+        // 作用域链
+        // 就是指一个变量 可以产生的作用范围  在js中只有 函数能够产生作用域 现在 变量
+        // 在函数中声明的变量 那么它的作用范围 就是在该函数中外部无法访问到的
+
+        
+    </script>
+</body>
+</html>

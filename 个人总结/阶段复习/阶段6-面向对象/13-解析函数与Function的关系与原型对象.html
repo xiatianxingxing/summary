@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+
+    <script>
+        // 在全局中创建一个函数  
+        // 不管是以什么方式进行创建的 那么该函数的构造函数是什么 函数的原型有是什么呢
+        // 所有的函数都是 Function 函数的实例 包含js中原有的函数 例如 Object String 等等 作为构造函数的内置函数
+        function fn() {
+            console.log(this);
+        }
+        // 我们进行检测  我通过fn函数的原型(函数也是一个对象)的constructor属性来访问fn函数的构造函数为何物
+        console.log(fn.constructor);
+        // 打印出来 我们 发现  fn  的构造函数是 Function 函数
+
+        // 页面上的构造函数与函数 都是 Function 函数的实例  
+
+        // 那么下面 复习  Function构造函数的的构造函数是是呢   Function 函数的原型对象有是谁呢
+        console.log(Function.prototype.constructor);
+
+        // 进行检验  Function 构造函数的构造函数是 它自己
+        // 那么的它的原型对象呢 是Object 函数的prototype 执行的对象
+        console.log(Function.prototype);
+
+
+
+
+        // 结论
+        //      1. 所以的函数的构造函数都是 Function
+        //      2. Function 构造函数的构造函数就是它自己
+        //      3. 最后的原型都是指向 Object.prototype
+        //      
+    </script>
+</body>
+
+</html>

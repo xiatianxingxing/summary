@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            background-color: #ff8800;
+            margin: 10px auto;
+            height: 0;
+            width: 100px;
+        }
+        #demo2 {
+            overflow: hidden;
+            line-height: 0;
+            height: 1px;
+            font-size: 0px;
+
+        }
+    </style>
+</head>
+<body>
+    <h1>在IE6下 demo盒子 含有 最小 3像素的问题 --- 在IE下 进行测试</h1>
+    <div id="demo"></div>
+    <h1>解决方案 --  设置 line-height - font-size - height  为0  如果是在 IE5 的话 无法 进行设置最小的高度 因为含有默认的行高</h1>
+    <div id="demo2"></div>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body>
+<div id="app">
+    <button>button</button>
+    <hehe :name="name"></hehe>
+    <zujian :name = "name" v-on:zhi = "lala"></zujian>
+    <h2>{{val}}</h2>
+</div>
+<template id="tep">
+    <button @click = "chuangzhi">botton</button>
+</template>
+</body>
+<script src="vue221.js"></script>
+<script src="vue-router231.js"></script>
+<script>
+    //用组件要先注册组件
+    Vue.component("zujian",{
+        props:["name"],
+        template:"#tep",
+        methods:{
+            chuangzhi: function () {
+                this.$emit("zhi","就是他，打死他！")
+            }
+        }
+    })
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            name:123,
+            val:"本人贱人剑"
+        },
+        methods:{
+            lala: function (info) {
+                this.val = info;
+            }
+        },
+        components:{
+            "hehe":{
+                props:["name"],
+                template:"<h2>{{name}}</h2>"
+            }
+        }
+    })
+</script>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="./移动框架/swiper/Swiper-3.3.1/dist/css/swiper.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 将结构提取  -->
+    <div class="swiper-container">
+        <div class="swiper-wrapper">
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="./移动框架/swiper/img/timg.jpg" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="./移动框架/swiper/img/timg.jpg" alt="">
+                </div>
+            </div>
+            <div class="swiper-slide">
+                <div class="swiper-zoom-container">
+                    <img src="./移动框架/swiper/img/timg.jpg" alt="">
+                </div>
+            </div>
+        </div>
+        <!-- 分页元素  -->
+        <div class="swiper-pagination"></div>
+    </div>
+    <!-- 进行js文件的导入  -->
+    <script src="./移动框架/swiper/Swiper-3.3.1/dist/js/swiper.js"></script>
+    <script>
+        var mySwiper = new Swiper('.swiper-container',{
+            autoplay: 5000,
+            pagination : '.swiper-pagination',
+            loop:true,
+            // zoom 适用的版本 是 3.4版本的 现在使用的 3.3.1 无法测试完成啦  请下载完成
+            zoom : true
+        });
+    </script>
+</body>
+</html>

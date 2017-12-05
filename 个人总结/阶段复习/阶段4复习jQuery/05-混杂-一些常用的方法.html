@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .dv {
+            height: 300px;
+            width: 300px;
+            background-color: #ff8800;
+            
+        }
+        span {
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: #00eeff;
+        }
+        ul {
+            padding-left: 40px;
+        }
+        li {
+            background-color: #00eeff;
+            line-height: 30px;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="dv"></div>
+    <span class="span" title="点击不同效果"></span>
+    选择：<input type="checkbox" name="" id="inp"> <br>
+    <ul>
+        <li>01</li>
+        <li>02</li>
+        <li>03</li>
+        <li>04</li>
+        <li>05</li>
+    </ul>
+    <strong></strong>
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        // jquery的另一种入口函数
+        $(window).load(function(){
+            // remove 删除元素  非常常用的  没有参数  谁调用那么就会被删除
+            $(".dv").click(function(){
+                $(this).remove();
+            });
+
+            // 获取指定属性的值 与 设置指定属性的值
+            $(".span").click(function(){
+                // attr方法的不同的用法  
+                // 方法传入属性名的字符 就是获取到相应属性的属性值
+                var $til = $(this).attr("title");
+                // 传入一个对象  以键值对的方式进行设置属性以及属性值
+                var $attr = $(this).attr({class:"span son",title:"设置完成的title属性值"})
+                console.log($til);
+                console.log($(this).attr("title"));
+                // attr 的缺点无法获取到属性值无 boolean 类型的值 例如checked属性的值就无法进行获取到  设置就更不用说啦
+            });
+            $("input").click(function(){
+                // 可以获取到属性值为 boolean 的属性  同时也是可以进行设置的
+                console.log($(this).prop("checked"));
+            })
+            // 使用prop 方法才可以获取与设置 属性值 为 boolean类型 的属性
+            // 移除属性 removeAttr()  传入需要移除的属性名称
+
+
+            // index() 返回当前元素的下标值 可以通过判断是否是 当前下标 执行不同的分支  该方法也是较为常用的方法
+            $("li").click(function(){
+               $(this).index() === 3 ? console.log("下标为3") : console.log("下标不为3");
+            })
+
+            // 设置元素内容的API  text html  paresHTML  都是通过jQuery内部的这个方法进行实现的
+            $("strong").text("jquery设置的内容--通过text()-API");
+            
+            
+        })
+    </script>
+</body>
+</html>

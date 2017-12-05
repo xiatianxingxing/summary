@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ES6进行测试特性</title>
+</head>
+<body>
+    <div id="dv"></div>
+
+    <script>
+        // 箭头 函数的 使用 的 方式  以及 测试 特性
+        var arrow = () => { console.log(this) };
+        // 这个方式的 情况 下 我们 进行书写 ()  不能是 无效的  函数体是需要 花括号的
+        var str = "haha";
+        (a) => console.log(a)(str);  // 但是 我们 发现 是无法 进行执行的 因为这个是匿名函数 无法 进行调用到的
+        // 我们将 箭头函数 挂载 到对象上 我们测试 这个时候 箭头函数 中的 this 指向的是 什么呢
+        function Per(name,age,aihao){
+            // 我们将 对象的 特征 属性 挂载在 构造 函数中 将 对象的 行为 挂载在实例对象的原型上 提高代码的复用性 减少性能的消耗
+            this.name = name;
+            this.age = age;
+            this.aihao = aihao;
+        }
+        Per.prototype.sayHello = () =>  {
+            console.log( '进行测试 箭头函数中 this的指向问题' );
+            console.log(this);
+        }
+        // 进行实例化
+        var arrowobj = new Per("小何",11,"打乒乓球");
+        arrowobj.sayHello();
+
+        // 我们神奇般 的发现 对象 引用的方式 但是对象的方法 中的this 指向 居然是 window 这个点需要进行注意啦
+
+    </script>
+</body>
+</html>

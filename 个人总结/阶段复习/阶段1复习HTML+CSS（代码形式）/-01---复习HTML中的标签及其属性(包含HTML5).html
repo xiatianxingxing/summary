@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<!--头部标签head 是包含页面元信息的-->
+<head lang="zh">
+    <!-- 设置页面使用的字符集 meta标签可以包含不同的类型信息 例如页面内容描述等等-->
+    <meta charset="UTF-8">
+    <!-- title标签 设置页面的标题 该标签非常重要-->
+    <title>复习HTML标签页面</title>
+    <!-- style标签 设置页面中标签的样式-->
+    <style></style>
+    <!-- link标签 资源标签 使用该标签可以将外部的资源加载到页面中 rel属性设置被引用的资源的数据类型 href是设置资源所在的地址-->
+    <link rel="stylesheet" href=""/>
+    <!-- base标签 设置页中所有的a标签默认打开的方式 和 默认的指向地址-->
+    <base target="_blank"/>
+</head>
+<body>
+<!--h1标签 是一个语义标签  标签标题的意思 对页面的重要性很多  h1...h6 含有默认的样式 字体-->
+<h1>标题标签</h1>
+<h2>二级标签</h2>
+<h3>三级标签</h3>
+<h4>四级标签</h4>
+<h5>五级标签</h5>
+<h6>六级标签</h6>
+
+<!--段落标签  具有语义该标签表示段落的意思  建议在p标签不要写入图片标签  影响语义的使用-->
+<p>段落标签</p>
+<!--
+链接标签  用于跳转到另一个页面使用 拥有多种使用方式
+1.在该标签的href属性写入id名 可以跳转到指定页面或本页面的指定位置中  称之为锚点定位
+2.href属性 该属性是指定该标签要跳转的页面  或者定位的锚点
+注意点：该标签拥有一些默认的样式  例如字体颜色 大小的  而且该标签是一个行级标签
+-->
+<a href="javascript:void(0);">链接标签</a>
+
+<!--
+图片标签 用于放置图片的
+1.src 该属性 用于指定图片的文件路径的
+2.alt 该属性 用于在图片寻找不到 或者其他原因不可见时 显示的文字
+3.title 该属性 拥有鼠标位于元素上方是 显示的提示语  大部分的标签都拥有这个属性
+注意点：该标签是一个行内块 标签
+-->
+<img src="images/1.jpg" alt="" title="这是一张图片"/>
+
+<!--strong 该标签也是一个语义标签 但是表示的语义没有em中 而且也是一个行级标签-->
+<strong>着重语句标签 表示非常重要 而且也是一个行级标签</strong>
+<em>语句标签  表示重要</em>
+<!--样式标签 例如 i s small big 等等标签  建议不使用 没有语义-->
+<s>该标签是一个样式标签(删除的元素具有一个中划线) 没有语义的  建议不使用这个书写页面</s>
+<i>该标签是一个样式标签(字体倾斜) 没有语义的</i>
+
+<!-- div 是一个没有语义的块级标签 在页面布局中充当布局盒子的角色 大量使用-->
+<div>div标签  没有语义 用于布局使用</div>
+<!-- span 没有语义的一个行内标签-->
+<span>span标签 没有语义 也是用于布局与div不同的是 span是一个行级标签  用于行内的布局 </span>
+<!--
+表格标签 table
+早期没有浮动布局出现是 使用的是table标签拥有页面布局  现在主要使用在金融数据的标签  使用的是表格
+1.表格标签中含有许多子标签  所谓的子标签 必须位于这个标签之内
+2.th 标签 拥有描述 表格的表头  显示内容 位于表格内
+3.caption 表格标题  标签虽然位于table中 但是显示的内容为表格之外
+4.td 标签 表示表格的每个单元格  代表列
+5.tr 标签 表示每行
+6.注意点：thead、tbody、tfooter 表示 表格头部  主体  底部
+7.表格属性介绍
+    7.1 border 显示border
+    7.2 style 在行内设置元素的样式  建议不要这样做  因为这样会造成样式与结构不明确
+    7.3 cellpadding 设置单元格与单元格内容之间的距离
+    7.4 cellspacing 设置border 与 border 之间的距离
+ -->
+<table style="text-align: center;" border="1" cellpadding="10px" cellspacing="0">
+    <caption>标题</caption>
+    <th>表头</th>
+    <tr>
+        <td>单元格1</td>
+        <td>单元格2</td>
+        <td>单元格3</td>
+        <td>单元格4</td>
+        <td>单元格5</td>
+        <td>单元格6</td>
+    </tr>
+    <tr>
+        <td>单元格1</td>
+        <td>单元格2</td>
+        <td>单元格3</td>
+        <td>单元格4</td>
+        <td>单元格5</td>
+        <td>单元格6</td>
+    </tr>
+    <tr>
+        <td>单元格1</td>
+        <td>单元格2</td>
+        <td>单元格3</td>
+        <td>单元格4</td>
+        <td>单元格5</td>
+        <td>单元格6</td>
+    </tr>
+</table>
+<!--
+ul无序列表 标签 该标签中只能包含li标签  不可以包含其他的标签在内 但是li标签中可以包含不同的标签元素 块级标签
+ul 拥有默认的样式 例如外边距的
+li 每个列表项  说明li标签可以嵌套ul 标签进行
+-->
+<ul>
+    <li><a href="javascript:void(0);">1</a></li>
+    <li><a href="javascript:void(0);">2</a></li>
+    <li>
+        <ul>
+            <li><span>01</span></li>
+            <li><span>02</span></li>
+            <li><span>03</span></li>
+        </ul>
+    </li>
+</ul>
+<!--  ol标签 有序列表 与ul不同的是含有指定的序号数字  其他的相同-->
+<ol>
+    <li><span>01号</span></li>
+    <li><span>02号</span></li>
+    <li><span>03号</span></li>
+</ol>
+<!--
+dl标签  自定义列表去
+dt 每个列表项的标题
+dd 每个列表项
+-->
+<dl>
+    <dt>西瓜</dt>
+    <dd>苹果</dd>
+    <dd>橘子</dd>
+    <dd>橙子</dd>
+</dl>
+
+
+<!--
+form表单标签 该标签包含所有的有关表单的元素
+input标签  多种类型  类型不同表示的标签也不同的
+    1.text类型  输入框标签  可拥有输入内容  例如用户名啊 手机号类似的
+    2.submit类型 提交按钮标签 填写表单完成之后的提交按钮
+    3.passwork类型 密码标签  传门用于输入密码的输入框 字符是进行加密的
+    注意点：input标签都是行内块标签  而且他们用于默认的样式
+    介绍属性：method 属性设置表单提交时是以什么方式进行传递的 get是通过URL的方式传递  容易被截取 不安全 建议使用 post
+             action 属性设置提交表单的地址
+             value  该属性设置标签的默认值
+             type   设置input标签的类型  在HTML5中还新增一些不同的类型
+-->
+<form action="http" method="post">
+    <input type="text" value="默认值"/>
+    <button>按钮标签</button>
+    <br/>
+    <input type="submit" value="按钮"/>
+</form>
+<!--文本域-->
+<textarea cols="30" rows="10"></textarea>
+<!--fieldset标签 域 legend标签 表示域标题-->
+<fieldset>
+    <legend>hehe</legend>
+</fieldset>
+
+<!--以下是HTML5新增的标签-->
+
+<!--header标签 具有语义 表示页面头部-->
+<header>该标签是HTML5中新增的标签  页面头部标签</header>
+<!--nav标签 表示导航栏 具有语义的标签 一般结合ul来使用的-->
+<nav>导航栏标签</nav>
+<!--main标签 将显示的内容放置在该标签中-->
+<main>主体内容标签</main>
+<!--article标签 用于布局-->
+<article>该标签是HTML5中用于替换div的布局盒子</article>
+<!--aside标签 用于表示文章-->
+<aside>文章标签</aside>
+<!--footer标签 表示页面底部  含有语义标签-->
+<footer>页面底部标签</footer>
+<!--一些新增的input标签的类型属性值-->
+<!--
+1.search 搜索输入框
+2.number 数字输入框 只能输入数字
+3.file   文件上传
+4.range  进度条
+5.color  颜色拾取器
+6.email  邮件输入框 具有输入限制的
+-->
+<input type="search" placeholder="请输入要搜索物品的名称"/> <br/>
+<input type="number" name="" id=""/> <br/>
+<input type="flie" id=""/> <br/>
+<input type="range" id=""/> <br/>
+<input type="color" id=""/> <br/>
+<input type="email" id=""/> <br/>
+
+<p style="background-color: #000; color: #fff;">
+    总结：页面结构书写的好坏 直接影响到js中DOM操作元素  对搜索引擎的友好度 非常重要的（可以提高页面被搜索引擎的抓取的概率） <br/>
+    以及一些css的样式设置  所以合理的使用标签非常重要
+</p>
+
+</body>
+</html>

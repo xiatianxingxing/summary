@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <div id="fa">
+        <ul>
+            <li>01</li>
+            <li>02</li>
+            <li>03</li>
+            <li>04</li>
+            <li>05</li>
+        </ul>
+
+    </div>
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        $(function(){
+            // 在jQuery中使用 css进行设置元素的样式值
+            // 一对样式值  可以填入2个参数 但是设置多个样式 需要使用对象的方式进行设置  属性与样式值 以键值对的方式 进行设置
+            // 样式名  多个单词使用驼峰命名法
+            $("#demo").css({width:"200px",height:"200px",backgroundColor:"#ff8800"});
+            // 设置内容使用 text  创建多个标签 使用html
+            $("#demo").html("<strong>jQuery渲染的标签</strong>");
+            // children  获取元素的指向子元素 获取到的是一个伪数组
+            console.log($("#fa").children("ul"));
+            // find 获取到指定的后代元素
+            console.log($("#fa").children("ul").find("li"));
+            // 例如还有一些 next prev nextAll prevAll   sublings--获取到所以的兄弟元素
+            // 还可以使用 $("<h1></h1>")  渲染标签
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            width: 300px;
+            height: 300px;
+            background-color: #ff8800;
+        }
+    </style>
+</head>
+<body>
+    <div></div>
+
+    <script>
+        // 移动端的点击事件的特性
+        // 1. 手指移动  不能超过限制区间
+        // 2. 只有单个手指对象
+        // 手指离开屏幕的时间不能超过指定的范围
+        // 进行封装一个点击事件
+        // 在手指触摸到 屏幕时  进行执行函数 在函数中进行注册 touchstart touchmove touchend  进行判断
+        // 以上的特性  如果符合 就进行执行回调函数  在执行之前一个进行判断是否传入回调函数  使用 && 
+        function tap(ele,callback){
+            var startX = 0,
+                startY = 0,
+                moveX = 0,
+                moveY = 0,
+                endX = 0;
+                endY = 0,
+                targerTou = 0;
+            ele.addEventListener("touchstart",function(e){
+                console.log(11);
+                // 记录触摸开始的坐标值 X/Y
+                startX = e.targetTouches[0].clientX;
+                startY = e.targetTouches[0].clientY;
+                targerTou = e.targetTouches.length;
+            });
+            // 进行判断手指滑动的距离  是否规定的区间内
+            ele.addEventListener("touchend",function(e){
+                // 记录触摸开始的坐标值 X/Y
+                endX = e.changedTouches[0].clientX - startX;
+                endY = e.changedTouches[0].clientY - startY;
+                if(targerTou === 1 && (Math.abs(endX) < 12 || Math.abs(endY) < 12)) {
+                    callback && callback();
+                }
+            });
+
+            // 记时 功能 在手指开始 记录 在手指离开 进行计算  进行判断
+
+        }
+        // 进行执行
+        var dv = document.querySelector("div");
+        dv.addEventListener("touchstart",function(){
+            console.log(33);
+            tap(this,function(){
+                console.log("click");
+            })
+        })
+
+        // 封装缺点  需要进行启动一次 才会生效
+    </script>
+</body>
+</html>

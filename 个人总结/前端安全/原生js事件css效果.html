@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #roundness{
+            width: 200px;
+            height: 200px;
+            background-color: #ff8800;
+            border-radius: 50%;
+            margin: 100px auto;
+            position: relative;
+            transition:transform 5s;
+            transform:rotate( 0deg );
+            /*animation:anim 5s 3;*/
+        }
+        #triangle {
+            position: absolute;
+            left: 0;
+            top: 0;
+            border: 15px solid #000;
+            border-color: #00eeff #00ff00 #ff0000 #0000ff;
+            transform: rotate(-45deg) ;
+        }
+        @keyframes anim {
+            0% {
+                transform: rotate( 0deg );
+            }
+            25% {
+                transform: rotate( 180deg );
+            }
+            50% {
+                transform: rotate( 360deg );
+            }
+            75% {
+                transform: rotate( 540deg );
+            }
+            100% {
+                transform: rotate( 720deg ) ;
+            }
+        }
+    </style>
+</head>
+<body>
+    <input type="button" value="点击开始">
+    <!-- 实现一个三角形 围绕一个圆进行移动 -->
+    <div id="roundness">
+        <div id="triangle"></div>
+    </div>
+    <script>
+        var triangle = document.querySelector( '#triangle' );
+        var btn = document.querySelector( 'input[type=button]' );
+        var roundness = document.querySelector( '#roundness' );
+        var index = 0;
+        var time = new Date().getTime();
+        var step = 0;
+        btn.onclick = function() {
+            // 我们进行判断 时间 间隔是否到达 5000毫秒 如果到达 那么将不进入到 该该语句
+            // 但是 如果没有到达 用户在点击按钮 那么将会进入到 该语句中  return 不执行 一下的语句
+            // 注意 这个和 动画完成的 耗时时间 含有关系 那么 根据这个 进行设 条件 即可
+            if(step && !( new Date().getTime() - time >= 5000 )) {
+                console.log( new Date().getTime() - time );
+                return;
+            }
+            // if( (parseInt( roundness.style.transform.replace( /\D+/g , "" ) ) || 0 ) !== ( index*360 ) ) {
+            //     return;
+                // 判断条件无效
+            // }
+
+
+            // console.log( window.getComputedStyle(triangle)["transform"] );
+            // console.log( triangle.style.transform );
+
+            step = 1;
+            index+=2;
+            console.log(index);
+            roundness.style.transform = 'rotate( '+ index*360 +'deg )';
+
+            time = new Date().getTime();
+        }
+        
+    </script>
+</body>
+</html>

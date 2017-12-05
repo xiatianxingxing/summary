@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        // 我们在 这个文件 中 进行 es6 中新增的一些方法
+        var arr = [1,2,3,4,5];
+        // 进行使用 es6  中新增的 map方法
+        // 我们在进行测试 方法 或者 函数的时候 应该 检测 函数中 this 的指向问题 函数 返回值是什么 函数的参数情况  在 函数中将 arguments 进行输出打印
+        var arguArr = arr.map(function(v,i) {
+            // 我们 输出打印 发现 参数1 是数组 中每个 值 参数2 是值 对应的下标数
+            console.log(v);
+            console.log(i);
+            // 我们发现 map  的 回调函数 中的this 指向的是window  并且 该数组循环方法是无法 进行break 跳出的
+            console.log(this);
+            // break; 然后这样做 是会报错的
+
+
+            // 将值 进行return 到 新数组中
+            return "新数组值" +  v ;
+        });
+        // map 最大的特性 会 返回一个 数组 如果 没有return 语句的话 那么每次 都是 返回 undefined 的
+        console.log(arguArr);
+
+    </script>
+</body>
+</html>

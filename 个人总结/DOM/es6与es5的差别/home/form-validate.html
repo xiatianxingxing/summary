@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        span {
+            color: red;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h2>validate是一个 表单提示信息插件-在用户输入不正确的情况下 进行友好的提示的</h2>
+    <h2>validate插件是基于jquery 进行开发 那么我们需要将jquery进行引入 而且jquery的版本 必须是1.7+</h2>
+    <br> <br> <br>
+    <form>
+        <!-- data-required 是规定该输入框 必须进行填写的 -->
+        用户名：<input type="text" 
+            placeholder="请输入用户名" 
+            data-describedby="user_form"
+            data-description="tese1"
+            data-required>
+        <span id="user_form"></span> <br>  
+        <!-- 描述的元素的id 是和 输入框的 data-describedby属性值相同的 -->
+        <!-- data-description 值是 初始对象 中的对象成员值 在对象值中含有 required 和 patter -->
+
+        密码：<input type="password" 
+                      placeholder="请输入密码"
+                      data-describedby="pw_form"
+                      data-description="tese3"
+                      data-pattern="^\d+$"
+                      data-required
+                      >
+        <span id="pw_form"></span><br>
+
+        手机号：<input type="text" 
+                        placeholder="请输入手机号"
+                        data-describedby="tel_form"
+                        data-description="tese2"
+                        data-pattern="^\.+"
+                        data-required
+        >
+        <span id="tel_form"></span> <br>
+        <input type="submit" value="提交"> 
+    </form>
+    <p>
+        <strong>在使用的validate 注意使用的属性 与 js 之间的关联</strong>
+    </p>
+    <script src="./form-master/jquery.js"></script>
+    <script src="./validate-master/validate-master/jquery-validate.js"></script>
+    <script>
+        // 注意啦 我们 在开发的过程中 尽量使用 未压缩的 版本文件
+
+        // 进行初始化
+        $("form").validate({
+            description:{
+                tese1:{
+                    required:"该输入不能为空的-哈哈",
+                    pattern:"输入的字符不匹配规则"
+                },
+                tese2:{
+                    required:"空虚是不行的",
+                    pattern:"不是叫你输入手机号的嘛"
+                },
+                tese3:{
+                    required:"密码不能没有的-小心人财尽失哦",
+                    pattern:"这个是密码输入框"
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

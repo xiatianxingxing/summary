@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <div id="demo"></div>
+
+
+
+
+    <script>
+        // 继承就是 扩展 在原有的基础上增加成员
+        function Crea(name,age) {
+            this.name = name;
+            this.age = age;
+        }
+        var obj = new Crea("小明",20);
+        // 1.在原有的基础上进行增加  自我添加
+        // 完成了继承啦
+        obj.hello = function() {
+            console.log(this.name);
+        }
+
+
+        // 原型继承
+        // 2.在原型对象上 进行增加成员的情况 也可以进行继承的效果  因为 实例可以直接调用原型对象上的方法
+        Crea.prototype.getEle = function(ele) {
+            return document.querySelector(ele);
+        }
+        console.log(obj.getEle("#demo"));
+
+
+        // 替换原型对象
+        // 3.将构造函数的prototype 执行另外的对象 在这个对象上添加 也是可以实现成员的继承的
+        Crea.prototype = {
+            text:"<h2>新的对象实现继承</h2>",
+            huString:String
+        }
+        var obj2 = new Crea();
+        // 但是之前实例的对象 不可以进行调用这个原型对象的成员  因为之前实例化的对象已经绑定了原型对象 不会进行更改啦 还是指向之前的原型对象的
+        console.log(obj2.text);
+
+        // 还有一种方式 可以 进行做到 Object.create(对象)
+        // create会返回一个对象 并且该对象的原型对象就是create的参数对象
+        var cre = {
+            name:"小路",
+            age:"20",
+            aihao:"datoutou"
+        }
+        var obj3 = Object.create(cre);
+        // obj3什么 成员都没有 但是可以调用cre的成员
+        console.log(obj3);
+        console.log(obj3.name);
+
+        // 并且我们 展开 obj3 的 _proto_ 属性 该属性指向的就是 cre 对象
+
+        // 混入继承 将一个对象的成员加入到另外一个对象中  其实就是拷贝咯
+    </script>
+</body>
+</html>

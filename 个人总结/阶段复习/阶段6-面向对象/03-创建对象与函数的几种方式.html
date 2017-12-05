@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        // 创建对象的几种方式
+        // 最熟悉  当然是 字面量的方式 啦 {}  称为 对象字面量方式
+        var obj = {};
+        console.log(Object.prototype.toString.call(obj));
+        // 方式2 通过 window中的内置函数 进行创建  内置函数创建对象
+        var obj2 = new Object();
+        console.log(Object.prototype.toString.call(obj2));
+        // 通过自己定义一个构造函数 进行 实例化对象  
+        //      1. 在函数中 通过字面量方法 创建一个 进行return
+        //      2. 使用this 利用 对象的动态特性 进行添加成员  在使用函数时  需要结合new 来进操作的
+        
+        // 创建函数  方式1
+        function createEle(name,age) {
+            var obj = {};
+            obj.name = name;
+            obj.age = age;
+            obj.say = function() {
+                console.log(this.name);
+            }
+            return obj;
+        }
+        // 进行创建对象  执行函数
+        var obj3  = createEle("xiaoyu",22);
+        console.log(obj3);
+        // 这个方式不好的地方就是 每个对象都含有一个方法 这样会大量消耗 客户端的内存
+        obj3.say();
+
+        // 使用构造函数的方式 进行实例化对象
+        // 进行 实例化对象  实例化 就 利用构造函数结合 new 进行创建对象  称之为实例化
+        function Crea(name,age,aihao) {
+            this.name = name;
+            this.age = age;
+            this.aihao = aihao;
+        }
+        // 进行实例化对象  结合new 进行使用  需要注意的 构造函数的名称首字母 建议继续大写
+        var obj4 = new Crea("xiaoke",16,"datoutou");
+        console.log(obj4);
+    </script>
+</body>
+</html>

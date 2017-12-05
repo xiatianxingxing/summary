@@ -1,0 +1,85 @@
+-> fixed在移动端的兼容性问题
+    - 
+        1)
+            -
+-> 移动端 在 input 标签身上不要使用 fixed 属性
+    - 一般使用 absolute 后 flex  进行代替
+        1) 如果使用 fixed 那么会产生 问题的
+            -
+-> input输入框的 非直接输入 和 直接输入
+    - 我们在ios 和 Android 注册的判断输入框的 监测输入
+        1) 在 ios 输入 中文的情况 下 会产生 非直接输入 
+            - 非直接输入 就是 在输入中文的情况下 没有选择文字 但是 输入就已经有 字母啦 那么会触发input的监测事件
+            - 我们希望在 用户确定后 在进行监测
+            - 那么就产生 2个事件啦
+            - compositionstart 、compositionend
+                - 1. 该事件（compositionstart）是在 非直接输入 开始触发  
+                - 2. 该事件（compositionend）在非直接输入结束的情况进行结束事件
+                - 3. 我们进行设置 一个阀门  在compositionstart设置为false
+                - 4. 在 compositionend设置 true
+                - 5. 在input监测事件中 判断 阀门 是否是开启的 如果为true 那么代表 非直接输入 已经完成啦
+            - input输入框的 input 事件 
+                - 执行时机是什么时候呢
+                - 什么类型的 input 可以进行注册呢
+-> ios 中实现 1px 边框的问题
+    - 
+        1)
+            -
+
+
+-> UI框架是否可以 进行定制 
+    - 是否含有 复用性 并且可以进行拆分呢
+        1)
+            -
+-> 将回退 功能 提取为 公共的组件 为公共功能呢
+    - 
+        1)
+            -
+
+-> 跨域的另一种方式 fiddler&charles代理
+    - 需要配置
+        1)
+            -
+
+-> 跨域的另一种方式 cors 方式   资料博客 http://www.ruanyifeng.com/blog/2016/04/cors.html
+    - cors跨域请求是 w3c 的一个新的跨域请求  
+        1)cors和平常的ajax 没有区别 但是需要 服务器 提供一个 cors 的api接口
+            - 在发送请求的时候 浏览器分为 简单请求和非简单请求  判断简单和 非简单 看博客的介绍
+            - cors 就是在 服务器 设置 判断头 Access-Control-Allow-Origin
+            - 那么这样 就可以在服务器判断请求的源地址 进行判断是否返回数据给请求的浏览器方
+            - cors 比 jsonp 跨域请求的好处是 
+            - cors 可以 设置请求的方式 get post head
+            - 但是 jsonp 只能发生 get 的请求 这个是 jsonp的缺点  但是
+            - 在w3c 中新增的ajax 请求事件状态
+                - onloadstart 在请求发生时触发
+                - onprogress  读取和发送数据时触发
+                - onabort*	当请求被中止时触发，如使用abort()方法
+                - onerror	当请求失败时触发
+                - onload	当请求成功时触发
+                - ontimeout	当调用者设定的超时时间已过而仍未成功时触发
+                - onloadend*	请求结束时触发（无论成功与否）
+            - 比较常用的 是 onload 、 onloadend 、 onloadstart
+                
+-> 前端 制作假数据呢
+    - 
+        1)
+            -
+
+-> 数据统计代码 - 统计平台的数据流量 
+    - 利于我们网站的更新迭代
+        1)
+            -
+-> 前端 制作假数据呢
+    - 
+        1)
+            -
+-> 前端 制作假数据呢
+    - 
+        1)
+            -
+-> 前端 制作假数据呢
+    - 
+        1)
+            -
+
+

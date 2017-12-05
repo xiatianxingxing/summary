@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue221.js"></script>
+    <script src="../vue-router231.js"></script>
+</head>
+<body>
+<div id="app">
+    <!-- router-link 相当于a标签-->
+    <!--当加入根组件时，注意这也要加-->
+    <router-link to="/selece/login">登录</router-link>
+    <router-link to="/selece/temp">注册</router-link>
+
+    <router-view></router-view>
+</div>
+</body>
+<script>
+    //1  定义根组件
+    var app =   Vue.extend({
+        //  子组件的内容会渲染到这里
+        template:"<h1>我是boss<router-view></router-view></h1>"
+    });
+
+    //定义登录和注册这两个组件
+    var login = Vue.extend({
+        template:"<h2>我是登录组件</h2>"
+    });
+    var temp = Vue.extend({
+        template:"<h2>我是注册组件</h2>"
+    });
+
+    // 3  定义路由
+    var router = new VueRouter({
+        routes:[
+            {
+                //父组件
+                path:"/selece",
+                component:app,
+                children:[
+                    {
+                        //当在children下面是 要去掉“/”
+                        path:"login",
+                        component:login
+                    },
+                    {
+                        path:"temp",
+                        component:temp
+                    }
+                ]
+            }
+
+        ]
+    })
+    var vm = new Vue({
+        el:"#app",
+        router:router,
+        data:{
+
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>

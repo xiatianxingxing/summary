@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        // eval 方法就是将一段 字符串 当做 js代码来进行执行操作
+        // eval 是全局函数 直接 进行调用即可
+        eval("var str = 'eval方法进行创建的'");
+        console.log(str);
+        // 该方法的缺点就是 消耗性能的问题  
+        // 可能有一些字符我们不希望 当作js代码进行执行 所以一般不使用eval 来执行代码的
+        var scri = document.createElement("script");
+        scri.type = "text/javascript";
+        scri.innerText = "var one = '使用script标签进行创建的'";
+        document.body.appendChild(scri);
+        // 这样的方式也是可以将字符 解析为 js代码的的  神奇吧  后期的AJAX-jsonp 将使用该方式进行跨域的操作
+        console.log(one);
+    </script>
+</body>
+</html>

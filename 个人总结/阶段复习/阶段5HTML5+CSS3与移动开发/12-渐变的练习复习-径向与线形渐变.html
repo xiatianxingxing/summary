@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>渐变的练习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #link {
+            width: 600px;
+            height: 40px;
+            color: #fff;
+            text-align: center;
+            font-size: 20px;
+            line-height: 40px;
+            background-color: #ff8800;
+            margin: 30px auto;
+        }
+        #link:hover {
+            /*需要进行注意的是 渐变是一张图片  所以要使用 background 进行设置 to left 渐变到的方向  到left 那么就是从 right出发啦 */
+            background: linear-gradient(to left, #ff8800 0%, #00eeff 100% );
+        }
+        #org {
+            width: 300px;
+            height: 300px;
+            color: #fff;
+            text-align: center;
+            font-size: 40px;
+            line-height: 300px;
+            margin: 20px auto;
+            /* 径向渐变的参数设置 (形状 大小 坐标(默认相对于坐上角))  */
+            /* 大小就是 指 要渐变到的区域  现在farthest-corner渐变到最远角  还有一些其他的 建议查手册 太多啦  */
+            background: radial-gradient( circle farthest-corner at 150px 150px, #00eeff, #ff8800);
+        }
+
+        #repeat {
+            width: 400px;
+            height: 400px;
+            color: #fff;
+            text-align: center;
+            font-size: 40px;
+            line-height: 400px;
+            margin:  20px auto;
+            /* 重复渐变最起码需要进行传入 4个值 每个渐变使用逗号进行分隔  */
+            /* 注意需要设置4个值  少了是无效的  */
+            background: repeating-radial-gradient(
+                #00eeff 0%,#ff8800 5%,
+                #00eeff 5%,#ff8800 10%,
+                #00eeff 15%,#ff8800 20%,
+                #00eeff 20%,#ff8800 25%
+            )
+        }
+    </style>
+</head>
+<body>
+    <div id="link">线形渐变</div>
+
+    <div id="org">径向渐变</div>
+
+    <div id="repeat">重复渐变</div>
+
+</body>
+</html>

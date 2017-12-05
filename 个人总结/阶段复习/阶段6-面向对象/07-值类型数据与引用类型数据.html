@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+    <script>
+        // 在js 中 有 值(简单)类型数据 引用(复杂)类型数据
+        // 之间的区别 是 在存储方式的不同
+        // 值类型 变量 存储的是值本身
+        // 引用类型 变量存储的数 数据的引用地址
+        // 进行测试
+
+        // 值类型
+        var num = 10;
+        var num2 = num;
+        num2 = 20;
+        // 我们进行改变 num2  num 是不会进行改变的
+        // 因为 在赋值的时 是将数据 进行拷贝一份 num2改变了 是不会影响到num的
+        console.log("num的值是"+num);
+        console.log("num2的值是"+num2);
+        // 值类型 数据 变量存储的 数据 本身 所变量作为值进行赋值 拷贝的是 数据
+        // 不会进行相影响的
+
+
+        // 引用类型 例子
+        var obj = {
+            name:"xiaom",
+            age:22,
+            aihao:"datoutou"
+        };
+        console.log(obj.name);
+        var obj2 = obj;
+        // 我们先对象obj2 进行 成员 进行操作 改变 看obj 是否会进行改变
+        obj2.name = "小雨";
+        // 将obj的那么属性进行打印
+        console.log(obj.name);
+        // 我们对obj2  的成员进行更改 为什么 obj 发生了改变呢
+        // 原因是 引用类型数据的变量 中 保存的是数据的引用地址  真正的数据保存在另一个内存中 并不是内存中
+        // 当我们通过 obj2 的地址 改变 内存中的数据的成员 那么 obj通过访问 相同地址的数据 当然得到是改变后的数据啦
+
+        // 注意 值类型 与 引用类型的存储方式的 不同
+        // 面试题
+
+        var objfn = {
+            name:"小雨",
+            age:22
+        }
+        function fn(obj) {
+            // obj变量引用的是 传入对象的地址  这个点需要注意啦
+            console.log(obj.name);//小雨
+            // 不会进行变量 提升啦  因为形参已经声明 obj啦 
+            // 重新进行封装啦  现在无法输出 aga 成员的 因为已经没有啦
+            var obj = {};
+            obj.name = "小何";
+            console.log(obj.name);//小何
+        }
+        fn(objfn);
+
+
+
+
+
+
+    </script>
+</body>
+</html>

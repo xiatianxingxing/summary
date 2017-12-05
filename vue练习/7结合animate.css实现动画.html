@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="../animate.css">
+	<script src="../vue221.js"></script>
+</head>
+<body>
+	<div id="app">
+ 	<button @click="toggle">隐藏和显示</button> <br>
+ 	<transition 
+ 	 enter-active-class="animated fadeInRight"
+     leave-active-class="animated fadeOutRight">
+ 		<div style="width:100px" v-show="isshow">{{msg}}</div>
+	</transition>
+</body>
+<script>
+new Vue({
+	el:'#app',
+	data:{
+		isshow :false,
+		msg:'hello vuejs'
+	},
+	methods:{
+		toggle :function(){
+			this.isshow = !this.isshow;
+		}
+	}
+});
+</script>
+</html>

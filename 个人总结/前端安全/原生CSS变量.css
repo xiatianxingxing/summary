@@ -1,0 +1,52 @@
+/*  使用 ：root 进行声明 css中的变量 */
+
+:root {
+    --main-color: #4d4e53;
+    --main-bg: rgb(255, 255, 255);
+    --logo-border-color: rebeccapurple;
+    --header-height: 68px;
+    --content-padding: 10px 20px;
+    --base-line-height: 1.428571429;
+    --transition-duration: .35s;
+    --external-link: "external link";
+    --margin-top: calc(2vh + 20px);
+    --color: #00eeff;
+    --height: 300px;
+}
+
+
+/* 赋值操作的时候 需要使用 var() 进行读取变量的值 */
+/* 使用 css 的新特性 需要使用var（）方法进行使用 */
+/* var（） 还可以传入 2个参数  如果参1 变量不存在 那么参2 就是 默认值 */
+body {
+    /*background-color: --color;*/
+    background-color: var( --color);
+    /*height: --height;*/
+    height: var( --height , 500px);
+
+
+    /* var() 只能作用到 属性值身上 不能使用到 属性见名上 */
+}
+
+
+/* var（）可以 进行字符串的链接操作 */
+/* 如果是 数值  和 单位 操作 那么需要使用 calc 方法
+    例子：margin-top: calc(var(--gap) * 1px);
+ */
+
+ /*
+    考虑到 变量的作用域 问题 
+    在 元素声明的 变量 作用域就在该元素内
+    如果确保 全局 可以使用大 那么就 需要声明到 :root 中 那么全局中 可以访问到的
+ */
+
+
+
+ /*
+    以下是 兼容性考虑 假如 浏览器不支持 css 变量的方式 那么可以进行 兼容处理
+ */
+.demo {
+     color: #ff8800;
+     /* 指令使用的是全局的 css 变量 :root中的 */
+     color: var( --color );
+ }

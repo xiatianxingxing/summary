@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }    
+        #dv {
+            width: 300px;
+            height: 300px;
+            background-color: #ff8800;
+            margin: 100px auto;
+            border: 10px solid #00eeff;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div id="dv"></div>
+    <script>
+        var dv =document.getElementById("dv");
+        // clientHeight  获取元素可视区域大小 计算方式是 height + padding  与offset scroll 不同
+        // offset计算方式是  height + padding + border
+        // scroll获取的内容的大小  与元素无关
+        console.log(dv.clientWidth);//320
+        console.log(dv.offsetWidth);//340
+        // 在没有内容是  获取就是元素的大小  计算方式和 client相同
+        console.log(dv.scrollWidth);//320
+
+        // clientTop/Left 获取border 和 滚动条的大小  一般使用不到
+        dv.onclick =function(e){
+            console.log(dv.clientTop);//border + 滚动条
+        }
+    </script>
+</body>
+</html>

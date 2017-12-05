@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>08-关于自定义属性的复习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div {
+            background-color: #ff8800;
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="son" class="tese" data-index=1 >
+
+    </div>
+    <script>
+        // 江湖规定  自定义属性一般使用 data开头 每个单词使用中滑线进行分隔
+        // 自定义属性 对象的点号语法无法进行访问到的 关联数组的方式也无法进行获取到的
+        // 需要操作自定义属性 需要使用 getAttribute()  setAttribute()  removeAttribute()
+        // 需要注意的是jQuery中使用不一样  我就掉坑中
+
+
+
+        // 测试 使用对象的点号语法是否能够获取到元素的自定义属性
+        var son = document.getElementById("son");
+        // 无法获取元素的自定义属性  输出的undefined
+        console.log(son.dataIndex);//undefined
+        // 可以获取到元素默认含有的属性
+        console.log(son.className);//tese
+
+        // 测试 使用 getAttribute 是否能够将自定义属性进行获取
+        console.log(son.getAttribute("data-index"));//1
+
+
+        // 设置元素的自定义属性  显然是无法进行设置啦 因为连获取都获取不到  还谈什么设置呢
+        // 设置元素的自定义属性  需要使用setAttribute方法进行设置  这个方法才能设置元素的自定义属性
+        son.setAttribute("data-index",2);
+        console.log(son.getAttribute("data-index"));//2
+
+
+        // 移除自定义属性  要使用removeAttribute方法
+        son.removeAttribute("data-index");
+
+        // 总结：getAttribute 、 setAttribute 、 removeAttribute 不仅可以设置自定义属性  元素默认含有的属性也可以进行设置获取 移除的 设置自定义属性需要注意命名的规则 和 在jQuery中获取是使用的是驼峰命名法
+    </script>
+</body>
+</html>

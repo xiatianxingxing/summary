@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        
+        @keyframes nian{
+
+        }
+        div {
+            
+        }
+    </style>
+</head>
+
+<body>
+    <div></div>
+    <span id="span"></span>
+    <strong class="str"></strong>
+    
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        // 首先需要写一个入口 函数  ready()  $();  load
+        $(function () {
+            // 可以填入  id class  标签名  以及组合的选择器  和css选择器基相同的
+            console.log($("div"));
+            console.log($("#span"));
+            // 还可以进行链式编程  就在获取元素后继续调用其他的方法  
+            // 链式编程的的原理就是在执行完 方法是 返回一个this  在这个前提下 才可以进行链式编程  
+            // 如果在未返回this  那么无法进行链式编程的  例如获取元素的样式等等
+            $("div").click(function () {
+                // 将参数对象进行打印
+                console.log(arguments);
+            });
+            // 考虑 链式编程实现的原理  如何实现 以及解决性能消耗的问题  查找原型上的属性 是较消耗性能的
+
+            // 注意点： 在原生的js中 可以使用 hasOwnProperty  该方法判断该对象上是否含有指定的成员啦
+        });
+    </script>
+</body>
+
+</html>

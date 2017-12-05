@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<!-- 老样子 三部曲 -->
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>bootstrap字体图标使用</title>
+	<!-- 引入样式文件  js文件  兼容文件 -->
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- 先引入jQuery文件  在bootstrap  指js文件 之前 -->
+	<script type="text/javascript" src="cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<!-- 引入bootstrap js 框架文件 -->
+	<script type="text/javascript" src="cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- 下面的2个文件在IE9以下会被引用的 -->
+	<!--[if lt IE 9]>
+	<script src="cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+
+		}
+		span.glyphicon {
+			font-size: 40px;
+			line-height: 80px;
+		}
+	</style>
+</head>
+<body>
+<!-- 进入bootstrap 网站  将字体图标对应的类名 该元素就行  但是元素必须是空的 没有内容才行 图标文本默认是不可以选中的 -->
+<span class="glyphicon glyphicon-euro" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-zoom-in" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-heart" aria-hidden="true"></span>
+<span class="glyphicon glyphicon-music" aria-hidden="true"></span>
+
+<p>进入bootstrap 网站  将字体图标对应的类名 该元素就行  但是元素必须是空的 没有内容才行 图标文本默认是不可以选中的</p>
+
+
+</body>
+</html>

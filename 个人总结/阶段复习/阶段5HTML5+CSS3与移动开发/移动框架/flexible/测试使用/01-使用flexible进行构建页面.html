@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <!-- 在使用flexible情况下 可以不进行设置viewport的  -->
+     <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <!-- IE兼容  -->
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="./css/tese.css">
+    <title>使用flexible进行构建页面</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 将页面进行分隔为20份 份数不固定可以自定义  -->
+    <!-- 根据drap-dpr的值进行使用不同的倍数的图片  -->
+    <!-- 在框架的内部 根据drap-dpr的值进行设置html根元素的字号大小  -->
+    <!-- 根据框架内的媒体查询 设置页面根元素html的字号大小-->
+    <!-- 淘宝的是将页面进行 分隔为10份的 我们可以进行更改的  -->
+
+    <!-- 初步进行测试  在不同的设备上 显示相同的页面效果 -->
+    <!-- 我们的设计稿使用720 的 所以我们需要进行除以/72 那么在不同的设备下 根据html-font-size  -->
+    <img src="./img/测试淘宝适配框架.png" alt="">
+
+
+    <!-- 引用js一般在底部进行的  -->
+    <!-- 引用成功后 html会含有一个drap-dpr自定义属性  并且html会有一个font-size的行内样式  -->
+    <script src="../flexible.js"></script>
+    
+</body>
+</html>

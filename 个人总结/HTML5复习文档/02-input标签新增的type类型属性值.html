@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>html5中新增的input的type属性值</title>
+	<style type="text/css">
+		input {
+			width: 400px;
+			line-height: 36px;
+			font-style: 28px;
+			padding: 4px 5px;
+			box-sizing: border-box;
+			margin: 5px 0;
+		}
+	</style>
+</head>
+<body>
+	数字：<input type="number" placeholder="在移动端使用较多只能输入数字"> <br>
+	邮箱：<input type="email" placeholder="输入符合邮箱规则的输入框-具有简单的正则表达式"> <br>
+	进度条：<input type="range" max="60" value="0">标注一个事物的进度 例如音量  max表示最大值 min最小 value是当前值 <br>
+	电话：<input type="tel" placeholder="输入手机号它的优势是在移动端可以-调出数字键盘"> <br>
+	color：<input type="color"> 拾色板用途不多 <br>
+	time：<input type="time">选取 时间的输入框 <br>
+	data：<input type="date"> 选取日期的输入框 存在浏览器差异 建议使用Moment.js框架 <br>
+</body>
+</html>

@@ -1,0 +1,24 @@
+-> 1.事件对象 的兼容性问题
+    - 获取事件对象 - 兼容性
+        1) 标准：event || 或者看形参的名字
+        2) IE： window.event 进行获取 不管形参名 如何
+        3) 直接 获取 event 那么在 IE8 下 获取到的是 undefined
+-> 2.获取元素的 几个 api 方法也是不支持的
+    - getElementsByClassName
+        1) 在IE8 以及以下是 无法使用的 因为不支持
+        2) 经过测试  querySelector 和 querySelectorAll 方法在IE8是可以使用的
+-> 3.获取鼠标在 页面中的位置 标准和 IE 也是存在在兼容性的问题
+    - 获取鼠标在 页面中坐标
+        1) 标准： event.pageX/Y  --- pageX/y 是获取 鼠标在页面中的坐标
+        2) IE: window.event.clientX/y  --- 但是在 IE中无法直接获取到 pageX/Y 需要
+            - 需要先获取 在可视区域中的位置 在获取 window的滚动条滚去的高度 加上 client 就得到鼠标在 页面中的位置
+            - 所以 需要注意写  window.event.clientX/Y + window.pageX/Yoffset 那么就可以获取到 鼠标在页面中的坐标啦
+-> Forefox 和 Chrome的兼容性 问题
+    - 设置 文本的内容 innerText 和 textContent 兼容性的问题  现在最新版本中 没有含有这个
+        1) Forefox 支持是 textContent Chrome 之前是 支持 innerText
+        2) 现在最新版本 都支持的
+-> 发送 ajax 的内置对象 在 IE 和标准之间含有兼容性的问题
+    - 浏览器 提供发送 ajax的 内置对象 不同
+        1) 标准： XMLHttpRequest 对象 进行实例化  ajax 请求对象
+        2) IE： ActiveXObjct( Mic )
+        3) 其他的都是一样的 例如 open send starts reponseText 

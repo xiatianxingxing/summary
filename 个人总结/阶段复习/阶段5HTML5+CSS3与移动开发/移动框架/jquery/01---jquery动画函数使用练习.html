@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<title>jquery框架使用练习及插件使用</title>
+	<link rel="stylesheet" type="text/css" href="jquery-ui.css">
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+
+		.box {
+			width: 100%;
+			margin-top: 10px;
+			padding: 0px 20px ;
+			box-sizing: border-box;
+			font-size: 18px;
+			font-family: "楷体";
+		}
+		.header,
+		.header2 {
+			width: 100%;
+			line-height: 50px;
+			text-align: left;
+			padding: 0 10px;
+			box-sizing: border-box;
+			color: #fff;
+			background-color: #ff8800;
+			border-radius: 5px;
+
+		}
+		.header2 {
+			background-color: #1ad6e4;
+			color: #fff;
+		}
+		.header-in,
+		.header-in2 {
+			border-radius: 5px 5px 0 0 ;
+			width: 100%;
+			line-height: 50px;
+			text-align: left;
+			padding: 0 10px;
+			box-sizing: border-box;
+			color: #fff;
+			background-color: #ff8800;
+		}
+		.header-in2 {
+			background-color: #1ad6e4;
+			color: #fff;
+		}
+		.main,
+		.main2 {
+			width: 100%;
+			padding: 10px;
+			line-height: 24px;
+			color: #ff8800;
+			display: none;
+			box-sizing: border-box;
+			border: 1px solid #ff8800;
+			border-radius: 0 0 5px 5px;
+		}
+		.main2 {
+			border: 1px solid #1ad6e4;
+			color: #1ad6e4;
+		}
+	</style>
+	<script type="text/javascript" src="jquery-1.12.2.js"></script>
+	<script type="text/javascript" src="jquery-ui.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$(document).click(function(){
+				console.log("haha");
+			})
+			// slideToggle 进行滑入 滑出 效果
+			$(".header").on("click",function(){
+				$(this).toggleClass("header-in");
+				$(".main").slideToggle();
+			})
+			// fadeToggle  进行淡入 淡出 效果
+			$(".header2").on("click",function(){
+				$(this).toggleClass("header-in2");
+				$(".main2").fadeToggle();
+			})
+		})
+	</script>
+</head>
+<body>
+<div class="box">
+	<div class="header">湾里区介绍---slideToggle效果</div>
+	<div class="main">内容---湾里区位于南昌西郊，距市中央18千米。东南邻新建县，西毗安义县，北接永修县。全区总面积251平方千米。人口9万（2013年），其中非农业人口37274人。全区辖站前街道、幸福街道2个街道和招贤镇、梅岭镇、罗亭镇、太平镇4个镇。共有11个社区（居委会）、37个行政村。区政府驻招贤镇。<br />
+	主要河流有锦江、赣江尾闾和修水支流潦河。属亚热带季风潮湿天气，雨量充沛，日照丰硕，年降水量1700毫米，年均匀气温14.5℃－17.6℃。古“豫章十景”之一的“洪崖丹井”为省级文物保护单位。景点有省级重点风景名胜区梅岭国家森林公园，天宁古寺，洗药湖避暑山庄等。</div>
+</div>
+
+<div class="box">
+	<div class="header2">自然介绍---fadeToggle效果</div>
+	<div class="main2">内容---竹木资源主要有：杉木、马尾松、湿地松、柳杉、鹅掌楸、桑树、樟树、 水杉、红豆杉
+	、三尖杉、木荷、银杏、毛竹、油茶、雷竹、早竹、苦槠、黄竹、水竹、凤尾竹、罗汉竹、小山竹、麻竹、文竹、棕竹、香石竹、苦竹、米槠、尖栗、杨树、青岗栎、银杏、猕猴桃等100余种。药材资源主要有：桔梗、前胡、沙参、花粉、爬萎、虎杖、干葛、麦冬、 银花、车 前草、金钱草、野菊花、大青叶、黄精、银杏叶、女贞子、骨碎补、白马骨、锈花针、白花 蛇舌草、苍耳子等200余种。<br />
+	主要河流有锦江、赣江尾闾和修水支流潦河。属亚热带季风潮湿天气，雨量充沛，日照丰硕，年降水量1700毫米，年均匀气温14.5℃－17.6℃。古“豫章十景”之一的“洪崖丹井”为省级文物保护单位。景点有省级重点风景名胜区梅岭国家森林公园，天宁古寺，洗药湖避暑山庄等。</div>
+</div>
+
+<h2 style="text-indent: 1em;margin: 20px 0 ;">jQuery插件使用练习</h2>
+
+<fieldset style="padding:2px 5px 5px 5px;">
+	<legend>Rental Car</legend>
+	<div id="controlgroup">
+		<select id="car-type">
+			<option>Compact car</option>
+			<option>Midsize car</option>
+			<option>Full size car</option>
+			<option>SUV</option>
+			<option>Luxury</option>
+			<option>Truck</option>
+			<option>Van</option>
+		</select>
+		<label for="transmission-standard">Standard</label>
+		<input type="radio" name="transmission" id="transmission-standard">
+		<label for="transmission-automatic">Automatic</label>
+		<input type="radio" name="transmission" id="transmission-automatic">
+		<label for="insurance">Insurance</label>
+		<input type="checkbox" name="insurance" id="insurance">
+		<label for="horizontal-spinner" class="ui-controlgroup-label"># of cars</label>
+		<input id="horizontal-spinner" class="ui-spinner-input">
+		<button>Book Now!</button>
+	</div>
+</fieldset>
+<script type="text/javascript">
+	$( "#controlgroup" ).controlgroup();
+</script>
+</body>
+</html>

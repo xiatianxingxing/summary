@@ -1,0 +1,31 @@
+-> 看commonJS 执行顺序 和特征
+    - commonJS介绍
+        1) commonJS 就是在 node 中的 模块化  浏览器中的模块化是 require
+    - 特征：commonJS 执行的顺序
+        1) exports给输出对象 上挂载 成员 最后将对象 进行 模块 出去
+            - 执行顺序
+                1. 我们在 main.js文件中 先 导入 require(a.js) 文件 那么 main.js停止在这里 去执行a.js中的代码啦
+                2. 执行 a.js 
+                    2.1 执行 exports.done=false 向a.js导出 对象上 挂载 一个属性 属性值为 false
+                    2.2 执行 require(./b.js); 那么 a.js 代码停止 去执行 b.js的代码
+                3. 执行 b.js
+                    3.1 执行 exports.done = true; 向导出 对象上挂载 一个成员 done 为true
+                    3.2 执行 require( ./a.js ) 那么去执行 a.js文件 系统这个是发现 a.js含有 export那么不会去a.js文件执行啦 系统会去a.js模块对应对象的 exports 属性取值  因为它含有 那么就会在去 执行 a.js啦 
+                    3.3 接着执行 b.js文件下的代码
+                    3.4 代码执行完成 回退到 a.js 接着上次执行到的位置 接着执行
+                4. 执行 a.js
+                    2.3 将a.js 以下的代码 进行执行
+                    2.4 执行完成之后 那么会 回到 main.js文件中
+            - 执行结果 执行main.js代码完成的结果  下面输出的结果
+                、、、
+                    看a.js返回的是什么呢false
+                    b.js执行完成
+                    commonJs是边执行边引用的
+                    我们看b返回的结果是true
+                    a.js执行完成
+                    在 main.js 之中, a.done=false, b.done=true
+                    main.js文件执行完成
+                、、、javascript
+            - 总结：
+                - 那么就是 在文字中进行 require 模块的话 那么读取到这里 
+                - 代码会 停止 执行 去执行 所引用的模块 当前模块执行完成后 在执行 以下的代码

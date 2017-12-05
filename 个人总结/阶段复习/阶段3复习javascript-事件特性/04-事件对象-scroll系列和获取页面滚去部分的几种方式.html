@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            height: 3000px;
+        }
+        #demo {
+            height: 300px;
+            width: 300px;
+            background-color: #00eeff;
+            overflow: scroll;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费哈哈比较好把好久不见哈巴河祭敖包符合叫安保费</div>
+
+    <script>
+        // scroll 系列是获取到滚动条的信息
+        // scrollTop
+        var demo =document.getElementById("demo");
+        // 只有含有滚动条的元素才能触发滚动条事件
+        // scrollTop 获取元素内容 被滚去的内容高度
+        // scrollLeft 水平滚动条滚去的内容部分
+        demo.onscroll =function(){
+            console.log(demo.scrollTop);
+        }
+        // scrollHeight  获取元素内容的高度 这个与offsetHeight 不同的  scrollWidth  也是相同的概念 offsetWidth
+        console.log(demo.scrollHeight);//546
+        console.log(demo.offsetHeight);//300
+        // 从以上可以看到  scroll 与 offset  的区别  
+        // 获取到的也是一个数值
+
+
+        // 获取页面被滚去的部分高度  获取是Y轴方向 被滚动条 滚去的部分高度
+        // 获取含有3种方式  
+        // 1.window.pageX/Yoffset 
+        // 2.document.documentElement.scrollTop
+        // 3.document.body.scrollTop
+        window.onscroll =function(){
+            // console.log(window.pageYOffset);
+            // console.log(document.documentElement.scrollTop);
+            console.log(document.body.scrollTop);
+        }
+        // document.onscroll =function(){
+        //     console.log(document.documentElement.scrollTop);
+        // }
+        // pageXoffset  获取水平滚动条 滚去的部分
+
+
+        // 注意：获取页面滚动坐标非常重要  可以用于模仿锚点定位功能  侧边栏的页面定位  熟练掌握
+        
+    </script>
+</body>
+</html>

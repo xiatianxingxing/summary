@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Document</title>
+    <script src="../vue221.js"></script>
+    <script src="../vue-router231.js"></script>
+</head>
+<body>
+<div id="app">
+    <router-link to="/dage/zhi">知</router-link>
+    <router-link to="/dage/zu">足</router-link>
+
+    <router-view></router-view>
+</div>
+</body>
+<script>
+    var dage = Vue.extend({
+        template:"<div>什么鬼 <router-view></router-view></div>"
+    })
+
+
+    var zhi = Vue.extend({
+        template:"<h3>什么都不会啊</h3>"
+    });
+    var zu = Vue.extend({
+        template:"<h3>hehehehehehehehe</h3>"
+    })
+
+    var router = new VueRouter({
+        routes:[{
+            path:"/dage",
+            component:dage,
+            children:[
+                {
+                    path:"/dage/zhi",
+                    component:zhi
+                },
+                {
+                    path:"/dage/zu",
+                    component:zu
+                }
+            ]
+        }]
+    })
+
+
+
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        // 添加路由
+        router:router,
+        methods:{
+
+        }
+    })
+</script>
+</html>

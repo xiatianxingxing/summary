@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- <link rel="stylesheet" href="css/jquery.fullPage.css"> -->
+    <!-- jquery.easings.min.js 用于 easing 参数，也可以使用完整的 jQuery UI 代替，如果不需要设置 easing 参数，可去掉改文件 -->
+    <!-- <script src="js/jquery.easings.min.js"></script> -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <!-- 全屏插件的默认结构  每一个section 都是一屏  -->
+    <div id="dowebok">
+        <div class="section">
+            <h3>第一屏</h3>
+        </div>
+        <div class="section">
+            <h3>第二屏</h3>
+        </div>
+        <div class="section">
+            <h3>第三屏</h3>
+        </div>
+        <div class="section">
+            <!-- 可以在每屏中书写要展示的内容  -->
+            <h3>第四屏</h3>
+        </div>
+    </div>
+    <script src="js/jquery.js"></script>
+    <script src="./js/jquery.fullPage.min.js"></script>
+    <script>
+        $(function(){
+            $('#dowebok').fullpage({
+                sectionsColor:["#ff8800","#00eeff","#ee00ff","red"]
+            });
+
+        });
+    </script>
+</body>
+</html>

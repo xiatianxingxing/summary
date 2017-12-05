@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>09-创建元素的几种方式</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        
+    </div>
+    <script>
+        // 方式1：使用document.write();
+        // 传入符合标签语法的字符串  该方式会将所以在文档中元素进行覆盖
+        // 强烈建议不要使用这个方式进行创建元素 非常难 控制 并且还会覆盖之前的元素
+        // document.write("<h1>使用write方法渲染的元素</h1>");
+
+        // 方式2：使用innerHTML 属性
+        // 传入符合标签语法的字符串  该属性DOM对象都可以进行使用啦  也会将之前元素中含有的标签进行覆盖  不够可以这样进行操作  innerHTML += "" --元素就是在原来的基础上添加元素
+        // 创建多个元素是可以考虑使用该方式
+        // 缺点就是不太好控制
+        var demo =document.getElementById("demo");
+        demo.innerHTML = "<a href='javascript:void(0);'>innerHTML</>";
+
+        // 方式3；使用document.createElement();
+        // 传入标签名称的字符即可  一次只能创建一个元素
+        // 优点 非常好进行控制
+        // 缺点 一次只能创建一个元素  元素创建出来现加入到页面中  步骤较多
+        var div = document.createElement(div);
+        div.id = "fa";
+        div.innerHTML = "<strong>createElement方法进行设置</strong>";
+        // 需要进行加入到页面中
+        document.body.appendChild(div);
+
+
+        // 总结：一次创建多个  使用innerHTML
+        // 想要精确的控制 那么就是 使用 createElement 进行创建元素  以上都没有兼容性的问题
+
+    </script>
+</body>
+</html>

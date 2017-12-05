@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>测试jq_serialize方法</title>
+  <script type="text/javascript" src="./js/jquery.js"></script>
+  <script type="text/javascript">
+      $(function(){
+          $("#getFormInfo").on("click",function(){
+            //   url  location . search hasy
+            // serialize 用于获取表单提交的数据 可以进行验证 不过不建议进行使用的
+            // 一个在输入框失去焦点的时候进行验证的
+              var info = $("#testForm").serialize();
+              alert(info);
+          })
+      })
+  </script>
+</head>
+<body>
+  <form id="testForm">
+      <input type="text" placeholder="您的姓名" name="userName">
+      <input type="text" placeholder="您的爱好" name="userHabbit">
+      <input type="text" placeholder="您最喜爱的食物" name="userHabbit">
+  </form>
+  <input type="button" value="格式化表单数据" id="getFormInfo">
+</body>
+</html>

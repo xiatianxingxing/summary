@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+	<title>iScroll框架移动端练习</title>
+	<style type="text/css">
+		* {
+			margin: 0;
+			padding: 0;
+		}
+		html,body {
+			width: 100%;
+			height: 400px;
+		}
+		ul,li {
+			list-style: none;
+		}
+		.fa {
+			/*width: 100%;*/
+			margin-left: 100px;
+			box-sizing: border-box;
+			height: 100%;
+			overflow: hidden;
+			position: relative;
+		}
+		.son {
+			width: 100%;
+			overflow: hidden;
+		}
+		.son > li {
+			float: left;
+			width: 25%;
+			box-sizing: border-box;
+		}
+		.son > li > a {
+			line-height: 100px;
+			background-color: #ff8800;
+			border: 1px solid #fff;
+			text-align: center;
+			font-size: 55px;
+			text-decoration: none;
+			display: block;
+			width: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class="fa">
+		<ul class="son">
+			<li><a href="javascript:;">01</a></li>
+			<li><a href="javascript:;">02</a></li>
+			<li><a href="javascript:;">03</a></li>
+			<li><a href="javascript:;">04</a></li>
+			<li><a href="javascript:;">05</a></li>
+			<li><a href="javascript:;">06</a></li>
+			<li><a href="javascript:;">07</a></li>
+			<li><a href="javascript:;">08</a></li>
+			<li><a href="javascript:;">09</a></li>
+			<li><a href="javascript:;">10</a></li>
+			<li><a href="javascript:;">11</a></li>
+			<li><a href="javascript:;">12</a></li>
+			<li><a href="javascript:;">13</a></li>
+			<li><a href="javascript:;">14</a></li>
+			<li><a href="javascript:;">15</a></li>
+			<li><a href="javascript:;">16</a></li>
+			<li><a href="javascript:;">17</a></li>
+			<li><a href="javascript:;">18</a></li>
+			<li><a href="javascript:;">19</a></li>
+			<li><a href="javascript:;">20</a></li>
+			<li><a href="javascript:;">21</a></li>
+			<li><a href="javascript:;">22</a></li>
+			<li><a href="javascript:;">23</a></li>
+			<li><a href="javascript:;">24</a></li>
+			<li><a href="javascript:;">25</a></li>
+			<li><a href="javascript:;">26</a></li>
+			<li><a href="javascript:;">27</a></li>
+			<li><a href="javascript:;">28</a></li>
+			<li><a href="javascript:;">29</a></li>
+			<li><a href="javascript:;">30</a></li>
+			<li><a href="javascript:;">31</a></li>
+			<li><a href="javascript:;">32</a></li>
+			<li><a href="javascript:;">33</a></li>
+			<li><a href="javascript:;">34</a></li>
+			<li><a href="javascript:;">35</a></li>
+			<li><a href="javascript:;">36</a></li>
+		</ul>
+	</div>
+	<!-- 注意：
+				使用iscroll框架进行滑动效果的话  结构最好使用以上这样的  是指结构哦
+				例如：
+					<div id="haha">
+						<div>
+							<p>...</p>
+							<p>...</p>
+							<p>...</p>
+							<p>...</p>
+						</div>
+					</div>
+				这样也是可以的  结构正确就ok啦
+	 -->
+	<script type="text/javascript" src="iscroll-zoom.js"></script>
+	<!-- 使用该框架的作用  让ul能进行滚动  出现滚动条 -->
+	<!-- 出现滚动条  一定是子元素  大于父元素  才能出现滚动条的情况 -->
+	<script type="text/javascript">
+	/*建议使用傲游浏览器手机模拟器进行测试*/
+	/*谷歌模拟器支持不太好  手机没有问题*/
+	/*
+		首先要iscroll的框架js文件进行引入
+		引入之后呢  在新的script标签中
+		new一个IScroll函数对象  参数1为结构最外层的标签元素  参数2为一个对象  可以在这里进行参数设置
+	 */
+		var myScroll = new IScroll('.fa', {
+			/*设置是否可以使用滚轮进行滑动 -----针对pc端的 mouseWheel滚轮事件*/
+    		mouseWheel: true,
+    		/*设置是否显示滚动条  记得给参数1 元素添加定位  不然滚动条在body或其他元素身上*/
+    		scrollbars: true
+		});
+	</script>
+</body>
+</html>

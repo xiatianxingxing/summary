@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>03-DOM操作中的元素事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div.inline,.javas,.addev,span {
+            display: block;
+            width: 300px;
+            height: 300px;
+            background-color: #ee0099;
+            margin: 100px auto;
+            text-align: center;
+            line-height: 300px;
+            font-size: 30px;
+        }
+    </style>
+</head>
+<body>
+    <!--行内的方式设置事件发生时响应的函数-->
+    <div class="inline" onclick="dispose()"></div>
+    <div class="javas">点击更换背景颜色</div>
+    <div class="addev">DOM2事件绑定方式</div>
+    <!--该标签用于测试IE8以下是否支持addEventListener方法-->
+    <span>用于addEventListener</span>
+    <script>
+        // DOM中的事件 就是在元素中方式一个行为  那么元素需要作出什么响应呢  事件就是用于在页面作出不同的行为对需要不同的响应的
+
+
+        // 方式一  在标签中设置事件发生时 作出的响应  假如是点击事件  这个方式是DOM0版本中的事件处理机制
+        function dispose(){
+            console.log(this);//window
+        }
+
+
+        // 方式二  这里复习 事件三要素 的 处理事件响应的机制
+        // 获取到指定的元素
+        var inlne = document.getElementsByClassName("javas")[0];
+        // 事件三要素  就是 事件源 - 触发事件 - 事件处理程序
+        // 事件源---就是触发事件的元素  这个在事件特性的复习阶段会加深复习的
+        // 事件---触发的事件---就是页面上的方式的行为  不同的事件对应着不同的行为
+        // 事件处理程序---就是事件发生了 js 要作出一种响应
+        inlne.onclick =function(){
+            this.style.backgroundColor = "#ff8800";
+            console.log("事件三要素的方式---事件处理函数会进行覆盖的")
+        }
+
+        // 方式三 复习事件绑定  就是该某个元素绑定事件 在事件触发时执行一个函数   DOM2
+        // 这里需要使用到一个方法  addEventListener();传入参数为3个 参数3可以不进行传入  事件特性阶段会进行复习的  注意点 该方法具有兼容性的问题  IE8以下不支持
+
+        // 测试IE8以下说法支持addEventListener
+        // 获取到元素  IE9可以触发 IE8及其以下进行报错  getElementsByClassName导致的
+        var span =document.getElementsByTagName("span")[0];
+        span.addEventListener("click",function(){
+            console.log("请在IE8以下进行测试该事件绑定方法");
+        },true)
+
+
+        // 该方式的特点： 1.不会覆盖之前对应元素事件设置的事件处理函数  会进行叠加
+        //               2.需要解绑指定的事件处理函数 如果该函数没有函数名 那么无法进行解绑 解绑方式还是不同的
+        var add = document.getElementsByClassName("addev")[0];
+        add.addEventListener("click",function(){
+            console.log("正常版-事件绑定-DOM2");
+        },true);
+        add.addEventListener("click",function(){
+            console.log("正常版-事件绑定-DOM2--事件处理函数的追加--不会进行覆盖的");
+        },true);
+        // IE版的  IE及其以下支持的是这个事件绑定机制  含有2个参数  这个方式现在chrome浏览器会进行报错的  需要注意啦  可以在IE中进行测试  由于getElementsByClassName 在IE中也含有兼容性的问题 那么无法注册事件(在IE,6,7,8标准模式下) 是无法进行识别的
+        // 参数1:  绑定事件  需要加on的   
+        // 参数2:  事件处理函数
+        add.attachEvent("onclick",function(){
+            console.log("IE版-事件绑定-DOM2--事件处理函数的追加--不会进行覆盖的--注意IE与正常版的区别--面试可能进行提问的")
+        });
+
+
+
+
+        // 事件的总结：一些常用的事件需要记住  清楚兼容性的问题 addEventListener 与 attachEvent 的 参数区别
+        // 常用事件 onmouseove-onmouseover-onmouseout-onmouseup-onmousedown-onclick-ondblclick-onkeyup-onkeydown-onkeypress-onfocus-onblur-oninput-onchange-onresize-onscroll-onload等等
+        // 一些方法的兼容性的问题
+    </script>   
+</body>
+</html>

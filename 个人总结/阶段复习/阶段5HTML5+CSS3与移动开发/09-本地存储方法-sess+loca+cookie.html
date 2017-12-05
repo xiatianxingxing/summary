@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <h3>sessionStorage存储</h3>
+    <input type="text" placeholder="请输入键的名称" id="key">
+    <input type="text" placeholder="请输入值" id="code"> <br>
+
+    <input type="button" value="存储" id="sess">
+    <input type="button" value="删除" id="dale">
+
+    <h3>localStorage存储</h3>
+    <input type="text" placeholder="请输入键的名称" id="key2">
+    <input type="text" placeholder="请输入值" id="code2"> <br>
+
+    <input type="button" value="存储" id="loca2">
+    <input type="button" value="删除" id="dale2">
+    <script>
+    
+        var key = document.getElementById("key");
+        var code = document.getElementById("code");
+
+        var sess = document.getElementById("sess");
+        var dale = document.getElementById("dale");
+
+        // 进行设置sessionStorage 存储数据  该存储方式是将字符存储在客户端机 的硬盘中的 
+        // 删除需要进行手动的删除的
+        sess.onclick = function () {
+            var one = window.sessionStorage;
+            one.setItem(key.value,code.value);
+        }
+        dale.onclick = function () {
+            var sion = window.sessionStorage;
+            sion.removeItem(key.value);
+        }
+        
+        // 进行localStorage 方式进行存储数据  该方式存储数据是存储在当前的页面的内存中  页面关闭 内存被浏览器进行回收 那么存储的数据就被回收啦
+        var key2 = document.getElementById("key2");
+        var code2 = document.getElementById("code2");
+
+        var sess2 = document.getElementById("loca2");
+        var dale2 = document.getElementById("dale2");
+
+        // 进行设置sessionStorage 存储数据  该存储方式是将字符存储在客户端机 的硬盘中的 
+        // 删除需要进行手动的删除的
+        loca2.onclick = function () {
+            var one = window.localStorage;
+            one.setItem(key2.value,code2.value);
+        }
+        dale2.onclick = function () {
+            var sion = window.localStorage;
+            sion.removeItem(key2.value);
+        }
+
+        // sessionStorage 与 localStorage 之间的优缺点
+        // sessionStorage 可以进行在同一个浏览器 中 共享数据  但是需要进行手动的进行删除数据  存储的空间是 20M
+        // localStorage 只能在当前打开的页面 进行存储数据  页面关闭则数据 被回收  存储的空间是 5M
+
+
+        // cookie
+        // 该方式存储字符 存储的空间将小  一个页面可以进行存储20次  单次的字符大小 不可以超过4kb  超过会进行截取
+
+    </script>
+
+    
+</body>
+</html>

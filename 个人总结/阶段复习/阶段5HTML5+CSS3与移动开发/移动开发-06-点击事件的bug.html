@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body,html {
+            width: 100%;
+            height: 100%;
+            background-color: #ccc;
+        }
+        div {
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            font-size: 40px;
+            color: #fff;
+            position: absolute;
+            left: 0;
+            top: 0;
+        }
+        #demo1 {
+            background-color: #ee00ff;
+            line-height: 80px;
+            opacity: 0.6;
+        }
+        #demo2 {
+            background-color: rgba(0,238,255,0.3);
+            line-height: 500px;
+            color: #000;
+            width: 80%;
+            height: 80%;
+            left: 10%;
+            top: 10%;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo1">
+        我是底层盒子
+        <div id="demo2">
+            我是上方盒子
+        </div>
+    </div>
+
+
+    <script>
+        // 在移动开发中 会有一个bug  就是点透的效果 
+        // 解释：  就是点击上方的盒子  该盒子的事件被触发 但是下方元素的事件也会被触发 
+        // 就产生了 点透 的效果 
+        // 进行  例子 测试
+        var demo1 = document.querySelector("#demo1");
+        var demo2 = document.querySelector("#demo2");
+        demo1.addEventListener("click",function(){
+            console.log("demo1元素的点击事件---是否发生点透bug");
+        });
+        demo2.addEventListener("click",function(e){
+            console.log("demo2元素的点击事件---是否发生点透bug--输出2句就产生bug啦");
+        });
+        // 这个冒泡导致 在开发中 如果存在用于相同的事件 并且位于同一个父元素下 注意进行 阻止冒泡
+        // 阻止冒泡 标准版 e.stopPropagation();
+        // 阻止冒泡 IE版 e.cullBubble = true;
+
+    </script>
+</body>
+</html>

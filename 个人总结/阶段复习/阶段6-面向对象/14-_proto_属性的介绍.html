@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        function Person(name,age,aihao) {
+            this.name = name;
+            this.age = age;
+            this.aihao = aihao;
+            this.hello = function() {
+                console.log(this.name);
+            }
+        }
+        var obj = new Person("xiaoming",22,"datoutou");
+        console.log(obj);
+        // __proto__属性的作用 也是执行 实例对象的原型对象  不过该属性不是W3C标准的语法 但是每个浏览器都支持的语法标准
+        // 建议 少使用的情况
+        // 而且使用的时候  注意的 每边是 2个_ _ 注意了 别写成一个
+        console.log(obj.__proto__);
+    </script>
+</body>
+</html>

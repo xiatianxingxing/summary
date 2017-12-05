@@ -1,0 +1,109 @@
+-> 1.在IE6及更早浏览器中定义最小高度的容器
+    - #dv{
+        overflow:hidden;
+        height:1px;
+        font-size:0;
+        line-height:0;
+    }
+    - 在 IE5中 无法 定义最小高度的元素 默认行高 无法 进行设置
+
+-> 2.解决IE6及更早浏览器浮动时产生双倍边距的BUG？
+    - 将浮动元素 设置了 外边距 在标准中会进行合并 外边距 但是在IE 中不会进行合并 会产生 双倍的外边距问题
+    - 解决方案
+        - #dv{display:inline;}
+        - 将 浮动元素 的元素显示方式 切换为 inline 行级方式
+
+-> 3.在IE6及更早浏览器下模拟min-height效果？
+    - 在IE6 中 无法设置 min-height 最小 高度 我们 进行模拟
+    - #test{min-height:100px;_height:100px;}
+    - 需要注意点 元素不能设置 overflow:hidden;  不然会无效
+-> 4.如何解决按钮在IE7及更早浏览器下随着value增多两边留白也随着增加的问题？
+    - 就是 按钮的内容增加  那么文字两边的空白会 自动的 撑开
+    - input,button { overflow: visible }
+    - 标准的 浏览器 并没有 留白的问题
+
+-> 5.在IE6 及 更早的浏览器 中 3像素 bug 
+    - 当 2个兄弟元素 进行向左浮动是 会产生一个 3像素 的 bug 进行解决
+    - 设置 _margin-right: 3px;
+    - IE6 兼容写法 是在 样式前 添加 _ 那么就可以完成兼容性的问题
+
+
+-> 6.IE6 中的文本 溢出问题 bug  产生这个问题 就是 浮动 注释等等问题
+    - 解决方案 
+        1) 将元素之间的注释 进行删除 或者将 元素 进行取消 浮动
+        2) bug 就会被解决掉
+
+-> 7.在 IE6 中 无法 识别 first-letter  和 first-line 伪类 选择器
+    - 解决方案 就 在  在选择器 与 花括号 之间 添加 一个 空格 或者 进行 换行
+    - p:first-letter {} 
+    - p:first-line
+                    {}
+    - 那么这样 都是 可以 解决兼容性的问题的
+    - 并且不要使用 两个 冒号
+
+
+-> 8.当 disable 元素 中的内联元素 以 块级显示 会产生一个 底部的留白 bug
+    - 该内联元素 添加 zoom 样式 为 1
+
+
+
+-> 9.在 IE 中 未设置 宽高 的 浮动元素或者绝对定位的元素 会被拥有 zoom 样式的 后代元素 撑开 bug
+    - 设置拥有 zoom 元素的 width 为0 
+    - 将拥有 zoom 元素 设置 为 浮动的 元素
+    - 设置拥有 zoom 样式的 元素 为 inline
+
+
+- 10.如何解决IE7及更早浏览器下子元素相对定位时父元素overflow属性的auto|hidden失效的问题？
+    - 设置 父元素的 position 为 relative 那么就 可以解决 这个兼容性的问题
+
+
+
+-> css技巧
+
+-> 解决 img 的底部的 空白间隙问题
+    - 1.设置 img 的disable样式 值为 block 那么就可以 解决 这个 小 bug
+    - 2.设置 vertain-align 文字 的垂直方向的对齐方式 为 top 设置 为 bottom 也是可以的
+    - 3.设置 父元素的 font-size 为0 和 line-height 为 0
+    - disable:block; vertain-align: bottom / top font-size:0px; line-height:0;
+
+-> 如何让 文本 垂直在 input 中 
+    - 设置 line-height  与 input的height相同
+    - 设置 vertain-align 为 middle
+-> 让单行 文本 进行垂直 居中 
+    - 设置 line-height 与 容器的 height 相同
+-> 设置 a 标签的 样式  防止在IE 下 进行失效 那么需要安装 link-visited-hover-active 的顺序 进行设置 连接标签的状态样式
+    - a:link 链接的基本样式 是未点击之前
+    - a:visited 点击完成后的链接 样式
+    - a:hover 鼠标位于 链接标签上显示的样式
+    - a:active 鼠标在 链接上按下的时候 显示的样式
+
+-> 设置 滚动条的颜色值
+    - 	
+        scrollbar-3dlight-color:#999;
+        scrollbar-darkshadow-color:#999;
+        scrollbar-highlight-color:#fff;
+        scrollbar-shadow-color:#eee;
+        scrollbar-arrow-color:#000;
+        scrollbar-face-color:#ddd;
+        scrollbar-track-color:#eee;
+        scrollbar-base-color:#ddd;
+        
+    - zai IE 下 需要 设置在 html 标签上 不然是无效的
+
+
+-> 设置文本 强制在一行中 进行显示
+    - 设置 white-space 属性为 nowrap  可以了解 强制一行显示属性 比较常用
+-> 让 溢出的文本 以 ... 显示
+    - 需要结合 overflow:hidden 进行结合 使用 
+    - 设置 text-overflow:ellipsis 属性 当前 该元素内的文字 溢出是 以 ... 进行代表
+
+
+-> 如果让未知 图片 大小 在 元素 中 进行居中显示
+    - 看实例  但是我觉得太麻烦啦
+    - 设置 img 为 position为absolute  设置 left/top 50% 在使用 translate回来自身的一半
+    - 或者 设置 position为absolute 设置 top/bottom/left/right 为0  也行
+    
+-> 在IE下 进行设置 透明度
+    - filter:alpha(opacity=20); 
+-> 在输入框中禁止输入 中文样式
+    - ime-mode:disabled;

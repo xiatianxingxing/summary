@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!-- 点击发送请求 并且禁用按钮  -->
+    <input type="button" value="点击请求" id="btn">
+    
+    <script>
+        var btn = document.getElementById("btn");
+        btn.addEventListener("click",function() {
+            // ajax 请求 是使用 浏览器提供的一个内置对象的 XMLHttpRequest 对象进行发起请求的
+            // 使用对象 进行实例化  IE中提供的对象不同的  含有兼容性的问题
+            var xhr = new XMLHttpRequest();
+            console.log(xhr);
+            // 创建 对象 就可以发送请求啦
+            // 进行设置请求的地址
+            // open 准备发送  设置参数
+            // 参1 请求的方式 参2 请求的地址  参数设置 同步与 异步  默认是 异步true
+            xhr.open("get","./01-PHP基本语法.php",true);
+            // 发送请求
+            xhr.send(null);
+            // 数据返回回来 触发该事件
+            xhr.onreadystatechange = function () {
+                // 检测数据是否有 
+                if(xhr.readyState === 4) {
+                    // 兼容数据的正确性
+                    if(xhr.status === 200) {
+                        // 使用 xhr.responseText 进行获取到返回数据
+                        var data = xhr.responseText;
+                        console.log(data);
+                    }
+                }
+            }
+        },false)
+    </script>
+
+
+    
+</body>
+</html>

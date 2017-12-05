@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style>
+        .box{
+
+        }
+    </style>
+</head>
+<body>
+<div id="app">
+    <button v-on:click = "myEvent">button</button>
+</div>
+</body>
+<script src="vue1026.js"></script>
+<!--<script src='vue221.js'></script>-->
+<script>
+    var vm = new Vue({
+        el:"#app",
+        data:{
+
+        },
+
+        methods:{
+            myEvent: function () {
+                console.log(123);
+            }
+        }
+    })
+</script>
+</html>

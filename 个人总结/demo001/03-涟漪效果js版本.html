@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #demo {
+            position: relative;
+            margin: 100px auto;
+        }
+        #demo > input {
+            display: block;
+            padding: 10px;
+            border: none;
+            outline: none;
+            margin: 0 auto;
+            position: relative;
+            z-index: 999;
+        }
+        #demo > div {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            width: 0;
+            height: 0;
+            transform: translate( -50% , -50% );
+            transition: width 1s , height 1s;
+            z-index: 10;
+            border-radius: 50%;
+        }
+        .before {
+            background-color: rgba(0, 0, 0, 0.6)
+        }
+        
+        .after {
+            background-color: rgba(0, 0, 0, 0.3)
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <input type="button" value="涟漪">
+        <div class="before"></div>
+        <div class="after"></div>
+    </div>
+
+    <script>
+        // 业务 需求 在点击 input 按钮的情况下 让按钮产生涟漪效果
+        // 注册点击事件
+        var btn = document.querySelector( "input" );
+        var before = document.querySelector( ".before" );
+        var after = document.querySelector( ".after" );
+        var index = 0;
+        btn.addEventListener( 'click' , function( ) {
+            var arr = [ 70  , 0 ];
+            var arr2 = [ 100 , 0 ];
+            fn(arr[index] , arr2[index]);
+            for( var k = 1 ;k< 6; k++ ) {
+                setTimeout( function () {
+                    if( index == 1 ) {
+                        index = 0;
+                    }else {
+                        index++;
+                    }
+                    console.log(index);
+                    fn(arr[index] , arr2[index]);
+                }, 1000 * k );
+            }
+            
+        })
+    function fn(width , afwidth) {
+        before.style.width = width + "px" ;
+        before.style.height = width + "px" ;
+        after.style.width = afwidth + "px" ;
+        after.style.height = afwidth + "px" ;
+    }
+    </script>
+
+
+</body>
+</html>
+

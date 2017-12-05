@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>04-DOM利用循环给多个元素注册事件</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            display: block;
+            width: 50px;
+            height: 50px;
+            line-height: 50px;
+            text-align: center;
+            background-color: #ff8800;
+            margin-bottom: 5px;
+        }
+    </style>
+</head>
+<body>
+    <a href="javascript:;">1</a>
+    <a href="javascript:;">2</a>
+    <a href="javascript:;">3</a>
+    <a href="javascript:;">4</a>
+    <a href="javascript:;">5</a>
+    <a href="javascript:;">6</a>
+    <a href="javascript:;">7</a>
+    <a href="javascript:;">8</a>
+    <a href="javascript:;">9</a>
+    <a href="javascript:;">10</a>
+    <script>
+        var links =document.getElementsByTagName("a");
+        console.log(links);
+        // 利用循环该多个元素注册事件  注意所有的a标签都拥有了点击事件啦  这个事件处理函数 只是在事件进行触发才会进行执行的
+        for(var i=0;i<links.length;i++){
+            links[i].onclick =function(){
+                console.log(this);
+            }
+        }
+    </script>
+</body>
+</html>

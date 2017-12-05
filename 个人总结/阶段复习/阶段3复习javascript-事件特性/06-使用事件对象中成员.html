@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #fa {
+            width: 350px;
+            height: 350px;
+            background-color: #0088ee;
+            margin: 50px auto;
+        }
+    </style>
+</head>
+<body>
+    <div id="fa"></div>
+    <script>
+        var fa =document.getElementById("fa");
+        fa.onclick =function(e){
+            var event = e || window.event;
+            console.log(event);
+            // 在触发事件时  将鼠标的位置进行获取  
+            // page系列  获取鼠标在文档中的位置  基准点是文档的左上角
+            console.log(event.pageX);
+
+        }
+
+        window.onclick =function(e){
+            var event = e || window.event;
+            console.log(event);
+            // 在触发事件时  将鼠标的位置进行获取  
+            // page系列  获取鼠标在文档中的位置  基准点是文档的左上角
+            console.log("page系列" + event.pageX + "-----" + event.pageY);
+            // client  获取鼠标在可视窗口的位置  未出现水平滚动条之前  值应该是相同的  在水平滚动移动之后那么值就不相同啦
+            console.log("client系列" + event.clientX + "-----" + event.clientY);
+
+            // screen系列  获取鼠标在屏幕中位置  将对应屏幕的左上角进行计算鼠标位置的  该系列使用的不多
+            console.log("screen系列" + event.screenX + "-----" + event.screenY)
+        }
+        // 鼠标弹起事件
+        window.onkeyup =function(e){
+            // 可以利用事件对象获取到按下的键  获取到的是按下键 对应的 键码
+            var evt = e || window.event;
+            console.log(evt);
+            // 获取到按下的键  对应的 键码
+            console.log(evt.keyCode);
+            // 获取到按下键 
+            console.log(evt.key);
+        }
+    </script>
+</body>
+</html>

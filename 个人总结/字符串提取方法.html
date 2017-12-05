@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        var str1 = "?title=1";
+        // 1
+        console.log(str1.replace(/\D/g,""));
+
+
+        var str2 = "?title=12&proud=22";
+        // 2
+        var arr = str2.split("&");
+        var arr2 = [];
+        arr.forEach(function(v,i){
+            console.log(v);
+            arr2.push(v.replace(/\D/g,""));
+        })
+        console.log(arr2);
+
+        var str3 = "?ti2tle22=44&pr22evs=33";
+        // 3
+        var arr3 = str3.split("&");
+        var arr4 = [];
+        arr3.forEach(function(v,i){
+            var stro = v.split("=");
+            arr4.push(stro[1].replace(/\D/g,""));
+        });
+        console.log(arr4);
+        // console.log(str.replace(/\D/g,""));
+    </script>
+</body>
+</html>

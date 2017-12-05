@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #demo {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            background-color: #ff8800;
+        }
+        #fa {
+            width: 300px;
+            height: 300px;
+            margin: 10px;
+            background-color: #00eeff;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        #fa > span {
+            display: block;
+            width: 200px;
+            height: 200px;
+            background-color: #ff8800;
+            text-align: center;
+            line-height: 200px; 
+        }
+    </style>
+</head>
+<body>
+    <div id="demo"></div>
+    <div id="fa">
+        <span>111</span>
+    </div>
+    <!--事件流复习-->
+    <script>
+        var demo = document.getElementById("demo");
+        var fa = document.getElementById("fa");
+        document.body.onclick =function(){
+            console.log("事件冒泡为阻止或者body被点击");
+        }
+        // addEventListener 绑定事件方法含有兼容性的问题  在IE8及其以下 无法进行使用
+        // addEventListener 的好处就是可以改事件绑定多个事件处理函数  不会进行覆盖
+        // 如果不想要那个事件处理函数 想要使用removeEventListener方法进行移除  如果事件处理函数是匿名的  那么是无法进行移除的 这个需要注意啦
+        demo.addEventListener("click",function(e){
+            console.log("事件的第1个处理函数被触发");
+            var evt = e || window.event;
+            // 阻止事件进行冒泡  执行事件对象的 stopPropagation方法 
+            evt.stopPropagation();
+        },true);
+        function fn(){
+            console.log("事件的第2个事件处理函数被执行");
+        }
+        demo.addEventListener("click",fn,false);
+
+        // 将demo click 事件 的第2个处理函数进行移除
+        demo.removeEventListener("click",fn,false);
+
+        // IE8及其以下 支持的事件绑定方法 attachEvent方法  由于现在chrome浏览器中会进行报错  就不进行测试啦  可以在IE中进行打开
+        // fa.attachEvent("onclick",function(e){
+        //     console.log(1);
+        //     // 该绑定方法也不会进行覆盖  需要使用datachEvent 方法进行移除
+        //     // 使用 canceBubble () 进行阻止冒泡
+        // })
+    </script>
+    <!--将jQuery文件进行引入-->
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        $(function(){
+            // 进行事件委托  该fa 元素 中的span后代元素进行触发  fa进行执行  这个就是事件委托了
+            // 含有2个参数 和 3个参数的区别
+            $("#fa").on("click","span",function(event){
+                console.log("1");
+                console.log(event);
+                // 获取事件目标 target  
+                // 注意点 在jQuery中不要使用点号语法 访问事件对象中的成员  使用关联数组的方式进行获取到
+                console.log(event["target"]);
+            });
+        })
+    </script>
+</body>
+</html>

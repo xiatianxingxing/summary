@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>HTML5中新增的属性</title>
+	<style type="text/css">
+		input {
+			width: 400px;
+			line-height: 36px;
+			font-size: 28px;
+			padding: 4px 5px;
+			box-sizing: border-box;
+			margin: 5px 0;
+		}
+	</style>
+</head>
+<body>
+	<form>
+		<input type="text" placeholder="autofocus属性-让输入框在页面打开自动获取到焦点" autofocus> <br>
+		<input type="text" required placeholder="添加required属性-要求必须输入不然无法进提交的"> <br>
+		<input type="text" pattern="/^\d{7,11}$/" placeholder="pattern属性-可以设置输入框的正则表达式"> <br>
+		<input type="text" autocomplete placeholder="autocomplate属性设置是否开启自动完成功能-就是记住用户输入的内容下次会用提示"> <br>
+		<button>提交</button>
+	</form>
+	<p>audio标签的controls属性-添加显示多媒体(video-audio)标签的控件</p>
+	<p>placeholder也是HTML5中新增的属性</p>
+	<audio controls>
+		<source src="./" type="">
+	</audio>
+</body>
+</html>

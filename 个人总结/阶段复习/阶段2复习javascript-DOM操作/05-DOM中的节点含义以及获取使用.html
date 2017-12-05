@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>05-DOM中的节点含义以及获取使用</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <ul id="ul">
+        <li><span>内容1</span></li>
+        <li><span>内容2</span></li>
+        <li>
+            <em>hehe</em>
+            <span id="span" value="hehe">内容3</span>
+            <a href="javascript:void(0);">lianjie</a>    
+            <strong>着重标签</strong>
+        </li>
+        <li><span>内容4</span></li>
+        <li><span>内容5</span></li>
+    </ul>
+    <script>
+        // 概念  文档中每一个部分都是一个节点  包含注释 body head 等等 
+        // 节点中分为  元素节点 属性节点 文本节点 注释节点  使用nodeTyep属性继续判断 每个节点都拥有该属性
+        // 获取节点的几个属性 和 方法
+        // 获取 父节点 parentNode-属性  获取到一个
+        // 获取 子节点 childNodes-属性  获取到指定元素的所以子节点
+        // 获取 子元素节点 children-属性 获取到指定元素的所以元素节点
+        var ul = document.getElementById("ul");
+        // 获取到ul的父节点  它的分节点只有一个啦
+        console.log(ul.parentNode);
+        // nodeType判断节点的类型  返回的数值  数值说明
+        // 1---表示元素节点
+        // 2---属性节点
+        // 3---文本节点
+        // 8---注释节点
+        console.log(ul.nodeType);
+
+        // nodeVlaue判断属性的值 直接访问元素的属性 然后继续使用nodeValue获取 是无效的
+        var span = document.getElementById("span");
+        // 使用getAttributenode方法获取到标签的属性
+        var vl = span.getAttributeNode("value");
+        console.log(vl.nodeValue);
+
+        // nodeName获取属性的名称  这个功能这是无语  我们使用gerAttributeNode获取到属性是就知道属性 还获取毛啊
+        // 而无语的是 我们使用这个属性必须使用 getAttributeNode 获取到  这个已经知道啦 还获取属性名 无语啦
+        console.log(vl.nodeName);
+
+
+
+        // 下面介绍通过span获取到他的兄弟相邻节点
+        // nextSibling---获取到当前元素的下一个兄弟节点
+        // nextElemntSibling---获取到当前元素的下一个兄弟元素节点  含有兼容性的问题 ---注意与上方的区别
+        var next = span.nextSibling;
+        console.log(next);//它的下一个兄弟节点是一个空的文本节点-换行  默认显示#text
+
+        // 获取span 元素的 下一个兄弟元素节点  注意是元素节点  这个获取是有要求的  
+        // 注意点：nextElementSibling 该属性不是标准的 DOM中的属性 但是所有的浏览器都支持它
+        var nextEle = span.nextElementSibling;
+        console.log(nextEle);
+
+        // 开始复习通过span获取到他的上一个兄弟节点
+        // previousSibling---获取上一个兄弟节点
+        // previousElmentSibling---获取上一个兄弟元素节点
+        var prev =  span.previousSibling;
+        console.log(prev);//空的文本节点
+
+        // 获取上一个兄弟元素节点
+        var prevEle = span.previousElementSibling;
+        console.log(prevEle);
+
+        // 下面复习一些不常用的节点属性
+        // firstChild---获取父元素的第一个子节点
+        // firstElementChild---获取父元素的第一个子元素节点
+        // lastChild---获取父元素的最后一个子节点
+        // lastElementChild---获取父元素的最后一个子元素节点
+    </script>
+</body>
+</html>

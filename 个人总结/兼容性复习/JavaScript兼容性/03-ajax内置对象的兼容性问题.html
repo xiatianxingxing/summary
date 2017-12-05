@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <input type="button" value="发送ajax">
+
+    <script>
+        var btn = document.getElementsByTagName( 'input' )[0];
+        // 点击 发送 ajax 请求 首先的 进行 实例化 请求对象
+        btn.onclick = function ( e ) {
+            var xhr = null;
+            // 检测浏览器 支持 那么内置 请求对象 优先使用 XMLHttpRequest 
+            if( window.XMLHttpRequest ) {
+                xhr = new XMLHttpRequest();
+            }else {
+                xhr = new ActiveXObject( 'Microsoft.XMLHTTP' );
+            }
+        }
+    </script>
+
+</body>
+</html>

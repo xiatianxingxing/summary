@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body ng-app ="app" ng-controlle="heheConterller">
+	<div my-name></div>
+</body>
+<script src="angular1.2.30.js"></script>
+<script>
+	var app = angular.module("app",[])
+	app.controller("heheConterller",["$scope",function($scope){
+
+	}])
+	app.directive("myName",[function(){
+		return {
+			template:'<h2>我是angualr自定义指令</h2>'
+		}
+	}])
+</script>
+</html>

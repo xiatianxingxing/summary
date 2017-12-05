@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div>
+        
+    </div>
+    <script>
+        var arr = [ 1,2,3,4,5,6,7 ];
+        var arr2 = arr.filter( function( value ) {
+            console.log( value );
+            // filter 是过滤器的作用域 当 返回值为true 的情况下 那么数据就会进行返回啦
+            return '';
+        } )
+        console.log( arr2 );
+    </script>
+</body>
+</html>

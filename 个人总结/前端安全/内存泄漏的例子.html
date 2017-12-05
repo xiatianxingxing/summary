@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+    <script>
+        // 我们 进行 测试 内存 泄漏 概念
+
+
+        function fn( num ) {
+            ceshi();
+            // 函数中的 闭包 使用的 变量 一直保持 没有 进行释放 那么就会操作 内存的 泄漏
+            // 进行 观察 任务管理器的 内存消耗 可以看到
+            // 我们看到 消耗的 性能非常多  如果说  页面 中 含有 很多的闭包 那么页面的消耗 可想而知
+            function ceshi() {
+                console.log(num);
+            }
+        };
+        var time = new Date().getTime();
+        console.log( '开始时间' )
+        console.log( new Date().getTime - time );
+        for(var k = 0 ; k< 20000 ; k++ ) {
+            fn( k );
+        }
+        console.log( '结束时间' );
+        // 计算 耗时时间
+        console.log( " 执行代码耗时 " +  (new Date().getTime() - time) );
+
+
+
+    </script>
+</body>
+</html>

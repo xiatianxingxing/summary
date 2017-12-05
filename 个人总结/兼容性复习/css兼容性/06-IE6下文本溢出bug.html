@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .test {
+            zoom: 1;
+            overflow: hidden;
+            width: 500px;
+        }
+
+        .box1 {
+            float: left;
+            width: 100px;
+        }
+
+        .box2 {
+            float: right;
+            width: 400px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>我们神奇的 发现  多出一个 文字  这个就是文本进行溢出啦  <br> 解决方案 将元素之间的注释 进行删除  就不会产生 这个问题 或者不进行浮动</h1>
+    <div class="test">
+        <div class="box1"></div>
+        <!-- 注释 -->
+        <div class="box2">↓这就是多出来的那只猪</div>
+    </div>
+</body>
+
+</html>

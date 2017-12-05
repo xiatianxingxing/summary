@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html>
+<head lang="zh">
+    <meta charset="UTF-8">
+    <title>复习CSS样式</title>
+    <style>
+        /*
+        在css中设置样式 首先要使用选择器 找到指定的元素进行设置
+        下面复习一下选择器  会将常用和不常用的分开
+        */
+        /*通配符选择器* 该选择器就是选择页面中所以的元素*/
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        /*标签选择器  顾名思义就是标签的名称作为选择器*/
+        div {
+            background-color: #ff8800;
+        }
+        /*class类名 以查找标签的class属性值 找到指定的元素 需要注意的是需要在 类名 前加上点号(.)*/
+        .demo {
+            font-size: 14px;
+        }
+        /*id名 查找标签的id属性值找到拥有指定id名的标签 需要在 id名 前加上井号 (#)*/
+        #fa {
+            font-family: "楷体";
+        }
+        /*下面复习一些结合上面的选择器*/
+        /*交集选择器 该选择器是 选择 一个标签  是这个并且是这个 例子：div.demo 是div并且class属性名为demo的元素*/
+        /*这样也是 div#fa 可以理解为不但要是div还得id为fa的元素*/
+        div.demo {
+            line-height: 20px;
+        }
+        /*并集选择器  就是选择器多个元素 每个元素使用逗号进行分隔的 */
+        h1,h2,h3,h4,h5,h6{
+            color: #ff8800;
+        }
+        /*后代选择器 选择一个元素中的某个指定的后代元素 以空格进行分隔 解析div中所以的span元素都会应用设置的样式*/
+        div span {
+            font-size: 16px;
+        }
+        /*子代选择器  选择一个元素的子元素 使用大于号 进行链接*/
+        div > a {
+            color: #000;
+        }
+        /*属性选择器 选择拥有指定属性的标签 可以设置拥有指定属性 和 指定属性值的元素*/
+        input[type=button]{
+            width: 200px;
+        }
+        /*伪类选择器 拥有在某个状态时先应用的样式*/
+        /*当前链接*/
+        a:link {
+            color: #f5e79e;
+        }
+        /*鼠标位于元素上方是应用的样式  鼠标悬停状态*/
+        a:hover {
+            color: red;
+        }
+        /*点击状态  当在点击时应用样式*/
+        a:active {
+            color: #c3ff8b;
+        }
+        /*点击以后 所应用的样式*/
+        a:visited {
+            color: blue;
+        }
+        /*伪元素选择器 兼容性的问题  在IE8之前伪元素只能使用一个冒号 使用2个冒号是不合法的*/
+        /*需要注意的是 伪元素选择器必须结合content样式进行使用  不然无效  而且伪元素默认行级元素  如果改变需要设置 display属性 该伪元素是在页面中真实存在的  在js中无法获取到  这点需要注意啦*/
+        /*before 在元素最前面添加伪元素*/
+        /*after 在元素最后面添加伪元素*/
+
+        a::before {
+            content: '';
+        }
+        a::after {
+            content: '';
+            display: block;
+        }
+
+        /*CSS3中新增的选择器*/
+        /*兄弟选择器 选择相邻的元素 只能向下 不会像上 进行查找*/
+        span + div {
+            background-color: #ee0099;
+        }
+        /*兄弟选择器 选择所以的兄弟元素*/
+        span ~ a {
+            color: #6dfffa;
+        }
+        /*新增的属性选择器的选择限制*/
+        /*选择type属性以t开头的标签*/
+        input[type^=t]{
+            border: 1px solid red;
+        }
+        /*选择type属性中含有bu的标签*/
+        input[type*=bu]{
+            font-weight: 400;
+        }
+        /*选择具有type属性且属性值为以val开头并用连接符"-"分隔的字符串的E元素，如果属性值仅为val，也将被选择。*/
+        input[type|=u]{
+            resize: none;
+        }
+        /*在CSS3中新增的伪类选择器*/
+        /*选择div中的指定下标的子元素  这个无法限制获取子元素的类型*/
+        div:nth-child(1) {
+            padding-left: 10px;
+        }
+        /*选择父元素第一个li元素  限制了获取子元素的类型 括号中填入下标 从1开始*/
+        li:nth-of-type(1){
+            padding: 0;
+        }
+        /*选择父元素的子元素中的第一个li元素 first单词 第一个*/
+        li:first-of-type {
+            margin-left: 10px;
+        }
+        /*选择父元素的子元素中的最后一个li元素 last单词 最后一个*/
+        li:last-of-type {
+            margin-right: 10px;
+        }
+        /*选择ul中所以下标为偶数的子元素*/
+        ul:nth-child(even) {
+            color: blue;
+        }
+        /*选择ul中所以下标为奇数的子元素*/
+        ul:nth-child(odd){
+            color: red;
+        }
+        /*下面复习一些常用的样式值以及一些新增的样式*/
+        #dv {
+            /*width属性设置标签的宽度*/
+            width: 200px;
+            /*height属性设置标签的高度*/
+            height: 200px;
+            /*设置标签的背景 background是背景的意思 color是颜色的意思*/
+            background-color: #ff8800;
+            /*margin设置标签的外边距  所谓的外边距就是  元素 与 元素 之间的距离 只能 块级 行内块 能使用margin才能生效的*/
+            margin: 100px auto;
+            /*padding设置标签的内边距  内边距就是元素边框到元素内容的距离 默认的是0的  一般参照标签的左上角 只能 块级 行内块 能使用padding才能生效的*/
+            padding: 10px;
+            /*当我们设置了padding标签的大小会被设置的padding撑大  就相当于是 padding+width padding+height 选择标签的大小就是这个的和啦 当然可以设置标签4个边不同padding值啦*/
+            padding-left: 10px;
+            padding-right: 5px;
+            padding-top: 10px;
+            padding-bottom: 5px;
+            /*可以进行连写的 连写对应设置的是 top right bottom left */
+            /*注意点：在设置上面已经设置的样式 下面设置项同样的样式会进行覆盖的*/
+            padding: 10px 20px 10px 5px;
+            /*margin也是可以这样的  顺序是与padding相同的*/
+            /*下面复习有关字体的样式  单词 font*/
+            /*设置元素字体的大小  浏览器的默认大小就是16px  一些标签拥有默认的字体样式 例如h1 a等等标签*/
+            font-size: 14px;
+            /*设置字体的颜色  一些默认的标签也拥有默认的字体颜色  例如a标签拥有默认的蓝色字体*/
+            color: #000;
+            /*font-weight 设置字体的粗细 700最粗 400就是细啦  字符normal表示细 bolder表示粗  一般是数字进行表示 */
+            font-weight: 700;
+            /*设置字体的类型 使用声明字体文件  例如 微软雅黑 楷体 宋体 黑体等等*/
+            font-family: "楷体";
+            /*设置行高 行高就是一行的高度 line-height*/
+            line-height: 30px;
+            /*font进行连写 连写属性中字体大小和 使用的字体类型 必须书写 其余的可以不进行书写 t提供2个字体是防止在用户设备上没有第一字体文件 都准备一个  可以准备多个*/
+            font: 700 18px "微软雅黑,楷体";
+            /*text-align 设置文本水平方向的排列方式 center 居中 left 左 right 右  默认是左上角*/
+            text-align: center;
+            /*border设置标签的边框属性  可以对4边设置不同的  顺序padding相同 第一个值设置边框的大小 第二个值设置边框的类型 第三个值设置边框的颜色*/
+            border: 1px solid #000;
+        }
+
+        /*使用css3中新属性*/
+        .fa {
+            width: 300px;
+            height: 300px;
+            margin: 0 auto;
+            text-align: center;
+            font-size: 30px;
+            line-height: 300px;
+            background-color: #ee0099;
+            /*文字阴影 css3中新增的属性 设给文字进行设置阴影 可以设置多个阴影 每个阴影使用逗号进行分隔*/
+            text-shadow: 0 0 5px #fff,2px 2px 5px #ff8800;
+            /*给元素添加阴影  可以进行设置内阴影 inset 可以设置多个阴影 每个阴影使用逗号进行分隔*/
+            box-shadow: 0px 0px 15px #000,1px 1px 15px #fff inset,-1px -1px 15px #fff inset;
+            /*设置元素的大小的计算方式 border-box 从边框开始计算 padding-box从内边距开始进行计算 content-box 从内容开始进行*/
+            /*使用指元素的 width height 包含的范围*/
+            box-sizing: border-box;
+            /*当我们设置padding 不会将元素进行撑大  因为width/height 从border开始计算*/
+            padding: 10px;
+            /*css3 中新增的颜色值 rgba hsla   hsla---三原色的角度 a是指透明度*/
+            background-color: rgba(255, 136, 0, 0.5);
+
+        }
+        .fa:hover {
+            /*transform  CSS3中新增的非常重要的属性 可以将元素改变形态 大小 移动  非常强大*/
+            transform: translate(10px,10px) scaleX(1.2);
+            /*过渡属性  该属性就是让元素在到达指定状态的时间 产生一个过渡的效果 可以设置过渡的函数 大概的效果是 快-慢-快 慢-快-慢*/
+            transition: transform 2s;
+        }
+    </style>
+</head>
+<body>
+<!--首先说 设置样式的三种方式-->
+<!--
+1.在标签的style属性中设置样式
+2.在页面中style标签中书写样式
+3.使用外部css文件 进行引入使用
+建议使用外部引用的方式
+-->
+<input type="text" id=""/>
+<input type="button" value="kais"/>
+
+<div id="dv">这是一段文字</div>
+<div class="fa">
+    css3属性
+</div>
+
+</body>
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>CSS3新增的样式属性</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h3 {
+            margin: 10px auto;
+            text-shadow: 1px 1px 5px #000;
+            font-size: 50px;
+            text-align: center;
+        }
+        h3:hover {
+            text-shadow: 1px 1px 20px #000;
+        }
+        #border {
+            width: 300px;
+            height: 300px;
+            margin: 20px auto;
+            transition: box-shadow 2s;
+            box-shadow: 0px 0px 5px 0 #000;
+        }
+        #border:hover {
+            box-shadow: 0 20px 30px 0 #000;
+        }
+        #bgColor {
+            width: 300px;
+            height: 300px;
+            transition: background-color 2s;
+            background-color: #ff8800;
+            margin: 10px auto;
+        }
+        #bgColor:hover {
+            background-color: #00eeff;
+        }
+        #scale {
+            width: 300px;
+            height: 300px;
+            background-color: #ee00ff;
+            margin: 30px auto;
+            transition: width 2s, height 2s;
+        }
+        #scale:hover {
+            width: 200px;
+            height: 200px;
+        }
+        #scale:hover::before {
+            content: "快把我进行放大";
+            display: block;
+            text-align: center;
+            font-size: 24px;
+            color: #fff;
+            vertical-align: middle;
+            line-height: 200px;
+            font-weight: 700;
+        }
+        #bg {
+            width: 500px;
+            height: 500px;
+            margin:  20px auto;
+            border: 1px solid #000;
+            background: url("./1.jpg") no-repeat center center;
+            background-size: contain;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <!-- 文字阴影 效果  -->
+    <h3>文字阴影效果</h3>
+    <!-- 边框阴影效果  -->
+    <div id="border"></div>
+    <!-- transition 过渡 让元素在当前状态到达另一个状态 含有一个过渡的时间 不是直接的到达  -->
+    <div id="bgColor"></div>
+    <!-- transform 变换将元素的当前状态进行转换  可以转换为很多不同的状态  例如缩放(scaleX/Y) 平移(translate) 还有可以设置3d的设置  -->
+    <div id="scale"></div>
+    <!--background 的一些 新特性  -->
+    <!-- background-size >> cover 让背景充满元素中 contain 让背景全部显示在元素中 注意会导致背景图片会进行缩放  图片会出现空白的区域 -->
+    <!-- background-repeat 也增加新的一些属性啦  background-origin 规定显示的区域 -->
+    <div id="bg"></div>
+</body>
+</html>

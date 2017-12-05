@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <script src="../vue1026.js"></script>
+    <script src="../vue221.js"></script>
+</head>
+<body>
+<div id="app">
+    <login></login>
+
+    <temp></temp>
+
+    <info></info>
+</div>
+
+
+
+<template id="info">
+    <h2>第三中方法</h2>
+</template>
+
+</body>
+<script>
+    //第一种
+    var login = Vue.extend({
+        template:'<h2>第一种方法</h2>'
+    });
+    Vue.component("login",login);
+
+    //第二种
+    Vue.component("temp",{template:"<h3>第二中方法</h3>"});
+
+    //第三中
+    Vue.component("info",{
+        template:"#info"
+    })
+
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>

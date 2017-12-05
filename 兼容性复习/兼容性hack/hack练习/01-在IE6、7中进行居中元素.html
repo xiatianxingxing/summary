@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            /*
+             在IE7  中 text-align 属性会让 块级元素 和 行内块 进行居中显示的
+             这个是一个 IE 与 标准的区别
+             设置 浏览器模式为 IE7 文档模式是 IE7
+            */
+            text-align: center;
+        }
+        .demo {
+            width: 300px;
+            height: 300px;
+            background-color: #ff8800;
+            /*display: inline-block;*/
+            /*margin: 0 auto ;*/
+        }
+    </style>
+</head>
+<body>
+    <div class="demo">请在IE7及其以下进行测试</div>
+</body>
+</html>

@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        function Person(name,age,aihao) {
+            this.name = name;
+            this.age = age;
+            this.aihao = aihao;
+            this.hello = function() {
+                console.log(this.name);
+            }
+        }
+        var obj = new Person("小河",22,"打豆豆");
+        function tese() {
+            console.log(this);
+        }
+        // call与apply 方法将一个方法绑定到指定的对象上  让函数中的this 指向绑定的对象  并且 进行执行函数
+        tese.call(obj);// obj对象
+        // 如果直接调用 test 函数 那么this肯定是指向 window
+        // 进行绑定 之后 就是不是啦
+
+        // 那么 apply 与 call 方法不同之处在 那么呢  
+        // 体现在 给函数传递参数的差别
+
+        // call 给函数传递 参数是 是 分散的形式进行传递参数的
+        function spl(str) {
+            return str.split("");
+        }
+        // 函数参数 是放置在参数1的之后  函数有几个参数 就传入几个参数
+        var strarr = spl.call(obj,obj.name);
+        console.log(strarr);
+
+        // 我们来看下 apply  给函数传递参数的形式是一个数组
+        var strarr2 = spl.apply(obj,[obj.name]);
+        console.log(strarr2);
+
+
+
+
+        // 总结 
+        //      1. 清楚 2个 方法的设置参数的差别
+        //      2. 看要传递的参数是什么形式 就是使用什么方法 例如 伪数组 也是可以作为apply参数2的  但是call就不可以进行的
+
+        // 介绍bind 方法  该方法也将函数进行绑定的情况
+        // 但是 是在函数执行之前 进行绑定 的  而且绑定了  函数中的this不会改变的
+        function tese2() {
+            console.log(this);
+        }
+        var obj2 = new Person("我们",12,"说话");
+        // 使用bind 进行绑定 tese 中的 this  未成功 待验证
+        tese2.bind(obj2);
+        // 手动的进行触发 tese2
+        tese2();
+
+    </script>
+</body>
+</html>

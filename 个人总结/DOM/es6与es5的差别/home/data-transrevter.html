@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        // 进行数据 之间的转换 练习  number string boolean array regexp
+        var str = '123';
+        // 首先 我们 进行判断 一个数据 是否是 一个字符串呢
+        // 1， 使用 typeof  进行检测
+        console.log("检测是字符串类型数据");
+        console.log(typeof str);
+        // 2. 使用 原型的方法 进行检测 是否是 字符串 类型
+        console.log(Object.prototype.toString.call(str));
+        // 我们进行使用 方式 3  进行检测 是不是 字符串 类型呢
+        // 我们 进行检测 数据 是否 含有 split 方法呢 如果 含有 那么就是字符串类型的
+        console.log(str.__proto__.isPrototypeOf(window.String));
+        // isPrototypeOf 是 判断 一个 对象上 是否含有 指定 参数 对象  如果含有 那返回是 true 反之 是false
+        var arr = str.split("2");
+        // 
+        console.log(arr);
+
+
+
+        // 进行判断 数值 类型 的数据
+        var num = 22;
+        // 使用 typeof 进行判断 返回 一个 表示数据类型的 字符串
+        console.log("进行检测是否是number类型的数据");
+        console.log( typeof num );// number
+        console.log( Object.prototype.toString.call( num ) ); // [object Number]
+        console.log(isNaN( num ));//返回 false 就是 如果是 true 那么代表是 可以 转换为 数字类型的数据 包含 boolean  isNanN会 进行隐式的转换
+
+
+        console.log("进行判断boolean的类型")
+        var bool = true;
+        console.log(typeof bool); // 使用 typeof 进行判断
+        console.log(Object.prototype.toString.call(bool));  // 使用 Object 的 toString 进行判断
+        console.log(  );
+
+        console.log("进行判断 regexp 数据 类型  可以 进行 判断")
+        var reg = /\d+/;
+        // /\d+/.test();
+        // 我们 使用 typeof 返回的是 object 类型 的 我们 需要 使用 toString 进行判断
+        console.log(typeof reg);
+        
+        function fn() {
+            if( !reg.test ) {
+                // 如果没有 含有 那么会 进入到 指令  返回 false 那么证明 不是 一个 正则表达式 类型的数据
+                return false;
+            }else {
+                // 如果 if 条件是 不符合的 那么 就是  正则表达式啦
+                return true;
+            }
+        }
+        console.log(fn());
+        // 进行 判断 数据 是否 含有 test 方法 如果 含有 那么就是 正则表达式
+
+
+        console.log("进行数组数据的判断");
+        // 进行判断 object 中的 类型 数据
+        var arr = [ 1,2,3,4,5,6,7 ];
+        // 现在 使用 typeof 进行 判断 那么是 不能 判断到 引用类型数据的具体类型的 我们 只是会得到一个 object
+        console.log(typeof arr);
+        // 将 Object 对象 上的 toString 方法 绑定 到 当前 判断的数据 上 那么会 返回引用类型 数据的具体类型
+        console.log( Object.prototype.toString.call(arr) );
+
+        console.log("如果是 引用类型的数据 那么使用 Objecy.prototype.toString.call将toString进行判断数据的具体类型-注意可以判断数据的具体类型");
+
+
+        console.log("------------以下是数据转换测试-----------");
+        var strTest = "123.12abc";
+        // 将数据转换为 number 类型 
+        console.log("转换为number类型使用内置提供的api方法");
+        // 使用 parseInt()  该方式 转换的 数字 是不会保留小数的  转换是 遇到非数字 那么就会停止转换
+        console.log(parseInt(strTest));
+        // 使用 Number() 方法 进行转换为 number 类型 但是 字符串中含有非数字 那么就会转换 NaN 也是数值类型 但是不是数字
+        console.log(Number(strTest));
+        // parseFloat() 该方法转换为 number 类型 会保留 小数的 转换时 遇到非数字 转换结束 将转换完成的数据 进行返回
+        console.log(parseFloat( strTest ) );
+        console.log("如果将数据进行转换-看一下的案列");
+        console.log(parseInt([]));// 转换数组 NaN 不能进行转换 为 NaN
+        console.log(Number([]));// 但是可以 使用 Number 进行转换的  得到的是 0
+        console.log("转换引用类型的数据时--使用Number进行转换")
+        console.log("字符串类型的数据-除了空的字符串其余都是1");
+        console.log("我们继续检测一下 使用 Number parseInt parseFloat 进行转换 null与undefined看是否转换成功");
+        console.log( parseInt(null) );// NaN 
+        console.log( Number(null) );// 0 证明只能是 Number 进行转换啦
+        console.log( parseFloat(null) );// NaN
+        console.log("进行转换undefined类型");
+        console.log( parseInt(undefined) );// NaN
+        console.log( Number(undefined) );// NaN
+        console.log( parseFloat(undefined) );// NaN
+        console.log("如果转换undefined那么直接继续转换是失败的");
+
+
+        // 检测 toString 转换为字符串 和 String 的区别
+        console.log("toString与String的区别");
+        var numStr = 123;
+        // 1. 是在转换是检测数据的属于 
+        // toString是使用检测数据进行调用 返回 转换完成的数据
+        console.log( numStr.toString() );
+        // String 是将数据 作为参数 进行传入
+        console.log( String(numStr) );
+
+
+        console.log("toString与String的区别就是String方法所有的数据都是 可以进行转换的 但是toString方法是无法转换undefined与null类型的数据的-这个是它们之间不同的");
+        var da = null;
+        // console.log(da.toString());//使用的话是会报错的
+        console.log(String(da));// String 方法是可以 进行转换的
+        var da2;
+        // console.log(da2.toString());//调用进行报错
+        console.log(String(da2));//undefined 进行转换完成
+
+        console.log("-------------String方法是可以将数据进行转换的--------");
+
+    </script>
+</body>
+</html>

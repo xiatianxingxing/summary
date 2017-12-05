@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--<a href="/user/1"><script>alert(1)</script></a>-->
+    <!-- 会进行语法报错 -->
+    <img src="{{ image_url }}">
+    <!--<script>
+        var user_data = {{ user_data|json_encode }};
+    </script>-->
+
+    <script>
+        // 浏览器 解析 的不可思议
+        var user_data = {"exploit": "</script><script>alert(1);"};
+    </script>
+</body>
+</html>

@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>ES6-forEach方法进行测试</title>
+</head>
+<body>
+    <div id="demo"></div>
+    <script>
+        var arr3 = [ '1号成员-one', '2号成员-two', '3号成员-three', '4号成员-first', '5号成员-fix' ];
+        var retuArr = arr3.forEach(function(v,i) {
+            // 我们经过检测  参数1 是数组成员  参数2 是下标数
+            console.log(v);
+            console.log(i);
+            // 函数中的this 也是 指向的是 window
+            console.log(this);
+            // 该函数不会 返回一个数组 没有返回值 那么默认就是返回 undefined的
+            return v;
+        });
+        console.log(retuArr);
+
+
+
+
+
+    </script>
+</body>
+</html>

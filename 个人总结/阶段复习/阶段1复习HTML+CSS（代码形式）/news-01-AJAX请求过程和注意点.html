@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>AJAX底层原理实现  和 请求的注意点</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div::before{
+
+        }
+        div:nth-child(n){}
+    </style>
+</head>
+<body>
+<input type="text" placeholder="请求数据的值" id="txt"/>
+<input type="button" id="btn" value="请求"/>
+<div>
+    <div></div>
+</div>
+    <script>
+        /*
+        * 1. 请求的页面协议建议是非 file的格式
+        * 2. 请求的元素就是调用浏览器的内置对象 让这个对象去进行获取数据  并且接受到数据  在转交到页面中
+        * 3. 注意请求的地址是否与当前页面 同属一个域名下  当请求的地址处于非同源 就产生跨域的请求啦
+        * 4. 解决跨域请求的几种方式需要掌握  jsonp iframe 后端页面设置请求头 HTML5请求meta元信息标签
+        * 5. 数据提交也是请求的另一种方式  如何传递参数给后端 非常重要  后端请求接口清单理解
+        * 6. 数据响应回来 进行页面渲染 DOM操作非常重要  例如向渲染之后的元素添加事件 那么需要考虑的点注意 是否能够操作到元素呢
+        * 7. 一些方法的熟练使用
+        * */
+        // 例子 AJAX的底层请求方式  点击按钮请求数据 并且将数据渲染到 div中
+        // 防止全局污染  在自调用函数中 书写
+//        getComputedStyle("div",null);
+
+        (function () {
+            var txt = document.getElementById("txt");
+            var btn = document.getElementById("btn");
+            //按钮点击 请求数据
+            btn.onclick = function () {
+                //由于 ajax 在IE中由于兼容性的问题 所以要进行功能检测
+                var xhr = null;
+                if(window.XMLHttpRequest){
+                    xhr = new XMLHttpRequest();
+                }else{
+                    xhr = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+            }
+        })()
+        var div = document.querySelector(".con").children[0]
+        console.log(window.getComputedStyle(div, null));
+
+
+
+    </script>
+</body>
+</html>

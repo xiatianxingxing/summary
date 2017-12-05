@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        // 有的时候防止 $ 符号冲突啦  可以将命名空间进行更改的
+        // 可以使用  hu 符号进行代替啦
+
+        var hu = $.noConflict;
+        
+        $(function(){
+            console.log(1);
+        });
+        hu(function(){
+            console.log(2);
+        });
+    </script>
+</body>
+</html>

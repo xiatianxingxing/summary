@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        a {
+            line-height: 30px; 
+        }
+    </style>
+</head>
+<body>
+    <!--自定义属性建议以data进行开头-->
+    <a href="javascript:void(0);" data-element="baidu-data" >baidu</a> <br>
+    <a href="javascript:void(0);" data-element="xingl-data" >xingl</a> <br>
+    <a href="javascript:void(0);" data-element="taobao-data" >taobao</a> <br>
+    <script>
+        // 获取自定义属性 要使用 getAttribute 方法进行获取 
+        var a =document.getElementsByTagName("a");
+        // console.log(a);
+        var ele = a[0].getAttribute("data-element");
+        // console.log(ele);
+        // 设置属性可以使用 setAttribute
+
+        // 但是我们想获取大批具有相同特征的自动属性呢  这个时候就是需要使用到 dataset
+        var arr = [].slice.call(a,0);
+        // 创建一个空的数组 拥有保存获取到的自定义属性
+        var arr2 = [];
+        arr.forEach(function(v,i){
+            // 当获取到 字符串的时候 为true  取反为false 不进行push操作
+            if(!v.dataset["element"]) {
+                return;
+            }
+            arr2.push(v.dataset["element"]);
+        })
+        // 以自定义属性 - 之后的名称 进行查找  将查询到的 push到数组中
+        console.log(arr2);
+    </script>
+</body>
+</html>

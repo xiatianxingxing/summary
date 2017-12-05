@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    
+
+    <script>
+        // 可以将字符放置在表达式中 与 方法中的 字符进行匹配
+        console.log(/hehe/.test("hehe"));//true
+
+        // 下面  复习 | 符号  只要匹配字符中含有表达式的单个匹配式
+        console.log(/hehe|xiao/.test("xiao"))//true
+
+        // 下面  复习 [] 符号  该符号的意思表示 该字符位置可以出现的字符  []可以放置多个字符 表示中国位置可以出现的字符
+        console.log(/[htl]/.test("t"))//true
+        // 这个字符位置在哪出现 h x l o p  其他不能出现
+        console.log(/[hxlop]/.test("1"));//false
+
+        // ^符号 在方括号中 表示不能出现的字符 这是一个负向类
+        console.log(/[^abcd]11/.test("111"));//true
+        console.log(/[^abcd]11/.test("a11"));//false
+
+        // 不在[] 中 是用于限制开头字符 使用的
+        console.log(/^she/.test("she"));//false
+
+        // $符号  限制结束字符  
+        console.log(/^[a-z]k$/.test("ak"));//true
+        console.log(/^[a-z]k$/.test("aa"));//false
+
+        // 使用 ^ $  同时进行匹配 称之为精确匹配
+    </script>
+</body>
+</html>

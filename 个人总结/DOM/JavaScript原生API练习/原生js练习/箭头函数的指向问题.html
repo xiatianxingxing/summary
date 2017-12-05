@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+    <script>
+        // this 在对象中的指向问题
+        var obj = {
+            name:'haha',
+            fn:function() {
+                console.log( this );
+            },
+            arrowfn:() => {
+                console.log( this );
+            },
+            sahello:() => {
+                console.log( this.name );
+            }
+        }
+        // 看 声明式 函数 中 this指向的是否是当前 引用的对象呢
+        obj.fn();// 返回结果证明 声明函数 中的this 指向是 引用对象 obj
+        // 看 箭头函数中的 this指向 是谁
+        obj.arrowfn(); // 输入结果 证明 箭头函数 中的 this指向的是 window
+
+        // 那么 sahello 箭头函数 就猜到啦  window下面的name 属性啦
+        obj.sahello();
+
+
+
+        // 那么在做一个测试 在声明是函数中 使用 箭头函数 看位于 声明函数中的箭头函数 this指向的是什么
+        var obj2 = {
+            name: '小明',
+            fn:function () {
+                console.log( this );
+                var noe = () => {
+                    console.log( this );
+                };
+                noe();
+
+            }
+        }
+        obj2.fn();
+
+        // 输出证明  箭头函数中的this 是看作用域的限制  那么看作用域属于谁 那么箭头函数中的this 指向的就是 谁啦
+        // 箭头函数 属于 匿名函数 
+        // 那么 能够限制 变量的 作用域 就可以让箭头函数中的this 发生改变啦
+
+        console.log( '原型对象 ------------------------- 进行测试' )
+
+        // 我们在 进行一个测试
+
+        // 我们将 一个 方法挂载在 String 对象身上 那么在方法中使用 箭头函数 看箭头函数中的this 是否是 执行 String的
+        String.prototype.toArr = function () {
+            console.log( this );// 当前在 声明是 函数中的 this 指向的肯定是当前调用的字符串对象啦
+            // 那么我们进行 在箭头 函数中 看this 是否指向的是 当前的调用对象呢
+            var fn = (than) => { // 我们在外部将 当前的this传入
+                console.log( than );
+                // 在输出 this  看 than 和 this的指向是否是相同的
+                console.log( this );
+            }
+            // 在调用的时候 将数据传入
+            fn( this );
+            return this.split( '' );
+
+        }
+
+
+        '123456'.toArr();
+        // 那么测试 证明 箭头 函数中的this 是 受到 词法作用域的限制的 当前无法 那么 箭头函数会向上进行查找
+
+        // 如果是我们在 一个 语句作用域中 进行使用 看 箭头函数的this 指向问题
+        var obj3 = {
+            per:function(){
+                if(window) {
+                    var fn = () => {
+                        console.log( this );
+                    };
+                    fn();
+                    // 级无法限制 var 变量 那么我们使用 let
+                    let fn2 = () => {
+                        console.log( this );
+                    }
+                    fn2();
+                }
+            }
+        }
+        obj3.per();// 这个时候 能够限制 那么this指向的就是 当前使用对象呢
+    </script>
+</body>
+</html>

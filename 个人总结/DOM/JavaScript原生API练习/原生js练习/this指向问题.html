@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>this指向问题</title>
+</head>
+<body>
+    <div id="demo">
+        
+    </div>
+    <script>
+        var str = 'aaa';
+        function fn() {
+            this.str = 'bbb';
+        }
+        console.log( str );
+        fn();
+        // 函数中的this 执行的是 window
+        console.log( str );
+
+        var num = 11;
+        
+        function fn2() {
+            // 该语句设置 执行该代码是 严格模式 那么 函数中的this 不会执行 window 而是一个变量 
+            // 那么该变量 存在 但是为进行 赋值 就是undefined 啦
+            // undefined  去调用 成员 那么自然会进行 报错啦
+            "use strict";
+            this.num = 22;
+        }
+        console.log( num );
+        fn2();
+        console.log( num );
+    </script>
+
+
+</body>
+</html>

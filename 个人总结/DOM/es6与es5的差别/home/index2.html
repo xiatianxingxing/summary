@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <title>Document</title>
+</head>
+<body>
+    <div id="dv">
+    <!-- 进行 事件的绑定  可以使用简写的方式 进行书写的  使用 @ 的方式 进行书写  可以使用 v-on 进行绑定事件的-->
+        <input type="text" v-model="text" @blur="fn">
+        <comp></comp>
+    </div>
+    <script src="./vue.js"></script>
+    <script >
+        var app = new Vue({
+            el:"#dv",
+            data:{
+                text:"haha" // 进行再数据层 中 进行设置数据 体现在 view 中
+            },
+            // 定义 方法 用于 元素的行为执行的函数值
+            methods:{
+                fn:function() {
+                    console.log(this);
+                }
+            },
+            // 进行定义组件 使用 components
+            components:{
+                "comp": {
+                    tempale : "<span>haha</span>",
+                    data:function(){
+                        return{
+                            text1:"你的你想想吧"
+                        }
+                    },
+                    mathods:{
+                        fun(){
+                            console.log(this);
+                        }
+                    }
+
+                }
+            }
+        })
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+    </style>
+</head>
+<body>
+    <span>01</span>
+    <span>02</span>
+    <span>03</span>
+    <span>04</span>
+    <span>05</span>
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        $(function(){
+            // each  方法可以对数组 伪数组  对象 进行遍历操作
+            // 获取到span  很显然这是个 伪数组  那么each 会进行隐式的进行迭代  
+            // 回调函数的第1个参数是 i  下标
+            // 回调函数的第2个参数是 v  每项的值  就是回调函数中的this
+            
+            $("span").each(function(i,v){
+                // console.log(i);
+                // 每一项数据
+                // console.log(this);
+                // 每一项
+
+                console.log(v);
+                // this  与 v 是相同的
+                // 该方法返回的是调用方  不返回数组
+            });
+            var arr = [1,2,3,4,5,6];
+            // map 会返回一个伪数组  可以在回调函数中对数组中的每一项进行操作
+            var arr2 = $(arr).map(function(i,v){
+                // console.log(v);
+                return v * 2;
+            })
+            console.log(arr2);
+
+            // 注意点：隐式迭代的方法非常常用  熟练使用掌握
+        });
+    </script>
+</body>
+</html>

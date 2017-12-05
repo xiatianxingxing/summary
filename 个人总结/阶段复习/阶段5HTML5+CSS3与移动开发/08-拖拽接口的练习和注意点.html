@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        div#fa {
+            width: 300px;
+            overflow: hidden;
+            transition: box-shadow 2s;
+            box-shadow: 0 10px 20px 20px rgba(0,0,0,0.5);
+            margin: 10px auto;
+            /*进行拖拽 需要使用left 使用进行设置position */
+            position: relative;
+        }
+        div#fa:hover {
+            box-shadow: 0px 20px 50px 10px rgba(0,0,0,0.8);
+        }
+        #fa > h2 {
+            width: 100%;
+            line-height: 40px;
+            font-weight: 500;
+            color: #fff;
+            padding-left: 10px;
+            background-color: #ff8800;
+            box-sizing: border-box;
+        }
+        #fa > div {
+            padding: 5px 10px;
+            box-sizing: border-box;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <!--进行拖拽  需要给拖拽元素设置 draggable 属性值为true  -->
+    <div id="fa" draggable="true">
+        <h2>可以进行拖拽</h2>
+        <div>
+            就不会被是不符合北京北京汉堡包是否包含就是闭包美女吧木笔会计块级爱我回复阿卡而不放假啊胡而非安保法案并未感到撒发布hi无回复我八号地方吧腐恶外部访问久啊百世快递解放碑发啊加快步伐发空间的罚款略放不进阿道夫安防科技爱打架发怒放大或阿道夫卡京东方阿发贺卡节点的发卡会打击报复卡基本的看法而父爱对方吧安居客地方不开机阿布都放假卡基本的空间阿卜杜放假吧卡京东方阿胶暴风科技阿卜杜发布的看法和地方按客户付额外发卡机部分的拷贝的蒙巴萨卡报复而微博发设备的放假吧索达吉堪布发监控设备打飞机阿卡卡的减肥大家地方看见爱的发空间啊空间安静的房间卡迪夫hi呃呃黑科技的父节点卡黄金矿工红烧豆腐国家开始电脑开 就是空格监控设备记法改变事件开始就发给监控设备科级干部是块级 技术开发该框架上边框IE哦为金融数据客服即可感受人生尽快发给款手机复健科改变事件开灯关布局视口东方宾馆
+        </div>
+    </div>
+    <script>
+        var fa = document.getElementById("fa");
+        // 拖拽接口的 4个 状态 的对应事件
+        // ondragstart --- 开始拖拽 触发该事件
+        // ondragleave --- 鼠标离开拖拽元素时 触发
+        // ondrag -------- 拖拽是触发  持续触发中  直到拖拽结束
+        // ondragend ----- 拖拽结束
+
+        // 思路 
+        // 在 开启拖拽(ondragstart)的时候 将鼠标的起始位置进行记录
+        // 拖拽着元素 离开的拖拽元素的位置开始移动  可以在这个时候添加定位
+        // 在拖拽中 将鼠标的位置 减去 开始拖拽的起始位置  得到本次移动的位置
+        // 在拖拽结束后 将鼠标当前位置 赋值该当前元素的位置 元素正中心
+        var strX = 0,strY = 0;
+        var dargX = 0 , dargY = 0;
+        var flX = 0, flY = 0;
+        fa.ondragstart = function (e){
+            console.log( "拖拽开始" + "ondragstart");
+            // 使用鼠标在可以页面的位置 pageX
+            // pageX/Y  获取当前鼠标 距离页面 左上角 的位置 含有兼容性的问题 IE8以下不支持
+            strX = e.pageX - (e.pageX - this.offsetLeft);
+            strY = e.pageY - (e.pageY - this.offsetTop);
+        };
+        fa.ondragleave = function () {
+            console.log( "拖拽到当前元素位置之外" + "ondargleave");
+        };
+        fa.ondrag = function (e) {
+            console.log( "持续拖拽" + "ondrag");
+            var offW = this.offsetWidth;
+            var offH = this.offsetHeight;
+            dargX = e.pageX - strX - (offW / 2);
+            dargY = e.pageY - strY - ( offH / 2);
+            console.log("X轴" + e.pageX + "Y轴" + e.pageY);
+            this.style.left = dargX + flX + "px" ;
+            this.style.top = dargY + flY + "px" ;
+        };
+        fa.ondragend = function (e) {
+            
+            console.log( "拖拽结束" + "ondragend");
+            var offW = this.offsetWidth;
+            var offH = this.offsetHeight;
+            dargX = e.pageX - strX - (offW / 2);
+            dargY = e.pageY - strY - ( offH / 2);
+            console.log("X轴" + e.pageX + "Y轴" + e.pageY);
+            this.style.left = dargX + flX + "px" ;
+            this.style.top = dargY + flY + "px" ;
+            flX = dargX;
+            flY = dargY;
+        };
+
+    </script>
+
+
+
+
+</body>
+</html>

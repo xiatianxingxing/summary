@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        h1 {
+            margin:20px 0;
+        }
+        div[class*="center"] {
+            background-color: #ccc;
+            height: 400px;
+            position: relative;
+            
+        }
+        .auto-son {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            /*
+                无法进行自动的 让元素 在垂直方向 进行居中的情况
+                只能在水平方向的居中情况
+                这个只能在 水平 居中的情况下 并且 元素拥有 float 与 position 无法进行生效的
+            */
+            margin: 0 auto;
+        }
+        .posi-son {
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+            /*
+                使用 元素 定位的方式 进行居中元素 如果子元素进行绝对定位 那么父元素进行相对定位
+                left 和 top 的值是 根据 父元素的 单位进行计算的
+                margin 是根据 自身的 大小进行计算的
+            */
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-left: -150px;
+            margin-top: -150px;
+        }
+        .dis-center {
+            text-align: center;
+            vertical-align: button;
+        }
+        .dis-son {
+            display: inline-block;
+            width: 300px;
+            height: 300px;
+            background-color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <h1>使用auto的方式</h1>
+    <div class="auto-center">
+        <div class="auto-son"></div>
+    </div>
+    <h1>使用定位的方式</h1>
+    <div class="posi-center">
+        <div class="posi-son"></div>
+    </div>
+    <h1>改变元素的显示方式</h1>
+    <div class="dis-center">
+        <div class="dis-son"></div>
+    </div>
+
+
+</body>
+</html>

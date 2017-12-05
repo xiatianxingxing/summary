@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>练习</title>
+		<!-- 引入样式文件  js文件  兼容文件 -->
+	<!-- 引入样式文件 -->
+	<link rel="stylesheet" href="cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<!-- 先引入jQuery文件  在bootstrap  指js文件 之前 -->
+	<script type="text/javascript" src="cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<!-- 引入bootstrap js 框架文件 -->
+	<script type="text/javascript" src="cdn.bootcss.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<!-- 下面的2个文件在IE9以下会被引用的 -->
+	<!--[if lt IE 9]>
+	<script src="cdn.bootcss.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+	<script src="cdn.bootcss.com/respond.js/1.4.2/respond.min.js"></script>
+	<![endif]-->
+		<style>
+			* {
+				margin: 0;
+				padding: 0;
+			}
+			.demo {
+				width: 90px;
+				height: 100px;
+				background-color: #ff8800;
+				padding-top: 60px;
+				position: relative;
+				transition: backgound-color 2s,line-height 2s, padding 2s;
+				line-height: 30px;
+				margin: 100px auto;
+				text-align: center;
+			}
+			.demo:hover {
+				background-color: #e90820;
+				padding: 0;
+				line-height: 100px;
+			}
+			.demo > span {
+				position: absolute;
+				font-size: 42px;
+				left: 24px;
+				top: 9px;
+				transition: opacity 1s,transform 2s;
+			}
+			.demo:hover > span {
+				transform: translateY(-45px);
+				opacity: 0;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="demo">
+			<span class="glyphicon glyphicon-send"></span>
+			kais
+		</div>
+	</body>
+</html>

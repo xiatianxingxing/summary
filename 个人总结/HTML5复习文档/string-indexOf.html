@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<title>indexOf方法进行测试</title>
+	</head>
+	<body>
+		<div></div>
+		<script>
+			var str = "12123n324ni234";
+			// 为匹配到指定参数的字符 那么会返回 -1
+			// 如果匹配到啦指定参数的字符  那么会返回字符出现的位置下标
+			// 该方法查询 字符 不太精确
+			// 例如 查询 oo 字符 但是 oof也是会 匹配到的
+			console.log(str.indexOf("n"));
+			// 看到实例的情况 就会发生 匹配是否精确  如果返回是oo的位置则是精确 反之则不是  但是位置返回的是 8  说明匹配不精确
+			console.log("one two oof oo".indexOf("oo"));
+			
+			
+			// 替换方法 replace  返回值为一个新替换的字符串 
+			console.log('hahahehenid'.replace('nid','替换字符'));
+			// 该方法返回值为 指定 索引的 字符  字符串类型数据方法
+			console.log('123'.charAt(1));
+		</script>
+	</body>
+</html>

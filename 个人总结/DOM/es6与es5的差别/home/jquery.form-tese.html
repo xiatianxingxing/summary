@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <form>
+        用户名：<input type="text" name="user" placeholder="请输入用户名" value="123"> <br> 密码：
+        <input type="password" name="pw" placeholder="请输入密码" value="456"> <br>
+        <input type="submit" value="提交">
+    </form>
+
+    <script src="./form-master/jquery.js"></script>
+    <!--<script src="./form-master/ajax.js"></script>-->
+    <script src="./form-master/form-master/src/jquery.form.js"></script>
+    <script>
+        // 在使用 插件是 我们不知道 使用函数会返回 什么  并且不知道函数中的this 指向  那么我们需要进行测试一下
+        // 我们进行使用 jquery.from 表单插件
+        // 首先将 插件的 文件 进行引入 因为是 依赖 jQuery 需要先将 jQuery 进引入
+
+        $(function () {
+            // console.log($);
+            // console.log($.fn);
+            // console.log($.formSerialize);
+            // 我们 可以在 form 表单元素中 添加 submit 事件 
+            // 这个情况下 不会 自动的将 表单数据 一起自动的 提交
+            // $("form").submit(function() {
+            //     // 在 form 表单进行提交的是 将 表单的数据 进行序列化 并且可以解决 中午 乱码的问题
+            //     console.log($("form").serialize());
+
+            //     $.ajax({
+            //         type:"get",
+            //         url:"jquery.form.php",
+            //         data:{fn:"one"},
+            //         success:function(data) {
+            //             console.log(data);
+            //             // 会自动将 表单数据 放置在 ajax 请求参数中
+            //         }
+            //     })
+            //     return false
+            // });
+
+
+            $("form").submit(function() {
+                $(this).ajaxSubmit({
+                    type:"get",
+                    url:"jquery.form.php",
+                    data:{ fn : "one"},
+                    success:function(data) {
+                        // console.log("nide");
+                        console.log(data);
+                    }
+                });
+                // 我们观察 传递的 参数值 当中  是含有 表单元素的数据的 那么使用form插件会自动的将表单数据参数 进行添加的  这个是 表单的好处 
+                return false;
+            })
+
+            // console.log($("form").ajaxForm);
+            // ajaxForm 方法的使用 就是 form 的提交ajax 可以进行直接 
+            // console.log($('form').ajaxForm(
+            //     "jquery.form.php",
+            //     { fn: "one" },
+            //     "txt",
+            //     function (data) {
+            //         console.log(data);
+            //     }
+            // ));
+
+
+
+
+            // 下面 介绍 jquery.form 插件的使用啦
+
+        })
+    </script>
+</body>
+
+</html>

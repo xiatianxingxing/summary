@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>haha</title>
+</head>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+
+}
+#box {
+	width: 200px;
+	height: 200px;
+	background-color: #ff8800;
+}
+
+</style>
+<body>
+
+<div id="box" onclick="test()">
+
+</div>
+<script type="text/javascript">
+var box = document.getElementById("box");
+/*  这样也是可以的 前提是 元素有 onclick属性*/
+addEventListener(box,"click",test);
+function test(){
+	alert("jaha");
+}
+</script>
+</body>
+</html>

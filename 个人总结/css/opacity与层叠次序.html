@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        #demo {
+            width: 400px;
+            height: 500px;
+            border: 1px solid #000;
+            margin: 100px auto;
+        }
+        
+        .a,.b,.c {
+            width: 100px;
+            height: 100px;
+        }
+        .a {
+            /* 为添加 opacity时 a元素显示在最底层 但是添加 opacity后就不同啦 */
+            /* 但是需要 注意的是 opacity的值不能是 1 记住啦  如果是1  那就无效啦 */
+            opacity: 0.99;
+            background-color: #00ff00;
+        }
+        .b {
+            margin: -50px 0 0 20px;
+            background-color: #ff0000;
+        }
+        .c {
+            margin: -50px 0 0 40px;
+            background-color: #0000ff;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div class="a"></div>
+        <div class="b"></div>
+        <div class="c"></div>
+    </div>
+    <script>
+        
+    </script>
+</body>
+</html>

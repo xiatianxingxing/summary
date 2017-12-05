@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+
+
+
+
+    <script>
+        function CreaEle(name,age,aihao,anoth) {
+            this.name = name;
+            this.age = age;
+            this.aihao = aihao;
+            this.anoth = anoth;
+        }
+        // prototype 该属性指向的是一个对象
+        // 每一个 函数 都会含有 prototype 属性  在函数创建的时候就是含有这个属性
+        // 函数也是一个对象 
+        console.log(CreaEle.prototype);
+        // 在 CreaEle.prototype 中含有一个成员 指回 函数本身
+        console.log(CreaEle.prototype.constructor);
+        // 对象一创建 就含有 的 成员  称之为 不可枚举 属性
+        // 通过 动态特性 进行添加 称之 为 可枚举属性
+        // 它们之间的 区别  可枚举属性 可以被 for in 进行遍历 处理
+
+        // 进行实例化
+        var obj = new CreaEle("小玉",22,"吃东西","路人");
+        console.log(obj);
+
+        // 现在可以看到 obj 含有 4个 成员  现在我们在 CreaEle.prototype对象上进行 添加成员
+        CreaEle.prototype.hello = function() {
+            console.log(this.name + "对象可以进行调用 prototype对象的成员方法");
+        }
+        // 我们使用 CreaEle 的 实例化对象 进行调用 prototype 的成员 看 是否调用成功
+        obj.hello();
+        // 我们发现成功了  这是 为什么 呢 明明 obj 没有这个成员 但是可以进行调用呢  很奇怪吧
+
+        // prototype 进行分析
+        // 在构造函数  进行 实例化 对象时  构造函数中的this 会 与prototype 对象 进行绑定 new表达式产生的对象 进绑定 最后进行返回
+        // 进行 绑定后 实例化对象 就可以 调用 prototype 对象 的成员 啦 称之为 继承
+        // 在 构造函数上 我们 将 prototype 称之我 原型属性
+        // 在实例化对象上 我们 将 prototype 称之为 原型对象  
+        // 实例化 对象 可以 调用原型对象上的成员  
+
+        // 作用：可以将 实例化 需要的 方法放置在 原型对象上  减少内存的消耗 将 属性 放置 在 构造函数中 进行this绑定
+        
+
+    </script>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>02-DOM的具体操作形式</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #fa {
+            width: 300px;
+            height: 300px;
+            background-color: #ff8800;
+            margin: 100px auto;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        .son {
+            width: 200px;
+            height: 200px;
+            background-color: #ee0099;
+        }
+    </style>
+</head>
+<body>
+    <div id="fa">
+        <div class="son"></div>
+    </div>
+    <script>
+        // 我们现在进行DOM操作  DOM操作就是向页面的元素进行一些改变
+        // 首先获取到指定的元素
+        var fa = document.getElementById("fa");
+        // 改变元素的样式  这里需要注意点 是在js中 只能通过标签的style属性设置元素的样式设置  或者通过控制类名的方式  如果设置的样式名 是多个单词 那么需要使用驼峰命名法  值必须是字符串类型的
+        fa.style.border = "2px solid #000";
+        // 可以关联数组的方式 访问 或者 设置 元素的属性  放置在[]中的值必须是字符类型的  形式可以是变量  但是变量的值必须是字符串类型的  这个方式比较常用 建议熟练使用
+        console.log(fa["id"]);
+        // 进行DOM操作元素时需要注意的点
+        // 对象点号语法只能获取元素默认含有的属性  例如自定义的属性点号语法是无法进行获取设置的
+    </script>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        div {
+            overflow: auto;
+            width: 260px;
+            height: 80px;
+            border: 2px solid #ccc;
+            position: relative;
+        }
+
+        p {
+            position: relative;
+            margin: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>在IE7 中产生 overflow 失效的 bug  解决方案将 div元素设置 position:relative 样式</h1>
+    <div>
+        <p>如果我是相对定位，我的父元素overflow属性设置为auto|hidden将失效。如果你使用的是IE及更早浏览器，你将可以看到这个BUG</p>
+        <p>如果我是相对定位，我的父元素overflow属性设置为auto|hidden将失效。如果你使用的是IE及更早浏览器，你将可以看到这个BUG</p>
+    </div>
+
+</body>
+
+</html>

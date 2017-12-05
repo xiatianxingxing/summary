@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>01-事件执行的过程复习</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #demo {
+            width: 300px;
+            height: 300px;
+            background-color: #ff8800;
+            margin: 100px auto;
+            padding: 50px;
+            box-sizing: border-box;
+        }
+        #son {
+            width: 200px;
+            height: 200px;
+            background-color: #00eeff;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo">
+        <div id="son">
+        </div>
+    </div>
+    <script>
+        // 事件流的执行过程是这样的
+
+        // 首先从浏览器最顶级对象 向内 去捕获触发事件元素  称之为 事件捕获
+        // 当捕获到触发元素  这个阶段会执行触发元素的事件处理函数 如果没有就不执行 称之为目标元素
+        // 目标元素这时会进行向上传递  直到传递到最顶级对象 window上  称之为事件冒泡
+        // 从上方的描述可以知道事件流的3个阶段
+        
+        // 事件捕获-目标元素-事件冒泡
+
+        // 专业术语  事件流的执行过程
+        // 需要注意点：在事件捕获与事件冒泡 的2个阶段  如果触发的事件在(向下/向上)查找的过程中 某个元素拥有那么该元素的事件处理函数就会被触发
+        // 例子演示  当我们触发son的onclick事件 但是demo的onclick事件也被触发啦
+        var demo = document.getElementById("demo");
+        var son = document.getElementById("son");
+        demo.onclick =function(){
+            console.log("demo元素的点击事件被触发");
+        };
+        son.onclick =function(){
+            console.log("son元素的点击事件被触发");
+        }
+        // 我们点击子元素是 父元素的点击事件也被触发啦  现在我们解析一下事件的执行过程
+
+        // 事件捕获-window-document-body-div.demo-div.son(找到目标触发元素)
+        // 目标元素-知道触发的事件-执行对应事件处理函数-函数中输出内容-我们可以看到son先打印的
+        // 事件冒泡-目标元素-div.demo(现在注意啦 由于知道触发什么事件 而且demo元素也有onclick的处理函数  那么就会触发demo的点击事件处理函数啦 将demo进行打印啦)-body-document-window
+
+        // 由上面的三步 我们可以看到为什么在事件捕获的时候demo的点击事件没有被触发啦
+        // 我们也知道为什么事件冒泡时  demo的点击事件被触发啦
+        // 有时候我们不希望这个事情发生 怎么进行阻止呢?下面进行复习
+    </script>
+</body>
+</html>

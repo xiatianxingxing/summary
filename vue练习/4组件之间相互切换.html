@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <!--<script src="../vue1026.js"></script>-->
+    <script src="../vue221.js"></script>
+</head>
+<body>
+<div id="app">
+
+    <a href="javascript:;" @click = "temp = 'zujian1'">变</a>
+    <a href="javascript:;" @click = "temp = 'zujian2'">便便</a>
+
+    <!--就是根据它来改变的-->
+    <component  :is="temp">
+
+    </component>
+</div>
+</body>
+<script>
+    Vue.component("zujian1",{
+        template:"<h2>第一个呵呵呵</h2>"
+    });
+    Vue.component("zujian2",{
+        template:"<h2>第二个略略略</h2>"
+    })
+
+
+    var vm = new Vue({
+        el:"#app",
+        data:{
+            temp:"zujian1"
+        },
+        methods:{
+
+        }
+    })
+</script>
+</html>

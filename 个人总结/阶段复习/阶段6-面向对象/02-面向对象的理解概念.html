@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <!--  
+        面向对象的概念就是 将面向过程(实现功能的具体步骤表现) 进行一个封装打包 放置在函数中 每次需要完成该功能进行调用就是面向对象
+        使用面向对象编程 可以减少代码的 有余性  减少带代码的重复  提高代码的信性能
+    -->
+    <div>
+        <span>span</span>
+    </div>
+    <h2>
+        <strong>strong</strong>
+    </h2>   
+    <div>
+        <em>em</em>
+    </div>
+
+    <script>
+        // 假如我们  3个元素的点击事件 都是完成一个功能 
+        // 如果 一个一个的给他们书写 完成功能的面向过程步骤  毫无疑问的这样是不合理
+        // 我们就需要使用面向对象的方式 进行处理啦
+
+
+        // 什么情况下使用 面向对象呢  
+        //      1. 在代码重复的情况下  进行提取
+        //      2. 在不同元素具有相同的 特征 与 行为  进行面向对象的提取
+        //      3. 在模式相同的情况下
+        //      我们将 对象 的 行为 称为 方法  对象 的 特征 称为 属性
+        // 可以将这些放置到 构造函数中 进行创建 传入不一样的值
+        
+        document.querySelector("span").onclick = function() {
+            console.log("span");
+            alert(fnObj() + "---元素是span");
+        }
+        
+        document.querySelector("strong").onclick = function() {
+            console.log("strong");
+            alert(fnObj() + "---元素是strong");
+        }
+
+        document.querySelector("em").onclick = function() {
+            console.log("em");
+            alert(fnObj() + "---元素是em");
+        }
+
+
+        // 面向对象的编程
+        // 我们要知道面向对象的优势 和 如何最大化的实现一次多用  并且防止对象功能模块太大不好后期维护
+        function fnObj() {
+            // 面向过程的完成步骤
+            return "面向对象的编程";
+        }
+    </script>
+
+
+</body>
+</html>

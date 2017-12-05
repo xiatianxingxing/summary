@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        .dv {
+            width: 300px;
+            height: 300px;
+            margin: 100px auto;
+            background-color: #ff8800;
+        }
+        #demo {
+            width: 500px;
+            height: 500px;
+            background-color: #00eeff;
+            
+        }
+        .scroll {
+            width: 300px;
+            height: 300px;
+            background-color: #ee0099;
+        }
+    </style>
+</head>
+<body>
+    <div id="demo"></div>
+    <div class="dv"></div>
+    <div class="scroll"></div>
+
+
+    <script src="jquery-1.12.2.js"></script>
+    <script>
+        $(function(){
+            // offset 系列 方法  
+            // 1.不传入参数  获取元素相对于 offsetParent 的top与left 的偏移值  offsetParent没有的话 那么就是body的
+            // 1.1 返回一个对象  含有 top 成员 与 left 成员
+            // 2.传入一个对象进行设置  对象中以键值对的方式 设置 top 与 left的偏移值
+            console.log($(".dv").offset());
+            // 注意设置的偏移使用 relative 的定位方式
+            console.log($(".dv").offset({left:100,top:100}));
+            // 指定dv元素的offsetParent 值 为 demo元素
+            $(".dv").offsetParent($("#demo"));
+            $(".dv").offset({top:400,left:400});
+
+            // scroll系列
+            $(document).scroll(function(){
+                
+            })
+            // 暂时未到达预期的效果  后期实验
+            console.log($(".scroll").scrollTop(500));
+
+        })
+    </script>
+</body>
+</html>

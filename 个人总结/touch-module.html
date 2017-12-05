@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>移动端touch功能原生</title>
+    <link rel="stylesheet" href="./touch-module.css">
+</head>
+<body>
+    <div id="demo">
+        <ul id="tap">
+            <li>
+                <a href="javascript:void(0)">
+                    <img src="./images/1.jpg" alt="">
+                </a>
+            </li>
+            <li>
+                <a href="javascript:void(0)">
+                    <img src="./images/2.jpg" alt="">
+                </a>
+            </li>
+        </ul>
+    </div>
+    <script>
+        (function( window ){
+            var demo = document.getElementById( 'demo' );
+            var tap = document.querySelector( '#tap' );
+            var lisimg = tap.querySelectorAll( 'li' );
+            tap.style.width = demo.offsetWidth * lisimg.length + 'px';
+            for( var i = 0 ;i<lisimg.length;i++ ) {
+                lisimg[i].style.width = demo.offsetWidth + 'px';
+                var taplis =lisimg[i];
+                
+            }
+            // 在页面 发生改变 时  重置ul 的 width值
+            window.onresize = function() {
+                tap.style.width = demo.offsetWidth * lisimg.length + 'px';
+            };
+
+
+
+
+            // 由于我是 移动端 所以 addEventListener兼容性行问题 不用进行处理
+            var startSeat, // 开始位置
+                moveSeat, // 移动位置
+                endSeat,  // 结束位置
+                step,     // 本次移动位置
+                originer,  // 原来位置
+                eleSeat,   // 元素位置
+                oneSeat = 0     // 单次 循环的距离
+            ;
+            var demoWidth = demo.offsetWidth / 3;
+            // 进行 记录 滑动到的 当前 图
+            var index = 0;
+            var translate = 0;
+
+            // 手指触摸 屏幕事件  touchstart
+            tap.addEventListener( 'touchstart' , function( e ){
+                console.log( e );
+                console.log( '开始' );
+                // 首先获取到 手指的起始位置 使用 targetTouches[0]
+                startSeat = e.targetTouches[0].clientX;
+                translate = -(parseInt( this.style.transform.replace( /\D/g , '' ) ) || 0);
+            } , true );
+
+
+            // 手指 在 屏幕上进行移动 touchmove
+            tap.addEventListener( 'touchmove' , function( e ){
+                console.log( '移动中' );
+                moveSeat = e.targetTouches[0].clientX;
+                step = moveSeat - startSeat ;
+                eleSeat = step + ( eleSeat || 0 );
+                console.log( step + ' ---- 本次移动位置 ');
+                console.log( eleSeat + ' ---- 元素位置' );
+                console.log( moveSeat + ' ---- 移动位置 ' );
+                console.log( translate + ' ---- 元素之前的位置 ' );
+                this.style.transform = 'translateX( '+ ( eleSeat + translate ) +'px )';
+
+                // 进行判断 
+
+
+
+                oneSeat +=step;
+                // 每次 移动完成 后 将起始位置 进行改变 为上次移动（touchmove）的位置
+                startSeat = moveSeat ;
+            } , true );
+
+
+            // 手指离开屏幕 touchend
+            tap.addEventListener( 'touchend' , function( e ){
+                console.log( '结束' );
+                endSeat = e.changedTouches[0].pageX;
+                // 进行判断  如果 移动滑动 屏幕的 3/1  那么就进行 指定滑动到 指向张
+                if( Math.abs( oneSeat ) > demoWidth ){
+                    console.log( '条件符合' )
+                    index >= lisimg.length ? index=lisimg.length : index--;
+                    var indexStep = index * demo.offsetWidth;
+                    this.style.transform = 'translateX('+ ( translate + indexStep ) +'px)';
+                }else {
+                    console.log( '条件不符合' );
+                    index <= 0 ? index= 0 : index++;
+                    var indexStep = index * demo.offsetWidth;
+                    this.style.transform = 'translateX('+ ( translate + indexStep ) +'px)';
+                }
+                oneSeat = 0;
+                eleSeat = 0;
+            } , true );
+        })(window);
+    </script>
+
+</body>
+</html>
